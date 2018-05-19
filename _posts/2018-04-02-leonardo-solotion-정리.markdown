@@ -2,6 +2,10 @@
 layout: "single"
 title: "Leonardo solotion 정리"
 date: "2018-04-02 17:51"
+categories:
+    - SAP
+tags:
+    - Leonardo Solution
 ---
 # Platform: SAP Leonardo
 ## Digital Renaissance(디지털 르네상스)

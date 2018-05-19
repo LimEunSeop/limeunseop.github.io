@@ -2,6 +2,10 @@
 layout: "single"
 title: "Web Dynpro For ABAP - 영업오더 CURD 프로그램 예제"
 date: "2018-03-21 00:00"
+categories:
+    - SAP
+tags:
+    - Web Dynpro for ABAP
 ---
 
 ### 프로그램
