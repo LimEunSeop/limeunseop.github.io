@@ -1,5 +1,4 @@
 ---
-layout: "single"
 title: "Leonardo solotion 정리"
 date: "2018-04-02 17:51"
 categories:

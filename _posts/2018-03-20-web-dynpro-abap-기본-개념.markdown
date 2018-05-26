@@ -1,5 +1,4 @@
 ---
-layout: "single"
 title: "Web Dynpro ABAP 기본 개념"
 date: "2018-03-20 17:48"
 categories:

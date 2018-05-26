@@ -1,5 +1,4 @@
 ---
-layout: "single"
 title: "Web Dynpro For ABAP - Select Options & ALV"
 date: "2018-03-27 19:50"
 categories:

@@ -1,5 +1,4 @@
 ---
-layout: "single"
 title: "Web Dynpro For ABAP - 영업오더 Create&Display details"
 date: "2018-03-21 00:01"
 categories:
