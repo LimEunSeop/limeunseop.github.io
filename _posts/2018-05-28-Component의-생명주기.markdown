@@ -12,7 +12,7 @@ tags:
 **객체의 상황에 따른 메소드의 호출순서.** 적절한 곳에 적절한 로직을 넣음으로써 원하는 기능을 정의할 수 있고, 한 편으로는 최적화를 할 수도 있다.
 
 ## Component 생성
-![Image Alt 텍스트](/assets/images/component_lifecycle/create_component.png)
+![Image Alt 텍스트](/assets/images/component_lifecycle/create_component.PNG)
 
 #### constructor(props)
 - 컴포넌트가 처음 만들어질 때 실행된다.
@@ -32,7 +32,7 @@ tags:
 
 
 ## Component 업데이트
-![Image Alt 텍스트](/assets/images/component_lifecycle/update_component.png)
+![Image Alt 텍스트](/assets/images/component_lifecycle/update_component.PNG)
 
 #### componentWillReceiveProps(nextProps)
 - props를 받을 때 실행된다.
