@@ -1,0 +1,41 @@
+---
+title: "Angular.JS 비동기 메서드를 위한 Observable타입 이해"
+date: "2018-06-03 03:27"
+categories:
+    - Angular.JS
+tags:
+    - 비동기
+    - Observable
+    - Rx.JS
+    - of 메서드
+    - subscribe
+---
+
+## 비동기 메서드 만드는 방법
+Observable 타입을 리턴하면 된다.
+
+### import
+```javascript
+import { Observable, of } from 'rxjs';
+```
+
+### 메서드 정의부
+```javascript
+getHeroes(): Observable<Hero[]> {
+  return of(HEROES);
+}
+```
+
+## 비동기 메서드 호출하는 방법
+- 속성을 변화시키는 경우, 메소드체이닝으로 subscribe 메서드를 호출하여 인자로 변화작업을 할 콜백함수를 넘기면 된다.
+- 콜백함수의 인자로는 Observable 타입의 리턴값을 받을 변수 하나면 된다.
+
+```javascript
+getHeroes(): void {
+  this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+}
+```
+
+## 그니까, Observable이 뭐고, 왜 subscribe 해야되는데??
+Angular에서 메서드가 비동기가 되기 위한 방법중 하나가, 리턴형을 Observable 형으로 바꾸어 Event-driven이 가능하도록 유도하는 것이다. 흔히 Observer패턴, 발행자-구독자(Publisher-Subscriber)패턴이라는 말을 많이 들었을 것이다. Observer(Publisher, 발행자)는 일반적으로 웹브라우저가 담당하며, 여러가지 기본 이벤트만을 관찰하여 발생시킨다. 따라서 일개의 변수가 리턴됐다는 것을 캐치해낼 리가 없다. 하지만, 타입이 Observable 이면 이야기는 달라진다. 웹브라우저(Observer)가 Observe할 수 있다는 뜻으로 변한다. 따라서 Observable 타입의 변수가 리턴될 경우, 그것을 웹브라우저가 감지해서 이벤트로 발생할 수 있는 것이다. 그래서 메소드체이닝으로 subscribe(이벤트구독) 메소드 호출이 가능해지는 것이다.
