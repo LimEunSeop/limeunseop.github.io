@@ -10,8 +10,6 @@ tags:
     - 디렉터리 구조
 ---
 
-# Angular.JS 퀵스타트
-
 ## Angular CLI의 기능
 - AngularJS 프로젝트 만들기
 - 파일 추가
