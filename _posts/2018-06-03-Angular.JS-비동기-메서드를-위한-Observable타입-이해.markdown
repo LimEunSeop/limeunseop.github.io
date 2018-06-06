@@ -38,4 +38,4 @@ getHeroes(): void {
 ```
 
 ## 그니까, Observable이 뭐고, 왜 subscribe 해야되는데??
-Angular에서 메서드가 비동기가 되기 위한 방법중 하나가, 리턴형을 Observable 형으로 바꾸어 Event-driven이 가능하도록 유도하는 것이다. 흔히 Observer패턴, 발행자-구독자(Publisher-Subscriber)패턴이라는 말을 많이 들었을 것이다. Observer(Publisher, 발행자)는 일반적으로 웹브라우저가 담당하며, 여러가지 기본 이벤트만을 관찰하여 발생시킨다. 따라서 일개의 변수가 리턴됐다는 것을 캐치해낼 리가 없다. 하지만, 타입이 Observable 이면 이야기는 달라진다. 웹브라우저(Observer)가 Observe할 수 있다는 뜻으로 변한다. 따라서 Observable 타입의 변수가 리턴될 경우, 그것을 웹브라우저가 감지해서 이벤트로 발생할 수 있는 것이다. 그래서 메소드체이닝으로 subscribe(이벤트구독) 메소드 호출이 가능해지는 것이다.
+Angular에서 메서드가 비동기가 되기 위한 방법중 하나가, 리턴형을 Observable 형으로 바꾸어 Event-driven이 가능하도록 유도하는 것이다. 흔히 Observer패턴, 발행자-구독자(Publisher-Subscriber)패턴이라는 말을 많이 들었을 것이다. Observer(Subscriber, 구독자)는 일반적으로 Publisher 역할을 하는 웹브라우저의 이벤트를 구독하여 Publisher가 이벤트 발생되면 보내는 notify()를 관찰한다. 브라우저는 구독자에 한해서만 notify를 보내기 때문에, 따라서 일개의 변수가 리턴됐다는 것을 아무런 장치없이 캐치해낼 리가 없다. 하지만, 타입이 Observable 이라면 이야기는 달라진다. 이제 이벤트를 Observe할 수 있다는 뜻으로 변한다. 따라서 Observable 타입의 변수가 리턴될 경우, 브라우저의 이벤트를 구독할 수 있는 것이다. 그래서 메소드체이닝으로 subscribe(이벤트구독) 메소드 호출이 가능해지는 것이다.
