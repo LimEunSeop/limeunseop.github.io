@@ -9,7 +9,7 @@ tags:
     - Injector
 ---
 
-## Service란
+## Service
 Angular.JS 에서 데이터 관련 처리를 담당하는 클래스 이다. 서비스가 이를 담당해줌으로써, Component는 오직 데이터만을 출력하는 것에 집중할 수 있게 되어 유지보수에 유리해진다.
 
 ## Service를 적용하는 방법
@@ -17,7 +17,7 @@ Angular.JS 에서 데이터 관련 처리를 담당하는 클래스 이다. 서�
 - Component에서 사용하고싶은 Service와의 의존관계를 명세한다.
 - 명세를 했다면, Injector가 이를 자동으로 읽어 Dependency Injection을 하게 된다. (Java의 @Autowired와 비슷한듯.)
 
-## Injector란
+## Injector
 - Service를 Component에 Inject 하기위한 도구이다.
 - Service 정의부에서, 이 Service를 어떤 Injector에게 등록할 것인지 명시한다.
 - 기본값은 'root'인젝터이다. 'root'인젝터는 모든 Component에 inject가 가능하다.
