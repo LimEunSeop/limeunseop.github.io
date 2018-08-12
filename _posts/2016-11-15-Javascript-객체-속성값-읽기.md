@@ -28,9 +28,9 @@ Section : 2. 속성값 읽기
 
 ### 객체의 존재하지 않는 속성을 참조했을 때, undefined가 반환된다.
 
-- 존재하지 않는 속성을 참조했을 경우, undefined 말고 디폴트값을 반환하고 싶을 때, 오른쪽에 (|| + 표현식) 을 덧붙여주면 된다.
+- 존재하지 않는 속성을 참조했을 경우, undefined 말고 디폴트값을 반환하고 싶을 때, 오른쪽에 (\|\| + 표현식) 을 덧붙여주면 된다.
 
-ex) var status = flight.status || "unknown";
+ex) var status = flight.status \|\| "unknown";
 
 
 
