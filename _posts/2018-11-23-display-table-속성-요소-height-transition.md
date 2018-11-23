@@ -13,7 +13,7 @@ tags:
 
 ## height 속성을 이용한 transition 방법
 사실 height 속성으로는 transition 처리가 되지 않는다. 이에 대체되는 방법은, max-height:0; overflow:hidden; 으로 줬다가 커질때는 max-height를 넉넉하게 주면 된다.
-
+<iframe width="100%" height="300" src="//jsfiddle.net/EunseopLim/nqsvLcd8/1/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 ### 문제점
 대부분의 display 속성을 가지는 요소들한테 잘 통한다. 하지만, display:table 속성을 가지는 요소한테는 max-height가 통하지 않는다. 이유는 모르겠지만 그냥 통하지 않는다.
 
