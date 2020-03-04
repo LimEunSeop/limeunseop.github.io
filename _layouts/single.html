@@ -33,6 +33,9 @@ layout: default
         </header>
       {% endunless %}
 
+      <!-- 애드센스 -->
+      <script data-ad-client="ca-pub-3565757174443553" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
       <section class="page__content" itemprop="text">
         {% if page.toc %}
           <aside class="sidebar__right">
@@ -45,6 +48,9 @@ layout: default
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
+
+      <!-- 애드센스 -->
+      <script data-ad-client="ca-pub-3565757174443553" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
       <footer class="page__meta">
         {% if site.data.ui-text[site.locale].meta_label %}
