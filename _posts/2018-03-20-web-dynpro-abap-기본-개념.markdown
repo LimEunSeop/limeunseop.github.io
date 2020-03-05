@@ -7,6 +7,8 @@ tags:
     - Web Dynpro for ABAP
 ---
 
+{% include adsense.html %}
+
 # Component Controller
 - **Window와 View를 관리하는 총 책임자.**
 - 한 프로그램에 하나만 있다.
@@ -45,6 +47,8 @@ tags:
 # Attribute
 - **Element의 필드를 의미한다.**
 
+{% include adsense.html %}
+
 # Action
 - **이벤트메서드의 이름을 의미한다.**
 - 레이아웃을 구성할 때, 버튼에 Action을 지정할 수 있는데, 이렇게 클릭이벤트의 메서드를 설정할 수 있다.
@@ -76,3 +80,5 @@ tags:
 - wd_comp_controller : 최상위의 componentcontroller를 바라보는것. 컴포넌트 컨트롤러에 정의된 데이터를 전역적으로 쓸 수 있음.
 
 > 다음페이지 : 버튼버튼클릭 -> 액션실행-> go_fire -> outbount plug 실행 -> imbound plug 실행
+
+{% include adsense.html %}

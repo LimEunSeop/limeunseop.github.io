@@ -1,13 +1,15 @@
 ---
-title: "Web Dynpro For ABAP - 영업오더 Create&Display details"
+title: "Web Dynpro For ABAP - Sales Order Create&Display details"
 date: "2018-03-21 00:01"
 categories:
     - SAP
 tags:
     - Web Dynpro for ABAP
 ---
+{% include adsense.html %}
+
 ### 프로그램
-영업오더 Create&Display details
+Sales Order Create&Display details
 ### Window 구성
 ![1-1. Window List](https://user-images.githubusercontent.com/34618693/37882890-f2d636e0-30e1-11e8-89dd-fb8a127cb1d2.PNG)
 ### Context 구성 - CREATE, DISPLAY 뷰 둘다 동일
@@ -92,6 +94,8 @@ ENDMETHOD.
 - ITEM의 레코드는 루프를 돌아 vbeln(오더번호)를 헤더와 같이 세팅해 준 다음, CBO테이블에 반영한다.
 - 마지막에 Inound Plug 메소드를 다시 호출하는 구문을 넣어준다 (저장 후 필드를 비우기 위해)
 
+{% include adsense.html %}
+
 #### Display
 ##### 초기화 메서드(Inbound Plug 메서드)
 ```ruby
@@ -150,3 +154,5 @@ ENDMETHOD.
 
 # 부모노드와 자식노드의 Supply Function 호출 관계
 #### 부모노드의 레코드를 선택하면, 노드 입장에서는 해당 레코드에 속해있는 자식노드가 Focusing 된다. 이는 곧, 자식노드의 Supply Function을 Trigger하기 때문에, 헤더선택->상세내역 조회 식으로 프로그래밍이 가능하다.
+
+{% include adsense.html %}

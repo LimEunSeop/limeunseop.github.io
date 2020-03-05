@@ -8,6 +8,8 @@ tags:
     - 생명주기
 ---
 
+{% include adsense.html %}
+
 # 생명주기란
 **객체의 상황에 따른 메소드의 호출순서.** 적절한 곳에 적절한 로직을 넣음으로써 원하는 기능을 정의할 수 있고, 한 편으로는 최적화를 할 수도 있다.
 
@@ -29,6 +31,8 @@ tags:
 - 컴포넌트 생성, 즉 첫 렌더링 마치고 실행된다.
 - 이 안에서 다른 Javascript Framework 연동 및 setTimeout, setInterval 및 AJAX 사용이 가능하다.
 - **여기서는 DOM 처리를 할 수 있다.**
+
+{% include adsense.html %}
 
 
 ## Component 업데이트
@@ -67,3 +71,5 @@ tags:
 ### Did : 이후
 
 #### Ex) ComponentWillUpdate : 컴포넌트 업데이트 될거야~. 그니깐 업데이트 전 이라는 의미
+
+{% include adsense.html %}

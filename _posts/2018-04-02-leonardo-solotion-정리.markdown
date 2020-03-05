@@ -6,6 +6,9 @@ categories:
 tags:
     - Leonardo Solution
 ---
+
+{% include adsense.html %}
+
 # Platform: SAP Leonardo
 ## Digital Renaissance(디지털 르네상스)
 - 종전의 프로그래밍은, 컴퓨의 빠른 속도를 이용하여 반복적인 작업을 컴퓨터에게 시키기만 하는 방식이었음.
@@ -70,6 +73,8 @@ SAP Cloud Platform is an open platform as a service (PaaS) which provides custom
 ## SAP S/4 HANA Cloud
 SAP에서 새로 발표한 Cloud기반의 ERP
 
+{% include adsense.html %}
+
 ## Why S/4 HANA Cloud?
 #### 1. 직관적인 사용자 경험
 - 웹페이지를 사용하듯 쉬운 업무수행
@@ -97,3 +102,5 @@ SAP에서 새로 발표한 Cloud기반의 ERP
 
 ## S/4 HANA에서의 개발. 왜 UI5를 할 수 밖에 없는지
 앞에서 조사한 내용을 토대로 말하자면, 좀 더 다양한 기술을 여러 디바이스에 편안하게 활용하기 위하여 SAP은 클라우드를 기반 ERP로 사업을 확장할 것 같아 보인다. 여러 기기를 지원하기 위해서는, 웹이 필수적이며 또한 반응형 웹이어야 한다. 그래서 자바스크립트 기반의 반응형 웹을 지원하는 SAPUI5를 이용한 프로그래밍이 주를 이룰것 같다.
+
+{% include adsense.html %}

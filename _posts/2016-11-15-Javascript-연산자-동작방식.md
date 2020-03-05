@@ -8,6 +8,8 @@ tags:
     - 논리연산자
 ---
 
+{% include adsense.html %}
+
 ## 서적
 
 자바스크립트 핵심 가이드

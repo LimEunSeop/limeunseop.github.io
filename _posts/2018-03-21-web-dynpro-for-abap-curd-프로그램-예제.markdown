@@ -1,5 +1,5 @@
 ---
-title: "Web Dynpro For ABAP - 영업오더 CURD 프로그램 예제"
+title: "Web Dynpro For ABAP - Sales Order CURD 프로그램 예제"
 date: "2018-03-21 00:00"
 categories:
     - SAP
@@ -7,8 +7,10 @@ tags:
     - Web Dynpro for ABAP
 ---
 
+{% include adsense.html %}
+
 ### 프로그램
-영업오더 CRUD 프로그램
+Sales Order CRUD 프로그램
 
 ### Context 구성
 ![1-1. MAIN뷰 Context List](https://user-images.githubusercontent.com/34618693/37882149-acdb1f62-30db-11e8-9ff6-9e797690994c.PNG)
@@ -93,6 +95,7 @@ ENDMETHOD.
 - node에서 get_selected_static_attributes 메서드가 있다면 코드가 짧아지겠지만, get_selected_elements( ) 메서드 밖에 없다.
 - 그래서 element를 루프를 돌아서 다시 인터널 테이블 세팅해야 한다.
 
+{% include adsense.html %}
 
 #### Delete
 ```ruby
@@ -142,3 +145,6 @@ ENDMETHOD.
 ```
 - 선택한 인덱스를 뽑아 그 인덱스에 빈 레코드를 삽입한다.
 - lv_selected_index가 0보다 작다면, 레코드를 선택하지 않는것을 의미하므로, 마지막 줄에 삽입한다.
+
+
+{% include adsense.html %}

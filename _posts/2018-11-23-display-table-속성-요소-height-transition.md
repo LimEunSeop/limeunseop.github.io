@@ -11,6 +11,8 @@ tags:
     - block
 ---
 
+{% include adsense.html %}
+
 ## height 속성을 이용한 transition 방법
 사실 height 속성으로는 transition 처리가 되지 않는다. 이에 대체되는 방법은, max-height:0; overflow:hidden; 으로 줬다가 커질때는 max-height를 넉넉하게 주면 된다.
 <iframe width="100%" height="300" src="//jsfiddle.net/EunseopLim/nqsvLcd8/1/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
@@ -26,6 +28,8 @@ display 속성이 table 이외인 거의 모든 것들은 max-height가 통한�
 #### 3. 내부의 item도 max-height와 transition 을 적용해준다.
 - 따라서, 내부의 item도 앞에서 한 것과 같이 max-height 를 조정해주고 똑같은 transition 값을 적용해야 한다.
 - 여기서 또 의문점이 생긴다. 그럼 먼저 했던 transition 속성을 지워도 되지 않는가? 이것도 역시 불가능 하다. open 되는 상태로는 정상적으로 간다. max-height 가 커지면, height 는 그냥 content 크기에 맞춰서 증가하기 때문이다. 그렇지만, max-height가 다시 0으로 되면, 인정사정 봐줄것 없이 height가 0으로 바뀐다. 따라서, container 에도 transition 을 유지하여 max-height가 0이 되는 상황에서 내부의 아이템이 유연하게 줄어들도록 해야하는 것이다.
+
+{% include adsense.html %}
 
 ### CSS
 테이블 안의 각 행이 또 다시 테이블을 머금는 구조이다.

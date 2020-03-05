@@ -6,6 +6,9 @@ categories:
 tags:
     - Web Dynpro for ABAP
 ---
+
+{% include adsense.html %}
+
 ### 프로그램
 항공기 운항 조회 프로그램
 
@@ -48,6 +51,8 @@ tags:
 - 원래 있던 속성에 추가하여 m_handler, m_wd_select_options을 추가한다.
 - m_wd_select_options은 selection screen의 컴포넌트 인터페이스를 의미한다.
 - m_handler는 selection screen의 필드 추가 등의 처리를 의미한다.
+
+{% include adsense.html %}
 
 #### Window 구조
 ![1-7. Window 구조](https://user-images.githubusercontent.com/34618693/38001730-5950de06-3269-11e8-9dc5-28663a10b165.PNG)
@@ -150,3 +155,5 @@ ENDMETHOD.
 ```
 - get버튼을 클릭하여 이벤트가 실행되면, Selection Screen에 저장되어 있는 값을 m_handler->get_range_table_of_sel_field로 불러준다.
 - 불러들어온 값을 LIST NODE에 바인딩 하면 된다.
+
+{% include adsense.html %}
