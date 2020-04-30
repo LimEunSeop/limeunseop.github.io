@@ -26,7 +26,9 @@ tags:
 SELECT
 m.name, a.point,
 FROM member_table m
-LEFT JOIN diagnosis_answer_table a ON m.idx=a.midx AND 0 = (SELECT COUNT(*) FROM diagnosis_answer_table WHERE midx=a.midx AND end_date>a.end_date) 
+LEFT JOIN diagnosis_answer_table a ON m.idx=a.midx
+AND 0 = (SELECT COUNT(*) FROM diagnosis_answer_table
+          WHERE midx=a.midx AND end_date>a.end_date) 
 ```
 
 {% include adsense.html %}
