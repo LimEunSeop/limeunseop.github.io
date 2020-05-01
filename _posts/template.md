@@ -9,9 +9,9 @@ tags:
     - tag2
 ---
 
-{% include adsense.html %}
-
 ## 2nd-depth title
 ### 3rd-depth title
 - content1
 - content2
+
+{% include adsense.html %}
