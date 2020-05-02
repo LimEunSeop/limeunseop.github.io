@@ -1,5 +1,5 @@
 ---
-title: "CSS absolute vs relat 핵심 종결"
+title: "CSS absolute vs relative 핵심 종결"
 date: "2020-05-02 15:49"
 categories:
     - CSS
