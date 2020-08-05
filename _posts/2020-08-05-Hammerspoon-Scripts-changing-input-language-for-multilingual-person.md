@@ -17,7 +17,7 @@ When I use Macbook, I usually change input languages between Korean and Japanese
 I use constants of Korean, Japanese and English. So change the constants to suit you.
 You can use `print(hs.keycodes.currentSourceID())` to check your input constant in Console Pannel
 ```lua
-local inputEnglish = "com.apple.keylayout.ABC"
+local inputEnglish = "com.apple.keylayout.ABC" 
 local inputKorean = "com.apple.inputmethod.Korean.390Sebulshik"
 local inputJapanese = "com.apple.inputmethod.Kotoeri.Japanese"
 
