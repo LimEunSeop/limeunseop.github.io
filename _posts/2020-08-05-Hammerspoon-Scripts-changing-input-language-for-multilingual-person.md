@@ -8,6 +8,8 @@ tags:
     - input language
 ---
 
+{% include adsense.html %}
+
 ## Introduction
 When I use Macbook, I usually change input languages between Korean and Japanese. After Sierra launched, It's easy to change between Mother Language and English by pressing `capslock`. But, getting into Japanese from English, I still have trouble comming back into Korean by pressing `control+space`. So, I want to let `control+space` switch Languages except English, `capslock` toggle between English and previous Language. Magically, Although I set input language English, `control+space` will never mind of it.
 
@@ -37,5 +39,3 @@ end
 
 hs.hotkey.bind({'control'}, 'space', toggleInputSource)
 ```
-
-{% include adsense.html %}
