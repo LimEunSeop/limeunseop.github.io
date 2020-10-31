@@ -1,7 +1,8 @@
 # 포트폴리오 사이트 개발일지
 여러곳에 분산돼 있는 경험(이력서, 포트폴리오)이 한 곳이 모인 Entry Point Site 를 제작해보도록 하겠습니다.
 ## Index
-1. [item 선정 및 대략적인 디자인 구상](#1-item-선정-및-대략적인-디자인-구상)
+  1. [item 선정 및 대략적인 디자인 구상](#1-item-선정-및-대략적인-디자인-구상)
+  2. [이력서 작성 및 데이터 구조 분석](#2-이력서-작성-및-데이터-구조-분석)
 
 ## 1. item 선정 및 대략적인 디자인 구상
 
@@ -50,3 +51,68 @@
 2. **Github에 JSON 파일로 저장한 후 그 자료를 크롤링한다.** 이같은 경우에는 JSON 파일 자체가 DB 역할을 확실히 하므로 그 속에서 필드정의를 하는 등의 규칙을 체계화 할 수가 있어, 유지보수에 매우 유리합니다. 하지만 JSON 파일을 구성한다는 것은 매우 번거로운 일이고.. [Portfolio Index](https://github.com/LimEunSeop/my-portfolio) 같은 경우에는 Github 에서 Markdown 으로 이미 존재하고 또 그래야만 하기 때문에(indexing을 위해) JSON 파일로 따로 또 관리 한다는 것이 불편할 것입니다.
 
 이와같이 종합해보면, 1번 방법이 최선책인것 같습니다. 정형화된 포맷으로 철저히 관리할 것을 제 스스로 약속하고, 따로 문서로 기록 해야겠습니다.
+
+## 2. 이력서 작성 및 데이터 구조 분석
+### 이력서 작성
+페이지에 들어갈 이력서를 Markdown 으로 작성하여 [my-resume](https://github.com/LimEunSeop/my-resume) 레파지토리에 저장시켰습니다.
+### 이력서 데이터 구조 분석
+크롤링을 성공적으로 마치기 위해서는 데이터 규칙의 일관성을 확인하는 것이 중요합니다.
+
+데이터의 개요는 아래와 같은 계층 형식으로 구성 되어있습니다.
+```html
+<h1>이름</h1>
+  <h2>Summary</h2>
+  <h2>Experience</h2>
+    <h3>직무 경험</h3>
+    <h3>개인 프로젝트</h3>
+  <h2>Education</h2>
+    <h3>학위</h3>
+    <h3>외부교육</h3>
+  <h2>Skills</h2>
+    <h3>Languages</h3>
+    <h3>Frameworks and Libraries</h3>
+    <h3>DB</h3>
+    <h3>Platforms</h3>
+    <h3>OS</h3>
+    <h3>Tool Techniques</h3>
+  <h2>Certificates</h2>
+    <h3>직무</h3>
+    <h3>어학</h3>
+    <h3>ETC</h3>
+  <h2>Open Source Contributions</h2>
+    <h3>Pull Requests</h3>
+```
+말단 Heading 에서 세부 내용을 구성하며, 구성할 수 있는 데이터는 `단락`, `1뎁스 ul`, `2뎁스 ul` 입니다. 다행히도 이같은 규칙을 잘 지켜 작성하여, 크롤링에 잘 활용할 수 있을 것으로 예상됩니다. `<h1>` Heading은 예외적으로 메인 커버에 들어갈 데이터를 표시하기 위해 하위 Heading 을 보유하지만 세부내용이 존재합니다.
+
+저는 사이트 첫 진입 시 메인 커버를 보이도록 하고, 스크롤을 내리면 각 섹션이 다른 색상으로 구분되도록 하고 싶습니다. 그에따라 다음과 같이 Markup 을 정돈하여 향후 스타일링에 용이하도록 하였습니다.
+
+```html
+<main>
+  <div class="main-cover">
+    <h1>이름</h1>
+  </div>
+  <section>
+  <h2>Summary</h2>
+  </section>
+  
+  <h2>Experience</h2>
+    <h3>직무 경험</h3>
+    <h3>개인 프로젝트</h3>
+  <h2>Education</h2>
+    <h3>학위</h3>
+    <h3>외부교육</h3>
+  <h2>Skills</h2>
+    <h3>Languages</h3>
+    <h3>Frameworks and Libraries</h3>
+    <h3>DB</h3>
+    <h3>Platforms</h3>
+    <h3>OS</h3>
+    <h3>Tool Techniques</h3>
+  <h2>Certificates</h2>
+    <h3>직무</h3>
+    <h3>어학</h3>
+    <h3>ETC</h3>
+  <h2>Open Source Contributions</h2>
+    <h3>Pull Requests</h3>
+</main>
+```
