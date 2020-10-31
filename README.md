@@ -92,27 +92,37 @@
     <h1>이름</h1>
   </div>
   <section>
-  <h2>Summary</h2>
+    <h2>Summary</h2>
   </section>
-  
-  <h2>Experience</h2>
+  <section>
+    <h2>Experience</h2>
     <h3>직무 경험</h3>
     <h3>개인 프로젝트</h3>
-  <h2>Education</h2>
+  </section>
+  <section>
+    <h2>Education</h2>
     <h3>학위</h3>
     <h3>외부교육</h3>
-  <h2>Skills</h2>
+  </section>
+  <section>
+    <h2>Skills</h2>
     <h3>Languages</h3>
     <h3>Frameworks and Libraries</h3>
     <h3>DB</h3>
     <h3>Platforms</h3>
     <h3>OS</h3>
     <h3>Tool Techniques</h3>
-  <h2>Certificates</h2>
+  </section>
+  <section>
+    <h2>Certificates</h2>
     <h3>직무</h3>
     <h3>어학</h3>
     <h3>ETC</h3>
-  <h2>Open Source Contributions</h2>
+  </section>
+  <section>
+    <h2>Open Source Contributions</h2>
     <h3>Pull Requests</h3>
+  </section>
 </main>
 ```
+`h1` 메인 제목쪽을 `div`로 한 번 묶어 스타일이 용이하도록 할 것이고, 그 후 새로운 `h2` 이 등장할 때마다 새로운 `section`요소의 자식으로 두어 위와같이 스타일링이 용이해 지도록 마크업을 재가공해 나갈 것입니다.
