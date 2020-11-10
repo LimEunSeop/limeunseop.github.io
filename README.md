@@ -7,6 +7,7 @@
 1. [item 선정 및 대략적인 디자인 구상](#1-item-선정-및-대략적인-디자인-구상)
 2. [이력서 작성 및 데이터 구조 분석](#2-이력서-작성-및-데이터-구조-분석)
 3. [마크다운 크롤링 작업](#3-마크다운-크롤링-작업)
+4. [데이터 마크업 구현](#4-데이터-마크업-구현)
 
 ## 1. item 선정 및 대략적인 디자인 구상
 
@@ -216,3 +217,94 @@ contents
 content 의 추가 가공은 또다시 힘든 작업이 될 것 같습니다. 예를들어, `[Ubion](http://www.ubion.co.kr/ubion/) (2018.05 ~ 2020.06) - Web Developer` 과 같은 링크 + 추가정보가 혼합된 마크다운은, 링크를 a 태그로 재가공 하고 그 후의 년도나 포지션 추가정보 데이터는 스타일링이 필요한 경우 span 처리를 해야할 수도 있습니다.
 
 정말 복잡한 작업이 될 것 같습니다만, 각 섹션 별로 컴포넌트를 만들어 그 속에서만 복잡한 작업을 따로 정의하면 코드를 관리하기 많이 용이해질 것 같습니다. a 태그 재가공 같은 작업은 다른 섹션에서도 필요할 수 있으니 유틸리티 함수로 따로 만들면 괜찮을것 같습니다.
+
+## 4. 데이터 마크업 구현
+
+[3. 마크다운 크롤링 작업](#3-마크다운-크롤링-작업)에서 획득한 데이터 객체를 이용하여 이제 마크업을 구성하면 됩니다. 이전 단계에서 고민했던 것들의 해답을 미리 말하자면
+
+- 데이터는 컴포넌트 밖 상수형태의 싱글톤으로 저장하는 것이 바람직 하고,
+- content 안의 markdown 으로 작성돼있는 데이터는 제가 유틸함수를 새로 만드는 것보단 `showdown` 라이브러리로
+
+만드는 것이 바람직하다는 결론이 나왔습니다.
+
+### 컴포넌트 분리
+
+각 섹션에 CSS Module 로 독립된 스타일링을 적용하고, 코드 유지보수를 위해 각각을 컨테이너 컴포넌트로 나누었습니다.
+
+```html
+<div className="App">
+  <header></header>
+  <main>
+    {/* resume_data 에 있는대로 배열 idx 잘 지켜야함 */} <Cover data={{ title: resume_data.title, contents: resume_data.contents, children: [] }} />
+    <summary data="{resume_data.children[0]}" />
+    <Experience data="{resume_data.children[1]}" />
+    <Education data="{resume_data.children[2]}" />
+    <Skills data="{resume_data.children[3]}" />
+    <Certificates data="{resume_data.children[4]}" />
+    <OpenSourceContributions data="{resume_data.children[5]}" />
+  </main>
+  <footer></footer>
+</div>
+```
+
+각 컨테이너 컴포넌트는 `containers` 라는 디렉터리에 저장될 것입니다. 왜냐하면 이것은 엄밀히 말해서 screen 을 일부 구성하는 컨테이너이지 컴포넌트는 아니기 때문입니다.
+
+> CSS Module 과 견주어 Styled Component 가 있습니다. Styled Component 는 말 그대로 컴포넌트 하나를 의미하므로 독립된 컴포넌트 하나를 만들때 사용해야 합니다. 간혹 CSS class 를 유니크하게 만들기 위해 styled Component 로 페이지의 CSS 작업을 하는 경우를 심심찮게 볼 수 있는데, 그렇게 하기보단 CSS Module 기능을 사용하여 CSS 분리 및 class 스타일 적용을 통한 전통적인 CSS 작업을 하도록 합시다.
+
+### 섹션 마크업 퍼블리싱 작업
+
+컨테이너중 일부를 구현한 내용은 아래와 같습니다.
+
+```javascript
+import React from 'react'
+import { Section } from '../App'
+// @ts-ignorets
+import { Heading } from '@tenon-io/tenon-ui'
+import { ListItem } from '../App'
+import MarkdownView from 'react-showdown'
+
+const Education = ({ data }: { data: Section }) => {
+  return (
+    <Heading.LevelBoundary>
+      <section>
+        <Heading.H>{data.title}</Heading.H>
+        {data.children.map((subSection, i) => (
+          <Heading.LevelBoundary key={i}>
+            <section>
+              <Heading.H>{subSection.title}</Heading.H>
+              <ul>
+                {subSection.contents.map((listTitle, i) => (
+                  <li key={i}>
+                    <MarkdownView markdown={(listTitle as ListItem).content} />
+                    {(listTitle as ListItem).children.length > 0 && (
+                      <ul>
+                        {(listTitle as ListItem).children.map((listChild, i) => (
+                          <li key={i}>
+                            <MarkdownView markdown={listChild} />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </Heading.LevelBoundary>
+        ))}
+      </section>
+    </Heading.LevelBoundary>
+  )
+}
+
+export default Education
+```
+
+이전의 데이터 파싱을 통해 React 에서 데이터를 구조적으로 접근이 가능하게 되었고, 제 입맛대로 마크업을 구성할 수 있게 되었습니다. Heading Level 이 유지보수하면서 변할수도 있다는 점을 고려하여 `tenon-ui` 라이브러리를 통해 헤딩레벨의 자동화를 의도했습니다. 제일 말단에 존재하는 content 들은 여전히 markdown 문법을 따르고 있는데요, 여기서 `showdown` 라이브러리를 통해 HTML 로 변환시켜주는 작업을 했습니다.
+
+각 섹션의 마크업은 비슷한 구조를 띄어서 공통 컴포넌트로 해야될까 생각들 수도 있지만, 향후 각 섹션의 마크업이 달라질 수 있을 가능성을 고려하여 각각을 컨테이너 컴포넌트로 분리했습니다.
+
+그러나 여전히 해결되지 않은 문제가 있습니다. content 들은 React 의 통제를 받고 있지 않으므로, 지금 상태로는 스타일링이 어렵습니다. 제가 방금 테스트한 결과,이력서 markdown 에 span 태그로 감싸서 class 를 지정해주면, 그것이 그대로 적용되는 것을 확인했는데요, 이력서 markdown 을 조작하여 세부 컨텐츠 스타일링을 하면 될것 같습니다.
+
+### 헛수고?
+
+이렇게 해서 보니 저는 여태 Markdown to HTML 이라는 프로그램을 만들고 있었다는 생각이 들었는데요, 이런 방식은 시중에 `showdown` 이라는 라이브러리로 널려있습니다. 아예 처음부터 `showdown` 으로 마크업을 만들어내면 얼마나 편할까? 생각들기도 했지만, **역시 제가 원하는 스타일링을 위해선, 제가 원하는 마크업을 구성**해야 했고, 그러기 위해선 데이터를 객체형태로 파싱해야만 했고, 따라서 `showdown` 의 일부 기능인 Markdown Parsing 기능은 역시 제가 스스로 구현해야만 했습니다. 그 이외에 링크나 이미지가 포함된 말단의 content 의 마크다운을 HTML 로 변환하기 위해서 `showdown` 을 도입했는데, 그것이 바람직한 선택이었던것 같습니다. 다만, Markdown 을 데이터 객체로 변환할 때, Markdown to JSON 기능을 하는 라이브러리를 사용하면 좀더 안정적으로 데이터 파싱이 가능하지 않았을까? 라는 생각도 드는데요, 어차피 일단 구현했으니 공부한 샘 치고 일단은 유지하되, 신뢰성과 안정성이 요구로 된다면 그건 향후에 라이브러리로 대체하는 유지보수의 액션을 취해야 될것 같습니다.

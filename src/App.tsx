@@ -1,14 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import Certificates from './containers/Certificates'
+import Cover from './containers/Cover'
+import Education from './containers/Education'
+import Experience from './containers/Experience'
+import OpenSourceContributions from './containers/OpenSourceContributions'
+import Skills from './containers/Skills'
+import Summary from './containers/Summary'
 
-type SectionContents = Array<string | ListItem>
+export type SectionContents = Array<string | ListItem>
 
-interface Section {
+export interface Section {
   title: string
   contents: SectionContents
   children: Array<Section>
 }
 
-interface ListItem {
+export interface ListItem {
   content: string
   children: Array<string>
 }
@@ -71,18 +78,43 @@ const makeData = (markdown: string, startingHeadingLevel: number): Section => {
 
 // resume markdown이 위치한 url
 const resume_url = 'https://raw.githubusercontent.com/LimEunSeop/my-resume/main/README.md'
+// resume 저장할 고정 Data
+let resume_data: Section = {} as Section
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true)
       let markdown: string = await fetch(resume_url).then((res) => res.text())
       markdown = markdown.replaceAll(/<!--.*?-->/g, '') // 주석 제거
-      const data: Section = makeData(markdown, 1)
-      console.log(JSON.stringify(data))
+      resume_data = makeData(markdown, 1)
+      console.log(resume_data)
+      setIsLoading(false)
     }
     fetchData()
   }, [])
-  return <div className="App"></div>
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <div className="App">
+      <header></header>
+      <main>
+        {/* resume_data 에 있는대로 배열 idx 잘 지켜야함 */}
+        <Cover data={{ title: resume_data.title, contents: resume_data.contents, children: [] }} />
+        <Summary data={resume_data.children[0]} />
+        <Experience data={resume_data.children[1]} />
+        <Education data={resume_data.children[2]} />
+        <Skills data={resume_data.children[3]} />
+        <Certificates data={resume_data.children[4]} />
+        <OpenSourceContributions data={resume_data.children[5]} />
+      </main>
+      <footer></footer>
+    </div>
+  )
 }
 
 export default App
