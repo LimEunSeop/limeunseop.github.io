@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Certificates from './containers/Certificates'
-import Cover from './containers/Cover'
-import Education from './containers/Education'
-import Experience from './containers/Experience'
-import OpenSourceContributions from './containers/OpenSourceContributions'
-import Skills from './containers/Skills'
-import Summary from './containers/Summary'
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import About from './screens/About'
+import Contact from './screens/Contact'
+import Home from './screens/Home'
+import Portfolio from './screens/Portfolio'
+// @ts-ignore
+import { Heading } from '@tenon-io/tenon-ui'
 
 export type SectionContents = Array<string | ListItem>
 
@@ -100,20 +100,50 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header></header>
-      <main>
-        {/* resume_data 에 있는대로 배열 idx 잘 지켜야함 */}
-        <Cover data={{ title: resume_data.title, contents: resume_data.contents, children: [] }} />
-        <Summary data={resume_data.children[0]} />
-        <Experience data={resume_data.children[1]} />
-        <Education data={resume_data.children[2]} />
-        <Skills data={resume_data.children[3]} />
-        <Certificates data={resume_data.children[4]} />
-        <OpenSourceContributions data={resume_data.children[5]} />
-      </main>
-      <footer></footer>
-    </div>
+    <Router>
+      <div className="app">
+        <header>
+          <Heading.H>
+            <Link to="/">{resume_data.title}</Link>
+          </Heading.H>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/portfolio">Portfolio</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <Switch>
+            <Route path="/about" render={(props) => <About data={resume_data} {...props} />} />
+            <Route path="/portfolio" component={Portfolio} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/" render={(props) => <Home data={resume_data} {...props} />} />
+          </Switch>
+        </main>
+        {/* <footer></footer> */}
+      </div>
+    </Router>
+    // <main>
+    //   {/* resume_data 에 있는대로 배열 idx 잘 지켜야함 */}
+    //   <Cover data={{ title: resume_data.title, contents: resume_data.contents, children: [] }} />
+    //   <Summary data={resume_data.children[0]} />
+    //   <Experience data={resume_data.children[1]} />
+    //   <Education data={resume_data.children[2]} />
+    //   <Skills data={resume_data.children[3]} />
+    //   <Certificates data={resume_data.children[4]} />
+    //   <OpenSourceContributions data={resume_data.children[5]} />
+    // </main>
   )
 }
 
