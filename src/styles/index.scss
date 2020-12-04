@@ -1,0 +1,15 @@
+// PostCSS Normalize (normalize.css) 사용 설정
+@import-normalize;
+
+// 웹폰트 사용
+@import './font.scss';
+// 사용자 정의 브라우저 초기화 설정 (normalize.css 덮어쓰기)
+@import './custom-reset.scss';
+// 공통 스타일 설정
+@import './common.scss';
+// UI 표시 설정
+@import './ui.scss';
+// 레이아웃 설정
+@import './layout.scss';
+// 애니메이션 설정
+@import './animation.scss';

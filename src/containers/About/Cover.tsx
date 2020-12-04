@@ -1,6 +1,6 @@
 import { computeHeadingLevel } from '@testing-library/react'
 import React from 'react'
-import { Section } from '../App'
+import { Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import MarkdownView from 'react-showdown'

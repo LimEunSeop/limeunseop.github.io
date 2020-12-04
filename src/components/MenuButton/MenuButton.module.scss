@@ -1,0 +1,46 @@
+@import 'styles/configs.scss';
+
+.button {
+  position: relative;
+  width: rem(40);
+  height: rem(32);
+  padding: 0;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.3s ease-out;
+  span {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: rem(2px);
+    background: black;
+    transition: all 1s cubic-bezier(1, 0.02, 0, 0.96);
+  }
+
+  .firstBar {
+    top: 0;
+  }
+  .secondBar {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .thirdBar {
+    bottom: 0;
+  }
+
+  &.clicked {
+    transform: rotate(90deg);
+    .firstBar {
+      top: rem(-3);
+      transform: rotate(60deg) translateX(50%);
+    }
+    .secondBar {
+      top: rem(-3);
+      transform: rotate(-60deg) translateX(-50%);
+    }
+    .thirdBar {
+      bottom: rem(-1);
+    }
+  }
+}

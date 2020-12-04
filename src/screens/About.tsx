@@ -1,20 +1,24 @@
-import { computeHeadingLevel } from '@testing-library/react'
 import React from 'react'
-import { Section } from '../App'
-import Certificates from '../containers/Certificates'
-import Cover from '../containers/Cover'
-import Education from '../containers/Education'
-import Experience from '../containers/Experience'
-import OpenSourceContributions from '../containers/OpenSourceContributions'
-import Skills from '../containers/Skills'
-import Summary from '../containers/Summary'
+import { Section } from 'App'
+import Certificates from 'containers/About/Certificates'
+import Education from 'containers/About/Education'
+import Experience from 'containers/About/Experience'
+import OpenSourceContributions from 'containers/About/OpenSourceContributions'
+import Skills from 'containers/About/Skills'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
+import withLoader from 'components/Loader/WithLoader'
 
-const About = ({ data }: { data: Section }) => {
+const theme_color: string = '#5353d4'
+
+interface Props {
+  data: Section
+}
+
+const About = ({ data }: Props) => {
   return (
     <Heading.LevelBoundary>
-      <Cover data={{ title: data.title, contents: data.contents, children: [] }} />
+      {/* <Cover data={{ title: data.title, contents: data.contents, children: [] }} /> */}
       <Experience data={data.children[1]} />
       <Education data={data.children[2]} />
       <Skills data={data.children[3]} />
@@ -24,4 +28,6 @@ const About = ({ data }: { data: Section }) => {
   )
 }
 
-export default About
+About.displayName = 'About'
+
+export default withLoader<Props>(theme_color, About)

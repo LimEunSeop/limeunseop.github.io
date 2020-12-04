@@ -1,0 +1,70 @@
+@import 'styles/configs.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.menuButton {
+  z-index: 999;
+}
+
+.navBar {
+  position: fixed;
+  width: 80vw;
+  height: 100vh;
+  left: 20vw;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: rem(50);
+  background-color: #fff;
+  transform: translateX(100%);
+  transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+
+  &.opened {
+    transform: none;
+  }
+}
+
+.menuList {
+  composes: resetList from global;
+  font-size: rem(40);
+  font-weight: 700;
+
+  li {
+    overflow: hidden;
+  }
+}
+
+.navLink {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  position: relative;
+  padding: 0 rem(10);
+
+  .decorator {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: rem(20);
+    transform: translateX(-100%);
+    transition: transform 400ms cubic-bezier(1, 0, 0, 1) 0ms;
+  }
+
+  &.active,
+  &:hover {
+    .decorator {
+      transform: none;
+    }
+  }
+}
+
+.contacts {
+  composes: resetList from global;
+}

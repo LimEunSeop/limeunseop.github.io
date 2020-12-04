@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import React, { useEffect, useState, createContext } from 'react'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import About from './screens/About'
 import Contact from './screens/Contact'
 import Home from './screens/Home'
 import Portfolio from './screens/Portfolio'
-// @ts-ignore
-import { Heading } from '@tenon-io/tenon-ui'
+import Toolbar from 'components/Toolbar/Toolbar'
 
 export type SectionContents = Array<string | ListItem>
 
@@ -19,6 +18,14 @@ export interface ListItem {
   content: string
   children: Array<string>
 }
+
+export interface AppContextType {
+  currentThemeColor: string | null
+  setCurrentThemeColor: React.Dispatch<React.SetStateAction<string | null>>
+  loadingTime: number
+}
+
+export const AppContext = createContext({} as AppContextType)
 
 const makeData = (markdown: string, startingHeadingLevel: number): Section => {
   // 섹션 분리 작업
@@ -83,6 +90,8 @@ let resume_data: Section = {} as Section
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
+  const [currentThemeColor, setCurrentThemeColor] = useState<string | null>(null)
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
@@ -96,44 +105,39 @@ function App() {
   }, [])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <div style={{ background: '#000' }}>
+        <div style={{ background: 'rgba(255,255,255,0.2)' }}></div>
+      </div>
+    )
   }
 
   return (
-    <Router>
-      <div className="app">
-        <header>
-          <Heading.H>
-            <Link to="/">{resume_data.title}</Link>
-          </Heading.H>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/portfolio">Portfolio</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <main>
-          <Switch>
-            <Route path="/about" render={(props) => <About data={resume_data} {...props} />} />
-            <Route path="/portfolio" component={Portfolio} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/" render={(props) => <Home data={resume_data} {...props} />} />
-          </Switch>
-        </main>
-        {/* <footer></footer> */}
-      </div>
-    </Router>
+    <AppContext.Provider value={{ currentThemeColor, setCurrentThemeColor, loadingTime: 2.5 }}>
+      <Router>
+        <div className="app">
+          <header className="header">
+            <Toolbar
+              navItems={[
+                { display: 'Home', link: 'home', color: '#ff5751' },
+                { display: 'About', link: 'about', color: '#5353d4' },
+                { display: 'Portfolio', link: 'portfolio', color: '#fff' },
+                { display: 'Contact', link: 'contact', color: '#fff' },
+              ]}
+            />
+          </header>
+          <main>
+            <Switch>
+              <Route path="/about" render={(props) => <About data={resume_data} {...props} />} />
+              <Route path="/portfolio" component={Portfolio} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/" render={(props) => <Home data={resume_data} {...props} />} />
+            </Switch>
+          </main>
+          {/* <footer></footer> */}
+        </div>
+      </Router>
+    </AppContext.Provider>
     // <main>
     //   {/* resume_data 에 있는대로 배열 idx 잘 지켜야함 */}
     //   <Cover data={{ title: resume_data.title, contents: resume_data.contents, children: [] }} />

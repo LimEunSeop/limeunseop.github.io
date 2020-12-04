@@ -1,11 +1,10 @@
 import React from 'react'
-import { Section } from '../App'
+import { ListItem, Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
-import { ListItem } from '../App'
 import MarkdownView from 'react-showdown'
 
-const Skills = ({ data }: { data: Section }) => {
+const Certificates = ({ data }: { data: Section }) => {
   return (
     <Heading.LevelBoundary>
       <section>
@@ -18,15 +17,6 @@ const Skills = ({ data }: { data: Section }) => {
                 {subSection.contents.map((listTitle, i) => (
                   <li key={i}>
                     <MarkdownView markdown={(listTitle as ListItem).content} />
-                    {(listTitle as ListItem).children.length > 0 && (
-                      <ul>
-                        {(listTitle as ListItem).children.map((listChild, i) => (
-                          <li key={i}>
-                            <MarkdownView markdown={listChild} />
-                          </li>
-                        ))}
-                      </ul>
-                    )}
                   </li>
                 ))}
               </ul>
@@ -38,4 +28,4 @@ const Skills = ({ data }: { data: Section }) => {
   )
 }
 
-export default Skills
+export default Certificates

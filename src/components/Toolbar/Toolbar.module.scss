@@ -1,0 +1,29 @@
+@import 'styles/configs.scss';
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  max-width: rem(1200);
+  height: rem(90);
+  margin: 0 auto;
+  padding: 0 rem(32);
+  opacity: 0;
+  transform: translateY(rem(-20));
+  animation: transform-none 0.35s 2.9s ease-out forwards; // 기본 로딩시간 2.5초 + 0.4s 딜레이!!!
+}
+
+.logo {
+  align-self: center;
+  margin: 0;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@keyframes transform-none {
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}

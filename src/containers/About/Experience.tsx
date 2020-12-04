@@ -1,14 +1,15 @@
 import React from 'react'
-import { Section } from '../App'
-// @ts-ignorets
+import { Section } from 'App'
+// @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
-import { ListItem } from '../App'
+import { ListItem } from 'App'
 import MarkdownView from 'react-showdown'
+import styles from './Experience.module.scss'
 
-const Education = ({ data }: { data: Section }) => {
+const Experience = ({ data }: { data: Section }) => {
   return (
     <Heading.LevelBoundary>
-      <section>
+      <section className={styles.container}>
         <Heading.H>{data.title}</Heading.H>
         {data.children.map((subSection, i) => (
           <Heading.LevelBoundary key={i}>
@@ -38,4 +39,4 @@ const Education = ({ data }: { data: Section }) => {
   )
 }
 
-export default Education
+export default Experience

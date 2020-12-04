@@ -1,0 +1,9 @@
+::selection {
+  // 웹에서 드래그 할 때의 스타일
+  background: #070708;
+  color: #ffffff;
+}
+
+body {
+  -webkit-tap-highlight-color: rgba(255, 255, 200, 0.3); // 모바일 크롬 & 사파리 링크 탭 시 하이라이트 색깔
+}
