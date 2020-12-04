@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import { Link } from 'react-router-dom'

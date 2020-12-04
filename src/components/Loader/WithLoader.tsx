@@ -19,11 +19,7 @@ function withLoader<T>(theme_color: string, WrappedComponent: ComponentType<T>) 
       return <Loader nextColor={theme_color} />
     }
 
-    return (
-      <div style={{ background: theme_color }}>
-        <WrappedComponent {...props} />
-      </div>
-    )
+    return <WrappedComponent {...props} />
   }
 
   ComponentWithLoader.displayName = `withLoader(${displayName})`

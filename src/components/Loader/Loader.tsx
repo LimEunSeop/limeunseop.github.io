@@ -8,28 +8,8 @@ import { rem } from 'utils/styledComponentUtils'
 const colorChangeTime = 0.5
 
 const fade_out = keyframes`
-  from {
-    opacity: 1;
-  }
   to {
     opacity: 0;
-  }
-`
-
-const up_and_down = keyframes`
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(${rem(70)});
-  }
-`
-const just_down = keyframes`
-  from {
-    transform: none;
-  }
-  to {
-    transform: translateY(100%);
   }
 `
 
@@ -52,7 +32,7 @@ const PriorColorBackground = styled.div<{ color: string; delay: number }>`
   background-color: ${({ color }) => (color ? color : '#000')};
   animation: ${fade_out} ${colorChangeTime}s ${({ delay }) => delay}s linear forwards;
 `
-const WhiteBlur = styled.div<{ isFirstLoading: boolean; movingTime: number }>`
+const WhiteBlur = styled.div<{ isFirstLoading: boolean; holdingTime: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,18 +40,9 @@ const WhiteBlur = styled.div<{ isFirstLoading: boolean; movingTime: number }>`
   left: 0;
   right: 0;
   top: 0;
-  bottom: ${({ isFirstLoading }) => (isFirstLoading ? 0 : rem(70))};
+  bottom: 0;
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: ${({ isFirstLoading }) => (isFirstLoading ? 0 : `${rem(30)} ${rem(30)} 0 0`)};
-  transform: translateY(100%);
-  animation: ${({ isFirstLoading, movingTime }) =>
-    isFirstLoading
-      ? css`
-          ${just_down} ${movingTime}s cubic-bezier(1,0,.98,-0.16) forwards;
-        `
-      : css`
-          ${up_and_down} ${movingTime / 2}s 2 cubic-bezier(0.08, 1.09, 0, 0.98) alternate;
-        `};
+  animation: ${fade_out} ${colorChangeTime}s ${({ holdingTime }) => holdingTime}s linear forwards;
 `
 
 const donut1 = keyframes`
@@ -109,9 +80,9 @@ const Loader = ({ nextColor }: { nextColor: string }) => {
 
   return (
     <NextColorBackground color={nextColor}>
-      <PriorColorBackground color={currentThemeColor as string} delay={loadingTime / 2} />
-      <WhiteBlur isFirstLoading={isFirstLoading} movingTime={loadingTime}>
-        <AnimatedMagsafe barcolor={nextColor} delay={loadingTime / 2}>
+      <PriorColorBackground color={currentThemeColor as string} delay={loadingTime / 3} />
+      <WhiteBlur isFirstLoading={isFirstLoading} holdingTime={(loadingTime * 2) / 3}>
+        <AnimatedMagsafe barcolor={nextColor} delay={loadingTime / 3}>
           {/* <MagsafeSvg /> */}
         </AnimatedMagsafe>
       </WhiteBlur>

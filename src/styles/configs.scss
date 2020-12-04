@@ -2,13 +2,10 @@
  * 주의!! : 수정사항 발생 시 utils/styledComponentUtils.tsx 파일도 같이 수정해주세요
  */
 
+/**
+ * 사이즈 관련
+ */
 $global-base-font-size: 16px !default;
-
-$breakpoints: (
-  'small': (
-    max-width: rem(600),
-  ),
-);
 
 @function strip-units($number) {
   @if type-of($number) == 'number' and not unitless($number) {
@@ -25,6 +22,15 @@ $breakpoints: (
 @function em($unit, $base: 16) {
   @return strip-units($unit) / strip-units($base) * 1em;
 }
+
+/**
+ * 반응형
+ */
+$breakpoints: (
+  'small': (
+    max-width: rem(600),
+  ),
+);
 
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
