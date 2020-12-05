@@ -1,5 +1,5 @@
 import MenuButton from 'components/MenuButton/MenuButton'
-import React, { MutableRefObject, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useContext, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './AppNavigation.module.scss'
 import classNames from 'classnames/bind'
@@ -45,8 +45,8 @@ const AppNavigation = ({ navItems }: Props) => {
       <div className={cx('navBarBackground', { active })} style={{ backgroundColor: currentThemeColor as string }} hidden={hidden}></div>
       <nav className={cx('navBar', { active })} hidden={hidden}>
         <ul className={styles.menuList}>
-          {navItems.map((item) => (
-            <li>
+          {navItems.map((item, i) => (
+            <li key={i}>
               <NavLink to={item.link} className={styles.navLink} activeClassName={styles.active} onClick={menuButtonClickHandler}>
                 {item.display}
                 <div className={styles.decorator} aria-hidden="true" style={{ background: item.color + '90' }}></div>

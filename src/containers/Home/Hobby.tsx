@@ -1,33 +1,13 @@
-import React, { MutableRefObject, useEffect, useRef } from 'react'
+import React, { forwardRef } from 'react'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Hobby.module.scss'
-import _ from 'underscore'
+// import withContainerAnimate from 'hoc/withContainerAnimate'
 
-const Hobby = () => {
-  const containerRef = useRef() as MutableRefObject<HTMLDivElement>
-  const offsetTop = useRef() as MutableRefObject<number>
-
-  useEffect(() => {
-    offsetTop.current = containerRef.current.offsetTop
-    const windowResizeCallback = _.throttle(() => {
-      offsetTop.current = containerRef.current.offsetTop
-      console.log(offsetTop.current)
-    }, 300)
-    const windowScrollCallback = _.throttle(() => {
-      console.log(window.scrollY > offsetTop.current)
-    }, 300)
-    window.addEventListener('resize', windowResizeCallback)
-    window.addEventListener('scroll', windowScrollCallback)
-    return () => {
-      window.removeEventListener('resize', windowResizeCallback)
-      window.removeEventListener('resize', windowScrollCallback)
-    }
-  }, [])
-
+const Hobby = forwardRef<HTMLElement>((props, ref) => {
   return (
     <Heading.LevelBoundary>
-      <section className={styles.container} ref={containerRef}>
+      <section className={styles.container} ref={ref}>
         <Heading.H>취미는?</Heading.H>
         <p>
           클래식 피아노를 꾸준히 하고 있어, 그로인한 성실성은 자부할 수 있습니다. 피아노를 하기 위해선 매번 새로운 곡을 만나야 하고 자신의 몸을 잘 아는 등의
@@ -37,6 +17,6 @@ const Hobby = () => {
       </section>
     </Heading.LevelBoundary>
   )
-}
+})
 
 export default Hobby

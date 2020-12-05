@@ -76,7 +76,7 @@ const Loader = ({ nextColor }: { nextColor: string }) => {
     window.setTimeout(() => {
       setCurrentThemeColor(nextColor)
     }, loadingTime * 1000)
-  }, [])
+  }, [loadingTime, nextColor, setCurrentThemeColor])
 
   return (
     <NextColorBackground color={nextColor}>

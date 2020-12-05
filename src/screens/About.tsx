@@ -7,7 +7,7 @@ import OpenSourceContributions from 'containers/About/OpenSourceContributions'
 import Skills from 'containers/About/Skills'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
-import withLoader from 'components/Loader/WithLoader'
+import withLoader from 'hoc/WithLoader'
 
 const theme_color: string = '#5353d4'
 

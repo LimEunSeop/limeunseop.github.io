@@ -1,6 +1,6 @@
 import { AppContext, AppContextType } from 'App'
 import React, { ComponentType, useContext, useEffect, useState } from 'react'
-import Loader from './Loader'
+import Loader from 'components/Loader/Loader'
 
 function withLoader<T>(theme_color: string, WrappedComponent: ComponentType<T>) {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
@@ -13,7 +13,7 @@ function withLoader<T>(theme_color: string, WrappedComponent: ComponentType<T>) 
       window.setTimeout(() => {
         setIsLoading(false)
       }, appContext.loadingTime * 1000)
-    }, [])
+    }, [appContext.loadingTime])
 
     if (isLoading) {
       return <Loader nextColor={theme_color} />

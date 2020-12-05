@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import { Section } from 'App'
 import Cover from 'containers/Home/Cover'
 import Reason from 'containers/Home/Reason'
 import Want from 'containers/Home/Want'
 import Hobby from 'containers/Home/Hobby'
 import Wrapup from 'containers/Home/Wrapup'
-import withLoader from 'components/Loader/WithLoader'
+import withLoader from 'hoc/WithLoader'
 
 const theme_color: string = '#ff5751'
 
