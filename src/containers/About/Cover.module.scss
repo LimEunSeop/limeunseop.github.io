@@ -50,7 +50,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
-  padding-left: rem(200);
+  padding-left: 15%;
   font-size: rem(24);
 
   @include respond-to('small') {

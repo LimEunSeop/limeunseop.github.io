@@ -52,7 +52,10 @@
 
 .greeting {
   position: absolute;
+  top: 50%;
   right: rem(-273);
+  transform: translateY(-50%);
+  margin: 0;
   font-size: rem(150);
   line-height: 1.2;
   opacity: 0;
@@ -61,7 +64,7 @@
   @include respond-to('small') {
     font-size: rem(100);
     right: 50%;
-    bottom: rem(-215);
+    top: rem(610);
     transform: translateX(50%);
   }
 
