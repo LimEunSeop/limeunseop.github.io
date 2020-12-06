@@ -65,6 +65,7 @@
   font-weight: 700;
 
   @include respond-to('small') {
+    top: 45%;
     font-size: rem(40);
   }
 
@@ -86,7 +87,7 @@
     left: 0;
     width: 100%;
     height: rem(38);
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 1px));
     transition: transform 400ms cubic-bezier(1, 0, 0, 1) 0ms;
 
     @include respond-to('small') {

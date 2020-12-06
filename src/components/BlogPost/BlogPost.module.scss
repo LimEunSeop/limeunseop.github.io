@@ -1,0 +1,36 @@
+@import 'styles/configs.scss';
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post {
+  width: 100%;
+  height: 100%;
+  padding: rem(15);
+}
+
+.heading {
+  font-size: rem(16);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pubDate {
+  font-size: rem(10);
+  color: #adadad;
+}
+
+.description {
+  height: rem(180);
+  font-size: rem(12);
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: rem(100);
+    object-fit: cover;
+  }
+}

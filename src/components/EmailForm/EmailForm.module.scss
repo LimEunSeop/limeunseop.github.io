@@ -1,0 +1,84 @@
+@import 'styles/configs.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputEl {
+  display: flex;
+  align-items: flex-start;
+  height: auto;
+  margin-bottom: rem(20);
+  input,
+  textarea {
+    width: 100%; /* 원하는 너비 설정 */
+    height: auto; /* 컨테이너에 맞지 않도록 */
+    // line-height: 1.5; /* line-height 초기화 */
+    padding: rem(5) 0; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
+    margin: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: rem(1) solid #999;
+    border-radius: 0; /* iSO 둥근모서리 제거 */
+    border-left: 0;
+    outline-style: none;
+    resize: none;
+    font-family: 'Spoqa Han Sans', sans-serif;
+    overflow: hidden;
+  }
+}
+
+.submitButton {
+  position: relative;
+  height: rem(40);
+  border: rem(1) solid #999;
+  // outline: 0;
+  background: rgba(255, 255, 255, 0);
+  font-size: rem(16);
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    // width: 100%;
+    background-color: rgb(221, 224, 79);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    // width: 100%;
+    background-color: rgb(221, 224, 79);
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+  }
+
+  &:hover {
+    &::before {
+      width: 100%;
+      transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    }
+    &::after {
+      width: 100%;
+      transition: all 0s linear 0.4s;
+    }
+  }
+}
+
+.status {
+  text-align: center;
+  font-size: rem(20);
+  margin: rem(5) 0;
+}

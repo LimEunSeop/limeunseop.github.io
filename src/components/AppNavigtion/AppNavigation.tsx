@@ -62,13 +62,13 @@ const AppNavigation = ({ navItems }: Props) => {
             </a>
           </li>
           <li>
-            <a href="//github.com/limeunseop">
+            <a href="//github.com/limeunseop" target="_blank" rel="noreferrer">
               <span className="a11yHidden">깃헙</span>
               <i className="fab fa-github"></i>
             </a>
           </li>
           <li>
-            <a href="//dmstjq92.medium.com/">
+            <a href="//dmstjq92.medium.com/" target="_blank" rel="noreferrer">
               <span className="a11yHidden">블로그</span>
               <i className="fab fa-medium"></i>
             </a>

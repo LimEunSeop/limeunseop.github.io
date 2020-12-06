@@ -1,10 +1,11 @@
 import React, { useEffect, useState, createContext } from 'react'
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import About from './screens/About'
 import Contact from './screens/Contact'
 import Home from './screens/Home'
 import Portfolio from './screens/Portfolio'
 import Toolbar from 'components/Toolbar/Toolbar'
+import Blog from 'screens/Blog'
 
 export type SectionContents = Array<string | ListItem>
 
@@ -86,7 +87,7 @@ const makeData = (markdown: string, startingHeadingLevel: number): Section => {
 // resume markdown이 위치한 url
 const resume_url = 'https://raw.githubusercontent.com/LimEunSeop/my-resume/main/README.md'
 // resume 저장할 고정 Data
-let resume_data: Section = {} as Section
+let resume_data: Section | null = null
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -95,10 +96,12 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
-      let markdown: string = await fetch(resume_url).then((res) => res.text())
-      markdown = markdown.replaceAll(/<!--.*?-->/g, '') // 주석 제거
-      resume_data = makeData(markdown, 1)
-      console.log(resume_data)
+      if (resume_data === null) {
+        let markdown: string = await fetch(resume_url).then((res) => res.text())
+        markdown = markdown.replaceAll(/<!--.*?-->/g, '') // 주석 제거
+        resume_data = makeData(markdown, 1)
+        console.log(resume_data)
+      }
       setIsLoading(false)
     }
     fetchData()
@@ -119,19 +122,22 @@ function App() {
           <header className="header">
             <Toolbar
               navItems={[
-                { display: 'Home', link: 'home', color: '#ff5751' },
+                { display: 'Home', link: 'Home', color: '#0EA55D' },
                 { display: 'About', link: 'about', color: '#5353d4' },
-                { display: 'Portfolio', link: 'portfolio', color: '#fff' },
-                { display: 'Contact', link: 'contact', color: '#fff' },
+                { display: 'Portfolio', link: 'portfolio', color: '#2572AF' },
+                { display: 'Blog', link: 'blog', color: '#D03682' },
+                { display: 'Contact', link: 'contact', color: '#DDE04F' },
               ]}
             />
           </header>
           <main>
             <Switch>
-              <Route path="/about" render={(props) => <About data={resume_data} {...props} />} />
-              <Route path="/portfolio" component={Portfolio} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/" render={(props) => <Home data={resume_data} {...props} />} />
+              <Route path="/about" exact render={(props) => <About data={resume_data} {...props} />} />
+              <Route path="/portfolio" exact component={Portfolio} />
+              <Route path="/blog" exact component={Blog} />
+              <Route path="/contact" exact component={Contact} />
+              <Route path="/Home" exact render={(props) => <Home data={resume_data} {...props} />} />
+              <Redirect to="/Home" />
             </Switch>
           </main>
           {/* <footer></footer> */}

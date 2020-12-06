@@ -4,15 +4,16 @@ import styled from '@emotion/styled'
 import _ from 'underscore'
 
 const ScrollCoverage = styled.div`
-  height: 300vh;
+  height: 350vh;
 `
 const Container = styled.div`
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow: hidden;
 `
 
-function withCoverAnimate<T>(WrappedComponent: ComponentType<T>) {
+function withCoverAnimate<T>(WrappedComponent: ComponentType<T>, animateClass: string = 'animate') {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
 
   const ComponentWithCoverAnimate = (props: T) => {
@@ -23,14 +24,20 @@ function withCoverAnimate<T>(WrappedComponent: ComponentType<T>) {
     useEffect(() => {
       offsetTop.current = wrapperEl.current!.offsetTop
       const windowResizeCallback = _.throttle(() => {
-        offsetTop.current = wrapperEl.current!.offsetTop
+        if (wrapperEl.current !== null) {
+          offsetTop.current = wrapperEl.current.offsetTop
+        }
       }, 300)
       const windowScrollCallback = _.throttle(() => {
         const toAnimateOffset = offsetTop.current + 15
         if (window.scrollY > toAnimateOffset) {
-          animateEl.current!.classList.add('animate')
+          if (animateEl.current !== null) {
+            animateEl.current.classList.add(animateClass)
+          }
         } else {
-          animateEl.current!.classList.remove('animate')
+          if (animateEl.current !== null) {
+            animateEl.current.classList.remove(animateClass)
+          }
         }
       }, 300)
       window.addEventListener('resize', windowResizeCallback)

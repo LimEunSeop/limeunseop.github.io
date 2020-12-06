@@ -8,23 +8,27 @@ import Skills from 'containers/About/Skills'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import withLoader from 'hoc/WithLoader'
+import Cover from 'containers/About/Cover'
 
 const theme_color: string = '#5353d4'
 
 interface Props {
-  data: Section
+  data: Section | null
 }
 
 const About = ({ data }: Props) => {
   return (
-    <Heading.LevelBoundary>
-      {/* <Cover data={{ title: data.title, contents: data.contents, children: [] }} /> */}
-      <Experience data={data.children[1]} />
-      <Education data={data.children[2]} />
-      <Skills data={data.children[3]} />
-      <Certificates data={data.children[4]} />
-      <OpenSourceContributions data={data.children[5]} />
-    </Heading.LevelBoundary>
+    data && (
+      <Heading.LevelBoundary>
+        {/* <Cover data={{ title: data.title, contents: data.contents, children: [] }} /> */}
+        <Cover coverColor={theme_color} />
+        <Experience data={data.children[1]} />
+        <Education data={data.children[2]} />
+        <Skills data={data.children[3]} />
+        <Certificates data={data.children[4]} />
+        <OpenSourceContributions data={data.children[5]} />
+      </Heading.LevelBoundary>
+    )
   )
 }
 

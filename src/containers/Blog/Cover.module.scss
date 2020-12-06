@@ -1,0 +1,184 @@
+@import 'styles/configs.scss';
+
+.container {
+  position: relative;
+  height: 100vh;
+
+  &.animate {
+    .cover {
+      left: 70%;
+
+      @include respond-to('small') {
+        left: 0;
+        top: -100%;
+        opacity: 0;
+      }
+    }
+    .description {
+      opacity: 1;
+      transform: none;
+    }
+
+    .blogPosts {
+      li {
+        display: block;
+        &:nth-child(1) {
+          animation: post-fade-in 600ms cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+        }
+        &:nth-child(2) {
+          animation: post-fade-in 600ms 100ms cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+        }
+        &:nth-child(3) {
+          animation: post-fade-in 600ms 200ms cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+        }
+        &:nth-child(4) {
+          animation: post-fade-in 600ms 300ms cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+        }
+      }
+    }
+  }
+
+  .cover {
+    transition: left 700ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+
+    @include respond-to('small') {
+      transition: all 700ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+    }
+  }
+
+  .description {
+    opacity: 0;
+    transform: translateY(rem(20));
+    transition: all 350ms ease-out 300ms;
+  }
+
+  .blogPosts {
+    li {
+      display: none;
+      opacity: 0;
+      transform: translateY(rem(100));
+    }
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: rem(200);
+  font-size: rem(24);
+
+  @include respond-to('small') {
+    align-items: center;
+    padding: 0 0 0 0;
+    text-align: center;
+  }
+}
+
+.cover {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-size: rem(150);
+  line-height: 1;
+  padding-left: rem(-100);
+  font-weight: 700;
+  animation: normal-cover-init 500ms cubic-bezier(0.7, 0, 0.3, 1);
+
+  @include respond-to('small') {
+    top: -50%;
+    left: 0;
+    animation: small-cover-init 500ms cubic-bezier(0.7, 0, 0.3, 1);
+  }
+}
+
+.coverLetter {
+  display: flex;
+  position: absolute;
+  left: rem(-110);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  animation: coverletter-fade-in 600ms 500ms linear forwards;
+
+  span {
+    display: block;
+  }
+
+  @include respond-to('small') {
+    left: 50%;
+    bottom: rem(-95);
+    align-items: center;
+    font-size: rem(100);
+    transform: translateX(-50%);
+  }
+}
+
+.blogPosts {
+  display: flex;
+  flex-wrap: wrap;
+  width: 45%;
+  li {
+    width: 50%;
+    transition: 450ms;
+
+    &:hover {
+      // transform: translateX(rem(-5)) translateY(rem(-5)); // 이거 안된다.. 어쩔수없지만 한계. 나중에 생각.
+      box-shadow: 0 0 rem(12) rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  @include respond-to('small') {
+    width: 100%;
+    overflow: scroll;
+  }
+}
+
+@keyframes normal-cover-init {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes small-cover-init {
+  from {
+    top: 0%;
+  }
+  to {
+    top: -50%;
+  }
+}
+
+@keyframes post-fade-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes coverletter-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes post-fade-out {
+  to {
+    opacity: 0;
+    transform: translateY(rem(100));
+  }
+}

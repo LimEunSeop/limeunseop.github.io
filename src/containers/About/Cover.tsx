@@ -1,20 +1,48 @@
-import { computeHeadingLevel } from '@testing-library/react'
-import React from 'react'
-import { Section } from 'App'
+import React, { forwardRef } from 'react'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
-import MarkdownView from 'react-showdown'
+import styles from './Cover.module.scss'
+import withCoverAnimate from 'hoc/withCoverAnimate'
 
-const Cover = ({ data }: { data: Section }) => {
-  return (
-    <div>
-      <Heading.H>{data.title}</Heading.H>
-      {/* Paragraph 타입의 컨텐츠만이 올수있음 */}
-      {data.contents.map((content, i) => (
-        <MarkdownView markdown={content as string} />
-      ))}
-    </div>
-  )
+interface Props {
+  coverColor: string
 }
 
-export default Cover
+const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
+  return (
+    <div className={styles.container} ref={ref}>
+      <div className={styles.content}>
+        <div className={styles.cover} style={{ backgroundColor: props.coverColor }}>
+          <div className={styles.coverLetter} aria-hidden="true">
+            <span>AB</span>
+            <span>OUT</span>
+          </div>
+        </div>
+        <Heading.H className={styles.name}>Eunseop Lim</Heading.H>
+        <p className={styles.position}>Interactive Front-end Developer</p>
+        <ul className={styles.contacts}>
+          <li>
+            <a href="mailto:dmstjq92@gmail.com">
+              <span className="a11yHidden">이메일</span>
+              <i className="fas fa-envelope-square"></i>
+            </a>
+          </li>
+          <li>
+            <a href="//github.com/limeunseop" target="_blank" rel="noreferrer">
+              <span className="a11yHidden">깃헙</span>
+              <i className="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a href="//dmstjq92.medium.com/" target="_blank" rel="noreferrer">
+              <span className="a11yHidden">블로그</span>
+              <i className="fab fa-medium"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  )
+})
+
+export default withCoverAnimate<Props>(Cover, styles.animate)

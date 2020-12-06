@@ -12,15 +12,21 @@ function withContainerAnimate<T>(WrappedComponent: ComponentType<T>) {
     useEffect(() => {
       offsetTop.current = animateEl.current!.offsetTop
       const windowResizeCallback = _.throttle(() => {
-        offsetTop.current = animateEl.current!.offsetTop
+        if (animateEl.current !== null) {
+          offsetTop.current = animateEl.current.offsetTop
+        }
       }, 300)
       const windowScrollCallback = _.throttle(() => {
         const viewportBottomOffset = window.scrollY + window.innerHeight
         const toAnimateOffset = offsetTop.current + 15
         if (viewportBottomOffset > toAnimateOffset) {
-          animateEl.current!.classList.add('animate')
+          if (animateEl.current !== null) {
+            animateEl.current.classList.add('animate')
+          }
         } else {
-          animateEl.current!.classList.remove('animate')
+          if (animateEl.current !== null) {
+            animateEl.current.classList.remove('animate')
+          }
         }
       }, 300)
       window.addEventListener('resize', windowResizeCallback)

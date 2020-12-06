@@ -7,22 +7,24 @@ import Hobby from 'containers/Home/Hobby'
 import Wrapup from 'containers/Home/Wrapup'
 import withLoader from 'hoc/WithLoader'
 
-const theme_color: string = '#ff5751'
+const theme_color: string = '#0EA55D'
 
 interface Props {
-  data: Section
+  data: Section | null
 }
 
 const Home = ({ data }: Props) => {
   return (
-    <>
-      {/* <Summary data={data.children[0]} /> */}
-      <Cover />
-      <Reason />
-      <Want />
-      <Hobby />
-      <Wrapup />
-    </>
+    data && (
+      <>
+        {/* <Summary data={data.children[0]} /> */}
+        <Cover coverColor={theme_color} />
+        <Reason />
+        <Want />
+        <Hobby />
+        <Wrapup />
+      </>
+    )
   )
 }
 
