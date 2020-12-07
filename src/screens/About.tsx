@@ -2,7 +2,7 @@ import React from 'react'
 import { Section } from 'App'
 import Certificates from 'containers/About/Certificates'
 import Education from 'containers/About/Education'
-import Experience from 'containers/About/Experience'
+import Experience from 'containers/About/Experience/Experience'
 import OpenSourceContributions from 'containers/About/OpenSourceContributions'
 import Skills from 'containers/About/Skills'
 // @ts-ignore

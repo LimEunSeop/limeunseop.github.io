@@ -1,0 +1,114 @@
+@import 'styles/configs.scss';
+
+.container {
+  composes: padding from global;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  composes: heading from global;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.historyWrapper {
+  position: relative;
+  display: inline-block;
+  padding: 55px 80px;
+
+  @include respond-to('small') {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.historyList {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  width: 245px;
+  transform: translateX(-50%);
+  font-size: 15px;
+
+  li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 540px;
+    height: 130px;
+    padding: 0 10px;
+
+    @include respond-to('small') {
+      width: initial;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+
+      @include respond-to('small') {
+        font-size: 16px;
+      }
+    }
+
+    .date {
+      font-size: 14px;
+      color: #8f8f8f;
+
+      @include respond-to('small') {
+        font-size: 12px;
+      }
+    }
+
+    .year {
+      font-size: 30px;
+      color: #9b9fb5;
+
+      @include respond-to('small') {
+        display: none;
+      }
+    }
+
+    .description {
+      font-size: 14px;
+
+      @include respond-to('small') {
+        font-size: 12px;
+      }
+    }
+
+    &:nth-child(odd) {
+      align-items: flex-start;
+      text-align: left;
+
+      .year {
+        position: absolute;
+        left: -120px;
+      }
+    }
+
+    &:nth-child(even) {
+      align-items: flex-end;
+      text-align: right;
+      right: 295px;
+
+      .year {
+        position: absolute;
+        right: -100px;
+      }
+
+      @include respond-to('small') {
+        right: initial;
+      }
+    }
+  }
+}

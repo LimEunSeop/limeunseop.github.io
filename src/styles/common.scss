@@ -1,3 +1,5 @@
+@import 'styles/configs.scss';
+
 .a11yHidden {
   overflow: hidden;
   position: absolute;
@@ -26,4 +28,20 @@
   margin-bottom: 0;
   padding-left: 0;
   list-style-type: none;
+}
+
+.padding {
+  padding: rem(100) 10vw;
+
+  @include respond-to('small') {
+    padding: 5vw;
+  }
+}
+
+.heading {
+  font-size: rem(55);
+
+  @include respond-to('small') {
+    font-size: rem(40);
+  }
 }
