@@ -5,6 +5,7 @@ import { Heading } from '@tenon-io/tenon-ui'
 import { ListItem } from 'App'
 import styles from './Experience.module.scss'
 import JobExperience from './JobExperience'
+import PersonalProjects from './PersonalProjects'
 
 interface Props {
   data: Section
@@ -54,6 +55,7 @@ const Experience = ({ data }: Props) => {
         <Heading.H className="a11yHidden">{data.title}</Heading.H>
         <Heading.LevelBoundary>
           <JobExperience data={job_experiences} />
+          <PersonalProjects data={personal_projects} />
         </Heading.LevelBoundary>
       </section>
     </Heading.LevelBoundary>

@@ -19,27 +19,32 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
           </div>
         </div>
         <Heading.H className={styles.name}>Eunseop Lim</Heading.H>
-        <p className={styles.position}>Interactive Front-end Developer</p>
-        <ul className={styles.contacts}>
-          <li>
-            <a href="mailto:dmstjq92@gmail.com">
-              <span className="a11yHidden">이메일</span>
-              <i className="fas fa-envelope-square"></i>
-            </a>
-          </li>
-          <li>
-            <a href="//github.com/limeunseop" target="_blank" rel="noreferrer">
-              <span className="a11yHidden">깃헙</span>
-              <i className="fab fa-github"></i>
-            </a>
-          </li>
-          <li>
-            <a href="//dmstjq92.medium.com/" target="_blank" rel="noreferrer">
-              <span className="a11yHidden">블로그</span>
-              <i className="fab fa-medium"></i>
-            </a>
-          </li>
-        </ul>
+        <div className={styles.description}>
+          <p className={styles.position}>Interactive Front-end Developer</p>
+          <ul className={styles.contacts}>
+            <li>
+              <a href="mailto:dmstjq92@gmail.com">
+                <span className="a11yHidden">이메일</span>
+                <i className="fas fa-envelope-square"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//github.com/limeunseop" target="_blank" rel="noreferrer">
+                <span className="a11yHidden">깃헙</span>
+                <i className="fab fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a href="//dmstjq92.medium.com/" target="_blank" rel="noreferrer">
+                <span className="a11yHidden">블로그</span>
+                <i className="fab fa-medium"></i>
+              </a>
+            </li>
+          </ul>
+          <a className={styles.cvLink} href="//github.com/limeunseop/my-resume" target="_blank" rel="noreferrer">
+            View Text-Style CV
+          </a>
+        </div>
       </div>
     </div>
   )
