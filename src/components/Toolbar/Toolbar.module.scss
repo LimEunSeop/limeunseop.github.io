@@ -2,7 +2,9 @@
 
 .toolbar {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
+  order: 2;
   width: 100%;
   height: rem(90);
   margin: 0 auto;
@@ -15,6 +17,7 @@
 .logo {
   align-self: center;
   margin: 0;
+  order: 1;
   a {
     color: inherit;
     text-decoration: none;

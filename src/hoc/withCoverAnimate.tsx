@@ -39,6 +39,19 @@ function withCoverAnimate<T>(WrappedComponent: ComponentType<T>, animateClass: s
             animateEl.current.classList.remove(animateClass)
           }
         }
+
+        if (wrapperEl.current !== null) {
+          const viewportBottomOffset = window.scrollY + window.innerHeight
+          const toHideLogoOffset = wrapperEl.current.offsetTop + wrapperEl.current.offsetHeight
+          const logo = document.getElementsByTagName('h1')[0]
+
+          // 스크롤 Bottom이 Wrapper Bottom 을 넘는 순간
+          if (viewportBottomOffset > toHideLogoOffset) {
+            logo.classList.add('a11yHidden')
+          } else {
+            logo.classList.remove('a11yHidden')
+          }
+        }
       }, 300)
       window.addEventListener('resize', windowResizeCallback)
       window.addEventListener('scroll', windowScrollCallback)
