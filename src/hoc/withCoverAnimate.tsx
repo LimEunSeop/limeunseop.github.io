@@ -22,6 +22,9 @@ function withCoverAnimate<T>(WrappedComponent: ComponentType<T>, animateClass: s
     const offsetTop = useRef<number>(0)
 
     useEffect(() => {
+      const logo = document.getElementsByTagName('h1')[0]
+      logo.classList.remove('a11yHidden')
+
       offsetTop.current = wrapperEl.current!.offsetTop
       const windowResizeCallback = _.throttle(() => {
         if (wrapperEl.current !== null) {
