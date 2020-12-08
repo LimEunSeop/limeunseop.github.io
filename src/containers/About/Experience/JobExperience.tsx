@@ -23,16 +23,16 @@ const JobExperience = ({ data }: Props) => {
           <ul className={`resetList ${styles.historyList}`}>
             {data.map((item) => (
               <li>
-                <p className={styles.title}>
+                <div className={styles.title}>
                   <MarkdownView markdown={item.title_markdown} />
-                </p>
+                </div>
                 <p className={styles.year} aria-hidden="true">
                   {item.date_string.split('~')[0].trim().split('.')[0]}
                 </p>
                 <p className={styles.date}>{item.date_string}</p>
-                <p className={styles.description}>
+                <div className={styles.description}>
                   <MarkdownView markdown={item.description_markdown} />
-                </p>
+                </div>
               </li>
             ))}
             <li>
