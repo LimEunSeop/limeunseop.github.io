@@ -14,8 +14,8 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
       <div className={styles.content}>
         <div className={styles.cover} style={{ backgroundColor: props.coverColor }}>
           <div className={styles.coverLetter} aria-hidden="true">
-            <span>AB</span>
-            <span>OUT</span>
+            <span>ABO</span>
+            <span>UT</span>
           </div>
         </div>
         <Heading.H className={styles.name}>Eunseop Lim</Heading.H>
