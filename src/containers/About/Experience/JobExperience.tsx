@@ -3,7 +3,7 @@ import React from 'react'
 import { Heading } from '@tenon-io/tenon-ui'
 import { JobItem } from './Experience'
 import styles from './JobExperience.module.scss'
-import HistoryBackground from 'components/History/History'
+import HistoryBackground from 'components/HistoryBackground/HistoryBackground'
 import MarkdownView from 'react-showdown'
 
 interface Props {
@@ -21,8 +21,8 @@ const JobExperience = ({ data }: Props) => {
         <div className={styles.historyWrapper}>
           <HistoryBackground count={data.length} />
           <ul className={`resetList ${styles.historyList}`}>
-            {data.map((item) => (
-              <li>
+            {data.map((item, i) => (
+              <li key={`job-experience-${i}`}>
                 <div className={styles.title}>
                   <MarkdownView markdown={item.title_markdown} />
                 </div>

@@ -32,7 +32,11 @@ const PersonalProjects = ({ data }: Props) => {
       </Heading.H>
       <ul className={styles.projectsGrid}>
         {data.map((item, i) => (
-          <li className={styles.gridItem} style={{ backgroundImage: `url(${images[i]})`, boxShadow: `inset 999em 999em ${colors[i]}` }}>
+          <li
+            key={`personal-projects-${i}`}
+            className={styles.gridItem}
+            style={{ backgroundImage: `url(${images[i]})`, boxShadow: `inset 999em 999em ${colors[i]}` }}
+          >
             <div className={styles.gridContent}>
               <div className={styles.title}>
                 <MarkdownView markdown={item.title_markdown} />
