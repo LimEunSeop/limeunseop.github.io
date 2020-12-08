@@ -11,7 +11,7 @@ const HistoryBackground = ({ count, ...props }: Props) => {
       var ctx = canvas.getContext('2d')
       if (ctx !== null) {
         ctx.clearRect(0, 0, canvas.width, canvas.height) // 덧대어지는것 방지 지우기
-        ctx.strokeStyle = '#DEEDF8'
+        ctx.strokeStyle = '#5353D4'
         ctx.beginPath()
         // init circle
         ctx.lineWidth = 8
