@@ -126,7 +126,7 @@
 
   @include respond-to('small') {
     left: 50%;
-    bottom: rem(-95);
+    bottom: rem(-105);
     align-items: center;
     font-size: rem(100);
     transform: translateX(-50%);
