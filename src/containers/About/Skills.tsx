@@ -188,10 +188,14 @@ const Skills = ({ data }: Props) => {
 
   useEffect(() => {
     setIsLoading(true)
-    window.setTimeout(() => {
+    const timeoutID = window.setTimeout(() => {
       setIsLoading(false)
       draw()
     }, 10000)
+
+    return () => {
+      window.clearTimeout(timeoutID)
+    }
 
     // cy.layout(options)
   }, [draw])
