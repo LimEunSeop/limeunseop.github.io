@@ -36,7 +36,7 @@ const Education = ({ data }: Props) => {
         <Heading.H className={styles.heading}>{data.title}</Heading.H>
         <ul className={styles.list}>
           {external_educations.map((item) => (
-            <li className={styles.item}>
+            <li key={`${item.title_markdown}-${item.date_string}`} className={styles.item}>
               <div className={styles.itemInnerWrapper}>
                 <header>
                   <div className={styles.title}>
