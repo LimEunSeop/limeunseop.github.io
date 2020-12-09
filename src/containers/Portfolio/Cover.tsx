@@ -24,7 +24,7 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
           <br />
           아래의 버튼을 눌러 포트폴리오 페이지로 이동해주세요.
         </p>
-        <a className={styles.link} href="//github.com/limeunseop/my-resume" target="_blank" rel="noreferrer">
+        <a className={styles.link} href="//github.com/limeunseop/my-portfolio" target="_blank" rel="noreferrer">
           Go to Portfolio
         </a>
       </div>
