@@ -20,10 +20,13 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
         </div>
         <Heading.H className="a11yHidden">포트폴리오</Heading.H>
         <p className={styles.description}>
-          포트폴리오가 될만한 제 공부사항,
+          앞으로의 모든 활동은 이 곳에 인덱싱 할 예정입니다.
           <br />
-          활동을 최대한 모아봤습니다.
+          아래의 버튼을 눌러 포트폴리오 페이지로 이동해주세요.
         </p>
+        <a className={styles.link} href="//github.com/limeunseop/my-resume" target="_blank" rel="noreferrer">
+          Go to Portfolio
+        </a>
       </div>
     </div>
   )
