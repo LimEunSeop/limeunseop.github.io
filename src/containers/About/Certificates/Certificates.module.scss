@@ -19,7 +19,8 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  li {
+  .certItem {
+    position: relative;
     width: 33.33333%;
     padding: rem(40);
     transition: 0.3s;
@@ -43,7 +44,6 @@
     }
 
     &:hover {
-      position: relative;
       padding: rem(10);
       &::after {
         background-color: rgba(20, 28, 58, 0.8);

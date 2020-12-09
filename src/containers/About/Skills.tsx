@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -7,6 +7,9 @@ import cytoscape from 'cytoscape'
 //@ts-ignore
 import cise from 'cytoscape-cise'
 import styles from './Skills.module.scss'
+import styled from '@emotion/styled'
+import { keyframes } from '@emotion/react'
+import { rem } from 'utils/styledComponentUtils'
 
 cytoscape.use(cise) // cytoscape.js cise Layout 플러그인
 
@@ -50,8 +53,25 @@ const colors: Array<string> = [
   '#DE9863',
 ]
 
+const spin = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+const Spinner = styled.i`
+  display: inline-block;
+  width: ${rem(100)};
+  height: ${rem(100)};
+  font-size: ${rem(100)};
+  color: rgb(173, 181, 189);
+  animation: ${spin} 1.5s infinite linear;
+`
+
 const Skills = ({ data }: Props) => {
-  useEffect(() => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  const draw = useCallback(() => {
     let color_idx = -1
     const elements: Array<Node | Edge> = []
     elements.push({
@@ -116,7 +136,8 @@ const Skills = ({ data }: Props) => {
         })
       })
     })
-    const cy = cytoscape({
+    // const cy =
+    cytoscape({
       container: document.getElementById(styles.cy),
       //@ts-ignore
       elements: elements,
@@ -163,14 +184,22 @@ const Skills = ({ data }: Props) => {
         name: 'cise',
       },
     })
+  }, [data.children])
+
+  useEffect(() => {
+    setIsLoading(true)
+    window.setTimeout(() => {
+      setIsLoading(false)
+      draw()
+    }, 10000)
 
     // cy.layout(options)
-  }, [])
+  }, [draw])
   return (
     <Heading.LevelBoundary>
       <section className={styles.container}>
         <Heading.H className={styles.heading}>{data.title}</Heading.H>
-        <div id={styles.cy}></div>
+        <div id={styles.cy}>{isLoading && <Spinner className="fas fa-circle-notch" />}</div>
       </section>
     </Heading.LevelBoundary>
   )

@@ -54,12 +54,12 @@ const Certificates = ({ data }: Props) => {
             ['직무', job_certs],
             ['어학', lang_certs],
             ['기타', etc_certs],
-          ].map((section) => (
-            <section>
+          ].map((section, i) => (
+            <section key={`cert-${i}`}>
               <Heading.H className={styles.subHeading}>{section[0]}</Heading.H>
               <ul className={styles.certList}>
                 {(section[1] as Array<CertItem>).map((item) => (
-                  <li>
+                  <li key={item.title} className={styles.certItem}>
                     <div className={styles.certImg} style={{ backgroundImage: `url(${item.img_url})` }}>
                       <p className={styles.certTitle}>{item.title}</p>
                     </div>
