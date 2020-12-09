@@ -13,7 +13,8 @@
         top: -70%;
       }
     }
-    .description {
+    .description,
+    .link {
       opacity: 1;
       transform: none;
     }
@@ -29,13 +30,14 @@
 
   .description {
     opacity: 0;
-    transform: translateY(rem(20));
+    transform: translateY(rem(-20));
     transition: all 350ms ease-out 300ms;
-    font-size: rem(18);
+  }
 
-    @include respond-to('small') {
-      font-size: rem(14);
-    }
+  .link {
+    opacity: 0;
+    transform: translateY(rem(20));
+    transition: all 350ms ease-out 550ms;
   }
 }
 
@@ -97,6 +99,14 @@
     align-items: center;
     font-size: rem(100);
     transform: translateX(-50%);
+  }
+}
+
+.description {
+  font-size: rem(18);
+
+  @include respond-to('small') {
+    font-size: rem(14);
   }
 }
 
