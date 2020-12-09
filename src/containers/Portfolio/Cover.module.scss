@@ -14,7 +14,7 @@
       }
     }
     .description,
-    .link {
+    .linkWrapper {
       opacity: 1;
       transform: none;
     }
@@ -34,7 +34,7 @@
     transition: all 350ms ease-out 300ms;
   }
 
-  .link {
+  .linkWrapper {
     opacity: 0;
     transform: translateY(rem(20));
     transition: all 350ms ease-out 550ms;
