@@ -1,17 +1,34 @@
 @import 'styles/configs.scss';
 
 .container {
+  position: relative;
   composes: padding from global;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./backgrounds/skills.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    // opacity: 0.9;
+    z-index: -1;
+  }
 }
 
 .heading {
   composes: heading from global;
+  color: #fff;
 }
 
 #cy {
   display: grid;
   place-items: center; // 정중앙
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 12px #fff;
   height: 900px;
 
   @include respond-to('small') {

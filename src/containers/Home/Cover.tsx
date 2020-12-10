@@ -18,9 +18,9 @@ const Cover = forwardRef<HTMLElement, Props>((props: Props, ref) => {
             <span>안녕</span>
             <span>하세요</span>
           </p>
-          <p className={styles.slogan}>이 세상에 어려운 것이란 없다. 단지 생소할 뿐이다.</p>
+          <p className={styles.slogan}>- 이 세상에 어려운 것이란 없다. 단지 생소할 뿐이다. -</p>
           <p className={styles.myself}>
-            풀스텍 개발자가 되고싶은 <span className={styles.name}>임은섭</span> 이라고 합니다.
+            웹의 모든것을 그려내고 싶은 개발자 <span className={styles.name}>임은섭</span> 입니다.
           </p>
         </div>
       </section>

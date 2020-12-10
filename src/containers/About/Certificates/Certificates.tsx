@@ -27,7 +27,6 @@ const lang_cert_images: Array<string> = [toeic, toeic, jlpt]
 const etc_cert_images: Array<string> = [history]
 
 const Certificates = ({ data }: Props) => {
-  console.log(data)
   const job_cert_section: Section = data.children[0]
   const lang_cert_section: Section = data.children[1]
   const etc_cert_section: Section = data.children[2]

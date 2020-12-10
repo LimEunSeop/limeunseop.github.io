@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -70,6 +70,7 @@ const Spinner = styled.i`
 
 const Skills = ({ data }: Props) => {
   const [isLoading, setIsLoading] = useState(true)
+  const cy = useRef<cytoscape.Core | null>(null)
 
   const draw = useCallback(() => {
     let color_idx = -1
@@ -136,8 +137,7 @@ const Skills = ({ data }: Props) => {
         })
       })
     })
-    // const cy =
-    cytoscape({
+    cy.current = cytoscape({
       container: document.getElementById(styles.cy),
       //@ts-ignore
       elements: elements,
@@ -148,6 +148,8 @@ const Skills = ({ data }: Props) => {
           selector: 'node',
           style: {
             'background-color': '#666',
+            'font-size': '18px',
+            color: '#fff',
             label: 'data(id)',
           },
         },
@@ -172,7 +174,7 @@ const Skills = ({ data }: Props) => {
         },
         {
           selector: '.first',
-          style: { width: '75px', height: '75px' },
+          style: { width: '75px', height: '75px', 'background-color': '#ddd' },
         },
         {
           selector: '.second',
@@ -191,10 +193,11 @@ const Skills = ({ data }: Props) => {
     const timeoutID = window.setTimeout(() => {
       setIsLoading(false)
       draw()
-    }, 10000)
+    }, 1000)
 
     return () => {
       window.clearTimeout(timeoutID)
+      cy.current?.destroy()
     }
 
     // cy.layout(options)
