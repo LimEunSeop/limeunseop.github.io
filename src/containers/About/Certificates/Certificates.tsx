@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef } from 'react';
 import { ListItem, Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -27,7 +27,7 @@ const job_cert_images: Array<string> = [national, ccna, sap_abap, sap_pp]
 const lang_cert_images: Array<string> = [toeic, toeic, jlpt]
 const etc_cert_images: Array<string> = [history]
 
-const Certificates = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
+const Certificates = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const job_cert_section: Section = data.children[0]
   const lang_cert_section: Section = data.children[1]
   const etc_cert_section: Section = data.children[2]

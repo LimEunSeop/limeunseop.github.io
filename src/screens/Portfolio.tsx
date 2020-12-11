@@ -1,6 +1,4 @@
-import React from 'react'
-//@ts-ignore
-import { Heading } from '@tenon-io/tenon-ui'
+import { Heading } from '@tenon-io/tenon-ui';
 import withLoader from 'hoc/WithLoader'
 import Cover from 'containers/Portfolio/Cover'
 

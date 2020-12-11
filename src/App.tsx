@@ -1,4 +1,5 @@
-import React, { useEffect, useState, createContext } from 'react'
+import { useEffect, useState, createContext } from 'react';
+import * as React from 'react';
 import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import About from './screens/About'
 import Contact from './screens/Contact'

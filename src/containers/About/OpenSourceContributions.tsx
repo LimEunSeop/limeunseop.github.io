@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { forwardRef, useEffect } from 'react';
 import { ListItem, Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -24,7 +24,7 @@ const colors = [
   ['rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 1)'],
 ]
 
-const OpenSourceContributions = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
+const OpenSourceContributions = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const pull_request_section: Section = data.children[0]
 
   useEffect(() => {

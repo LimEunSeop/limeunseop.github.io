@@ -1,6 +1,4 @@
-import React from 'react'
-// @ts-ignore
-import { Heading } from '@tenon-io/tenon-ui'
+import { Heading } from '@tenon-io/tenon-ui';
 import styles from './Reason.module.scss'
 
 const Reason = () => {

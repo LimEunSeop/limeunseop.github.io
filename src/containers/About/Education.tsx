@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef } from 'react';
 import { Section } from 'App'
 // @ts-ignorets
 import { Heading } from '@tenon-io/tenon-ui'
@@ -18,7 +18,7 @@ interface EducationItem {
   evidence_markdown: string | null
 }
 
-const Education = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
+const Education = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const external_education_section: Section = data.children[1]
 
   const external_educations: Array<EducationItem> = []

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Section } from 'App'
 import Cover from 'containers/Home/Cover'
 import Reason from 'containers/Home/Reason'

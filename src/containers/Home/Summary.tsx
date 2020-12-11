@@ -1,4 +1,3 @@
-import React from 'react'
 import { ListItem, Section } from 'App'
 // @ts-ignorets
 import { Heading } from '@tenon-io/tenon-ui'

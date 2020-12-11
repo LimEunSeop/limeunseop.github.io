@@ -1,5 +1,5 @@
 import { AppContext, AppContextType } from 'App'
-import React, { ComponentType, useContext, useEffect, useState } from 'react'
+import { ComponentType, useContext, useEffect, useState } from 'react';
 import Loader from 'components/Loader/Loader'
 
 function withLoader<T>(theme_color: string, WrappedComponent: ComponentType<T>) {

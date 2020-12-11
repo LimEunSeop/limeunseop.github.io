@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef } from 'react';
 //@ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import { JobItem } from './Experience'
@@ -10,7 +10,7 @@ import withContainerAnimate from 'hoc/withContainerAnimate'
 interface Props {
   data: Array<JobItem>
 }
-const JobExperience = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
+const JobExperience = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   return (
     <section className={styles.container} ref={ref}>
       <Heading.H className={styles.heading} aria-label="직무경험">

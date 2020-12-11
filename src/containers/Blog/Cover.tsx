@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react';
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Cover.module.scss'

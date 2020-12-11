@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react';
 //@ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './BlogPost.module.scss'

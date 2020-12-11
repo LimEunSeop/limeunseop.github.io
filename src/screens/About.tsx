@@ -1,4 +1,3 @@
-import React from 'react'
 import { Section } from 'App'
 import Certificates from 'containers/About/Certificates/Certificates'
 import Education from 'containers/About/Education'

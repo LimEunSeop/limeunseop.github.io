@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import { Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -69,7 +69,7 @@ const Spinner = styled.i`
   animation: ${spin} 1.5s infinite linear;
 `
 
-const Skills = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
+const Skills = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const [isLoading, setIsLoading] = useState(true)
   const cy = useRef<cytoscape.Core | null>(null)
 

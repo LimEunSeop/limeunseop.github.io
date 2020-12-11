@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react';
 import styled from '@emotion/styled'
 import { keyframes, css } from '@emotion/react'
 import { AppContext, AppContextType } from 'App'

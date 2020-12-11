@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef } from 'react';
 import { ProjectItem } from './Experience'
 //@ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -14,7 +14,7 @@ interface Props {
 
 const images = [proj_img1, proj_img2]
 
-const PersonalProjects = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
+const PersonalProjects = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   return (
     <section className={styles.container} ref={ref}>
       <Heading.H className={styles.heading} aria-label="개인 프로젝트">
