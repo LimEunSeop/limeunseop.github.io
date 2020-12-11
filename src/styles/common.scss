@@ -30,8 +30,9 @@
   list-style-type: none;
 }
 
-.padding {
+.section {
   padding: rem(100) 10vw;
+  overflow: hidden;
 
   @include respond-to('small') {
     padding: 5vw 5vw 20vw 5vw;

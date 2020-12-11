@@ -2,7 +2,7 @@
 
 .container {
   position: relative;
-  composes: padding from global;
+  composes: section from global;
   &::after {
     content: '';
     display: block;
