@@ -5,6 +5,7 @@ import { Heading } from '@tenon-io/tenon-ui'
 import { ListItem } from 'App'
 import MarkdownView from 'react-showdown'
 import styles from './Education.module.scss'
+import withContainerAnimate from 'hoc/withContainerAnimate'
 
 interface Props {
   data: Section
@@ -17,7 +18,7 @@ interface EducationItem {
   evidence_markdown: string | null
 }
 
-const Education = ({ data }: Props) => {
+const Education = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const external_education_section: Section = data.children[1]
 
   const external_educations: Array<EducationItem> = []
@@ -32,7 +33,7 @@ const Education = ({ data }: Props) => {
 
   return (
     <Heading.LevelBoundary>
-      <section className={styles.container}>
+      <section className={styles.container} ref={ref}>
         <Heading.H className={styles.heading}>{data.title}</Heading.H>
         <ul className={styles.list}>
           {external_educations.map((item) => (
@@ -64,6 +65,6 @@ const Education = ({ data }: Props) => {
       </section>
     </Heading.LevelBoundary>
   )
-}
+})
 
-export default Education
+export default withContainerAnimate<Props>(Education, styles.animate)

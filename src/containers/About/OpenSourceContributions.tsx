@@ -4,6 +4,7 @@ import { ListItem, Section } from 'App'
 import { Heading } from '@tenon-io/tenon-ui'
 import Chart from 'chart.js'
 import styles from './OpenSourceContributions.module.scss'
+import withContainerAnimate from 'hoc/withContainerAnimate'
 
 interface Props {
   data: Section
@@ -23,17 +24,17 @@ const colors = [
   ['rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 1)'],
 ]
 
-const OpenSourceContributions = ({ data }: Props) => {
+const OpenSourceContributions = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const pull_request_section: Section = data.children[0]
 
-  const pull_requests: Array<PullRequestItem> = []
-  pull_request_section.contents.forEach((item) => {
-    const title = (item as ListItem).content
-    const count = (item as ListItem).children.length
-    pull_requests.push({ title, count })
-  })
-
   useEffect(() => {
+    const pull_requests: Array<PullRequestItem> = []
+    pull_request_section.contents.forEach((item) => {
+      const title = (item as ListItem).content
+      const count = (item as ListItem).children.length
+      pull_requests.push({ title, count })
+    })
+
     const ctx = (document.getElementById('opensource__chart') as HTMLCanvasElement).getContext('2d')
     const myChart =
       ctx &&
@@ -64,11 +65,11 @@ const OpenSourceContributions = ({ data }: Props) => {
     return () => {
       myChart?.destroy()
     }
-  }, [pull_requests])
+  }, [pull_request_section.contents])
 
   return (
     <Heading.LevelBoundary>
-      <section className={styles.container}>
+      <section className={styles.container} ref={ref}>
         <Heading.H className={styles.heading} aria-label="Open Source Contribution">
           Open Source
           <br />
@@ -85,6 +86,6 @@ const OpenSourceContributions = ({ data }: Props) => {
       </section>
     </Heading.LevelBoundary>
   )
-}
+})
 
-export default OpenSourceContributions
+export default withContainerAnimate(OpenSourceContributions, styles.animate)

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { ComponentType } from 'react'
 import _ from 'underscore'
 
-function withContainerAnimate<T>(WrappedComponent: ComponentType<T>) {
+function withContainerAnimate<T>(WrappedComponent: ComponentType<T>, animateClass: string = 'animate') {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
 
   const ComponentWithContainerAnimate = (props: T) => {
@@ -21,11 +21,11 @@ function withContainerAnimate<T>(WrappedComponent: ComponentType<T>) {
         const toAnimateOffset = offsetTop.current + 15
         if (viewportBottomOffset > toAnimateOffset) {
           if (animateEl.current !== null) {
-            animateEl.current.classList.add('animate')
+            animateEl.current.classList.add(animateClass)
           }
         } else {
           if (animateEl.current !== null) {
-            animateEl.current.classList.remove('animate')
+            animateEl.current.classList.remove(animateClass)
           }
         }
       }, 300)

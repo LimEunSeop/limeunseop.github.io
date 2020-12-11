@@ -5,13 +5,14 @@ import { JobItem } from './Experience'
 import styles from './JobExperience.module.scss'
 import HistoryBackground from 'components/HistoryBackground/HistoryBackground'
 import MarkdownView from 'react-showdown'
+import withContainerAnimate from 'hoc/withContainerAnimate'
 
 interface Props {
   data: Array<JobItem>
 }
-const JobExperience = ({ data }: Props) => {
+const JobExperience = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   return (
-    <section className={styles.container}>
+    <section className={styles.container} ref={ref}>
       <Heading.H className={styles.heading} aria-label="직무경험">
         Job
         <br />
@@ -44,6 +45,6 @@ const JobExperience = ({ data }: Props) => {
       </div>
     </section>
   )
-}
+})
 
-export default JobExperience
+export default withContainerAnimate<Props>(JobExperience, styles.animate)

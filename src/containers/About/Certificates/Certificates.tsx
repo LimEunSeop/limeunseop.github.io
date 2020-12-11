@@ -12,6 +12,7 @@ import sap_pp from './images/sap_pp.png'
 import toeic from './images/toeic.png'
 import jlpt from './images/jlpt.jpeg'
 import history from './images/history.jpg'
+import withContainerAnimate from 'hoc/withContainerAnimate'
 
 interface Props {
   data: Section
@@ -26,7 +27,7 @@ const job_cert_images: Array<string> = [national, ccna, sap_abap, sap_pp]
 const lang_cert_images: Array<string> = [toeic, toeic, jlpt]
 const etc_cert_images: Array<string> = [history]
 
-const Certificates = ({ data }: Props) => {
+const Certificates = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const job_cert_section: Section = data.children[0]
   const lang_cert_section: Section = data.children[1]
   const etc_cert_section: Section = data.children[2]
@@ -46,7 +47,7 @@ const Certificates = ({ data }: Props) => {
 
   return (
     <Heading.LevelBoundary>
-      <section className={styles.container}>
+      <section className={styles.container} ref={ref}>
         <Heading.H className={styles.heading}>{data.title}</Heading.H>
         <Heading.LevelBoundary>
           {[
@@ -54,7 +55,7 @@ const Certificates = ({ data }: Props) => {
             ['어학', lang_certs],
             ['기타', etc_certs],
           ].map((section, i) => (
-            <section key={`cert-${i}`}>
+            <section key={`cert-${i}`} className={styles.subContainer}>
               <Heading.H className={styles.subHeading}>{section[0]}</Heading.H>
               <ul className={styles.certList}>
                 {(section[1] as Array<CertItem>).map((item) => (
@@ -71,6 +72,6 @@ const Certificates = ({ data }: Props) => {
       </section>
     </Heading.LevelBoundary>
   )
-}
+})
 
-export default Certificates
+export default withContainerAnimate<Props>(Certificates, styles.animate)

@@ -2,6 +2,39 @@
 
 .container {
   composes: padding from global;
+
+  &.animate {
+    .heading,
+    .subHeading,
+    .certItem {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  .heading {
+    opacity: 0;
+    transform: translateX(rem(-20));
+    transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  @for $i from 1 through 10 {
+    .subContainer:nth-of-type(#{$i}) {
+      .subHeading {
+        opacity: 0;
+        transform: translateX(rem(-20));
+        transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6) #{0.3 + 0.6 * ($i - 1)}s;
+      }
+
+      @for $j from 1 through 10 {
+        .certItem:nth-child(#{$j}) {
+          opacity: 0;
+          transform: translateX(rem(100));
+          transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6) #{0.3 + 0.6 * ($i - 1) + 0.3 * $j}s;
+        }
+      }
+    }
+  }
 }
 
 .heading {

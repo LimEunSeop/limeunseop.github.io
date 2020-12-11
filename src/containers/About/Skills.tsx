@@ -10,6 +10,7 @@ import styles from './Skills.module.scss'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
 import { rem } from 'utils/styledComponentUtils'
+import withContainerAnimate from 'hoc/withContainerAnimate'
 
 cytoscape.use(cise) // cytoscape.js cise Layout 플러그인
 
@@ -68,7 +69,7 @@ const Spinner = styled.i`
   animation: ${spin} 1.5s infinite linear;
 `
 
-const Skills = ({ data }: Props) => {
+const Skills = React.forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   const [isLoading, setIsLoading] = useState(true)
   const cy = useRef<cytoscape.Core | null>(null)
 
@@ -204,12 +205,12 @@ const Skills = ({ data }: Props) => {
   }, [draw])
   return (
     <Heading.LevelBoundary>
-      <section className={styles.container}>
+      <section className={styles.container} ref={ref}>
         <Heading.H className={styles.heading}>{data.title}</Heading.H>
         <div id={styles.cy}>{isLoading && <Spinner className="fas fa-circle-notch" />}</div>
       </section>
     </Heading.LevelBoundary>
   )
-}
+})
 
-export default Skills
+export default withContainerAnimate<Props>(Skills, styles.animate)
