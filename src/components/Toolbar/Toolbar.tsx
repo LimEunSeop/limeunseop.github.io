@@ -1,4 +1,4 @@
-import { Heading } from '@tenon-io/tenon-ui';
+import { Heading } from '@tenon-io/tenon-ui'
 import { Link } from 'react-router-dom'
 import AppNavigation from 'components/AppNavigtion/AppNavigation'
 import styles from './Toolbar.module.scss'
