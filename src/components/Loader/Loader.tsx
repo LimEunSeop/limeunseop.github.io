@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { keyframes, css } from '@emotion/react'
 import { AppContext, AppContextType } from 'App'
@@ -6,6 +6,15 @@ import { ReactComponent as MagsafeSvg } from './magsafe.svg'
 import { rem } from 'utils/styledComponentUtils'
 
 const colorChangeTime = 0.5
+
+const fade_in = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
 
 const fade_out = keyframes`
   to {
@@ -21,6 +30,7 @@ const NextColorBackground = styled.div`
   bottom: 0;
   background-color: ${({ color }) => (color ? color : '#000')};
   overflow: hidden;
+  animation: ${fade_in} 1s cubic-bezier(0.16, 1, 0.3, 1); /* 로더 뜰때 서서히 뜨도록. 얘가 Wrapper 니까 여기다가 해주는거임 */
 `
 
 const PriorColorBackground = styled.div<{ color: string; delay: number }>`

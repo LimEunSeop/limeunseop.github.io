@@ -1,6 +1,46 @@
 .container {
+  composes: section from global;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(./background/wrapup.jpg) no-repeat center;
+    background-size: cover;
+    opacity: 0.85;
+  }
+}
+
+.thanks {
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 0.8fr 0.2fr;
+  align-items: center;
+  width: 330px;
+
+  a {
+    color: #00dcff;
+    text-decoration: none;
+  }
+
+  p:last-child {
+    grid-column: 1 / span 2;
+    text-align: center;
+  }
 }

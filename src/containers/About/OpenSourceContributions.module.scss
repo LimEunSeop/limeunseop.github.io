@@ -2,6 +2,7 @@
 
 .container {
   composes: section from global;
+  background: #f8fafb;
 
   &.animate {
     .heading,

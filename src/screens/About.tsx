@@ -19,13 +19,12 @@ const About = ({ data }: Props) => {
   return (
     data && (
       <Heading.LevelBoundary>
-        {/* <Cover data={{ title: data.title, contents: data.contents, children: [] }} /> */}
         <Cover coverColor={theme_color} />
         <Experience data={data.children[1]} />
         <Education data={data.children[2]} />
-        <Skills data={data.children[3]} />
         <Certificates data={data.children[4]} />
         <OpenSourceContributions data={data.children[5]} />
+        <Skills data={data.children[3]} />
       </Heading.LevelBoundary>
     )
   )

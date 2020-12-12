@@ -1,10 +1,9 @@
 import { Section } from 'App'
 import Cover from 'containers/Home/Cover'
-import Reason from 'containers/Home/Reason'
-import Want from 'containers/Home/Want'
-import Hobby from 'containers/Home/Hobby'
-import Wrapup from 'containers/Home/Wrapup'
+import Promise from 'containers/Home/Promise'
 import withLoader from 'hoc/WithLoader'
+import { Heading } from '@tenon-io/tenon-ui'
+import Wrapup from 'containers/Home/Wrapup'
 
 const theme_color: string = '#0EA55D'
 
@@ -12,18 +11,13 @@ interface Props {
   data: Section | null
 }
 
-const Home = ({ data }: Props) => {
+const Home = () => {
   return (
-    data && (
-      <>
-        {/* <Summary data={data.children[0]} /> */}
-        <Cover coverColor={theme_color} />
-        <Reason />
-        <Want />
-        <Hobby />
-        <Wrapup />
-      </>
-    )
+    <Heading.LevelBoundary>
+      <Cover coverColor={theme_color} />
+      <Promise />
+      <Wrapup />
+    </Heading.LevelBoundary>
   )
 }
 

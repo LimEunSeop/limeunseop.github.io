@@ -35,12 +35,13 @@
   overflow: hidden;
 
   @include respond-to('small') {
-    padding: 5vw 5vw 20vw 5vw;
+    padding: 10vw 5vw;
   }
 }
 
 .heading {
   font-size: rem(55);
+  margin-top: 0;
 
   @include respond-to('small') {
     font-size: rem(40);
