@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Cover.module.scss'
@@ -28,7 +28,7 @@ const Spinner = styled.i`
   animation: ${spin} 1.5s infinite linear;
 `
 
-const fetchUrl: string = `${process.env.NODE_ENV !== 'production' ? 'https://cors-anywhere.herokuapp.com/' : ''}https://medium.com/feed/@dmstjq92`
+const fetchUrl: string = 'https://cors-anywhere.herokuapp.com/https://medium.com/feed/@dmstjq92'
 
 const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
   // const [blogUrl, setBlogUrl] = useState<string | null>(null)
