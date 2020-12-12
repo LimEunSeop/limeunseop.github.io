@@ -1,5 +1,6 @@
 {
   "name": "limeunseop_portfolio",
+  "homepage": "https://limeunseop.github.io/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "classnames": "^2.2.6",
     "cytoscape": "^3.17.0",
     "cytoscape-cise": "^1.0.0",
+    "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -35,6 +37,8 @@
     "xml2js": "^0.4.23"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
