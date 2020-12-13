@@ -64,7 +64,8 @@
   @include respond-to('small') {
     font-size: rem(100);
     right: 50%;
-    top: rem(630);
+    top: initial;
+    bottom: rem(-128);
     transform: translateX(50%);
   }
 
