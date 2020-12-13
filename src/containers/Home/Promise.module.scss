@@ -4,7 +4,7 @@
   position: relative;
   display: grid;
   place-items: center;
-  height: 500px;
+  height: rem(500);
 
   &::after {
     content: '';
@@ -20,11 +20,11 @@
   }
 
   .promiseTitle {
-    font-size: 40px;
+    font-size: rem(40);
     color: #fff;
     text-align: center;
     word-break: keep-all;
-    padding: 0 10px;
+    padding: 0 rem(10);
   }
 }
 
@@ -56,7 +56,7 @@
     .label {
       text-align: initial;
       margin: initial !important;
-      font-size: 40px;
+      font-size: rem(40);
     }
   }
 }
@@ -64,27 +64,27 @@
 .label {
   flex-grow: 1;
   text-align: center;
-  font-size: 50px;
+  font-size: rem(50);
   font-weight: 700;
 }
 
 .text {
-  max-width: 480px;
+  max-width: rem(480);
 
   .heading {
-    font-size: 54px;
+    font-size: rem(54);
     word-break: keep-all;
     margin-top: 0;
   }
 
   .paragraph {
-    font-size: 16px;
+    font-size: rem(16);
     color: #606060;
   }
 
   @include respond-to('small') {
     .heading {
-      font-size: 32px;
+      font-size: rem(32);
     }
   }
 }
