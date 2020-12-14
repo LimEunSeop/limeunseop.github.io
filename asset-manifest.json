@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.e4d94d67.chunk.css",
-    "main.js": "/static/js/main.5605421b.chunk.js",
-    "main.js.map": "/static/js/main.5605421b.chunk.js.map",
+    "main.css": "/static/css/main.bccfe0d8.chunk.css",
+    "main.js": "/static/js/main.296968f6.chunk.js",
+    "main.js.map": "/static/js/main.296968f6.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.76c697da.js",
     "runtime-main.js.map": "/static/js/runtime-main.76c697da.js.map",
-    "static/js/2.a71f5305.chunk.js": "/static/js/2.a71f5305.chunk.js",
-    "static/js/2.a71f5305.chunk.js.map": "/static/js/2.a71f5305.chunk.js.map",
+    "static/js/2.60120c54.chunk.js": "/static/js/2.60120c54.chunk.js",
+    "static/js/2.60120c54.chunk.js.map": "/static/js/2.60120c54.chunk.js.map",
     "static/js/3.699e8726.chunk.js": "/static/js/3.699e8726.chunk.js",
     "static/js/3.699e8726.chunk.js.map": "/static/js/3.699e8726.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.e4d94d67.chunk.css.map": "/static/css/main.e4d94d67.chunk.css.map",
-    "static/js/2.a71f5305.chunk.js.LICENSE.txt": "/static/js/2.a71f5305.chunk.js.LICENSE.txt",
+    "static/css/main.bccfe0d8.chunk.css.map": "/static/css/main.bccfe0d8.chunk.css.map",
+    "static/js/2.60120c54.chunk.js.LICENSE.txt": "/static/js/2.60120c54.chunk.js.LICENSE.txt",
     "static/media/ccna.5f8ec742.png": "/static/media/ccna.5f8ec742.png",
     "static/media/Education.module.scss": "/static/media/education.0ce8f712.jpg",
     "static/media/JobExperience.module.scss": "/static/media/experience_2.25fe8363.jpg",
@@ -25,13 +25,12 @@
     "static/media/sap_abap.99de9e64.png": "/static/media/sap_abap.99de9e64.png",
     "static/media/sap_pp.4ed955c3.png": "/static/media/sap_pp.4ed955c3.png",
     "static/media/Skills.module.scss": "/static/media/skills.a8ea40af.jpeg",
-    "static/media/toeic.76e757c4.png": "/static/media/toeic.76e757c4.png",
-    "static/media/Wrapup.module.scss": "/static/media/wrapup.d3c99066.jpg"
+    "static/media/toeic.76e757c4.png": "/static/media/toeic.76e757c4.png"
   },
   "entrypoints": [
     "static/js/runtime-main.76c697da.js",
-    "static/js/2.a71f5305.chunk.js",
-    "static/css/main.e4d94d67.chunk.css",
-    "static/js/main.5605421b.chunk.js"
+    "static/js/2.60120c54.chunk.js",
+    "static/css/main.bccfe0d8.chunk.css",
+    "static/js/main.296968f6.chunk.js"
   ]
 }
