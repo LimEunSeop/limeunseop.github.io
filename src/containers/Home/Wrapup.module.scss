@@ -1,26 +1,30 @@
 @import 'styles/configs.scss';
 
-.container {
-  composes: section from global;
-  position: relative;
+.row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  color: #fff;
+}
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: url(./background/wrapup.jpg) no-repeat center;
-    background-size: cover;
-    opacity: 0.85;
-  }
+.container {
+  composes: section from global;
+  position: relative;
+  color: #fff;
+  background: #0ea55d;
+
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   z-index: -1;
+  //   display: block;
+  //   width: 100%;
+  //   height: 100%;
+  //   background: url(./background/wrapup.jpg) no-repeat center;
+  //   background-size: cover;
+  //   opacity: 0.85;
+  // }
 }
 
 .thanks {
@@ -37,12 +41,30 @@
   width: rem(330);
 
   a {
-    color: #00dcff;
+    color: #d9ff00;
     text-decoration: none;
   }
 
   p:last-child {
     grid-column: 1 / span 2;
     text-align: center;
+  }
+}
+
+.contacts {
+  composes: resetList from global;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: rem(110);
+  height: rem(80);
+
+  i {
+    font-size: rem(25);
+    color: #fff;
+    transition: 0.5s;
+    &:hover {
+      color: #000;
+    }
   }
 }
