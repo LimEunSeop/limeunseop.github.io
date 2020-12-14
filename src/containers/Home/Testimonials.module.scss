@@ -1,0 +1,12 @@
+@import 'styles/configs.scss';
+
+.container {
+  composes: section from global;
+  text-align: center;
+}
+
+.heading {
+}
+
+.mainText {
+}
