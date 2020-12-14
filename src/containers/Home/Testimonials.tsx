@@ -4,8 +4,8 @@ import { Heading } from '@tenon-io/tenon-ui'
 const Testimonials = () => {
   return (
     <section className={styles.container}>
-      <Heading.H className={styles.Heading}>추천인</Heading.H>
-      <p>한 고마운 분께서 저의 잠재성을 높게 사주셨습니다.</p>
+      <Heading.H className={styles.heading}>추천인</Heading.H>
+      <p className={styles.description}>한 고마운 분께서 저의 잠재성을 높게 사주셨습니다.</p>
       <figure className={styles.mainText}>
         <blockquote cite="https://www.rocketpunch.com/@eunseoplim/resume#references">
           <p>
@@ -30,7 +30,7 @@ const Testimonials = () => {
           </p>
           <p>밝고 명랑 쾌활한 성격 보다, 신중하고 맡은 바 업무에 최선을 다해 책임있게 행동하는 사람을 생각하신다면 은섭님과 만나 이야기 해보시길 바랍니다.</p>
         </blockquote>
-        <figcaption>
+        <figcaption className={styles.cite}>
           <cite>
             <div className={styles.author}>야무</div>
             <div className={styles.belong}>대표, 이듬</div>

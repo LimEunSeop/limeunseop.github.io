@@ -3,10 +3,78 @@
 .container {
   composes: section from global;
   text-align: center;
+  background: #f8fafb;
 }
 
 .heading {
+  font-size: rem(40);
+}
+
+.description {
+  font-weight: 300;
 }
 
 .mainText {
+  position: relative;
+  max-width: rem(800);
+  margin: rem(100) auto;
+  padding: 0 rem(25);
+  font-size: rem(18);
+
+  @include respond-to('small') {
+    margin: rem(80) auto;
+    padding: 0;
+    font-size: rem(16);
+
+    blockquote {
+      margin: 0;
+    }
+  }
+
+  &::before {
+    content: '\201C';
+    display: block;
+    position: absolute;
+    top: rem(-65);
+    left: 0;
+    font-size: rem(150);
+    text-align: left;
+    color: #d12424;
+
+    @include respond-to('small') {
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: rem(110);
+    }
+  }
+  &::after {
+    content: '\201E';
+    display: block;
+    position: absolute;
+    bottom: rem(-75);
+    right: 0;
+    font-size: rem(150);
+    text-align: right;
+    color: #d12424;
+    @include respond-to('small') {
+      right: 50%;
+      transform: translateX(50%);
+      font-size: rem(110);
+    }
+  }
+
+  .cite {
+    margin-top: rem(50);
+    .author {
+      font-size: rem(22);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .belong {
+      font-style: normal;
+      font-size: rem(18);
+      font-weight: 100;
+    }
+  }
 }
