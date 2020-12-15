@@ -1,7 +1,50 @@
 # 포트폴리오 사이트 프로젝트 기술서
 
+<details close>
+<summary>전체 Table of Contents(목차) 보기</summary>
+<div markdown="1">
+
+- [포트폴리오 사이트 프로젝트 기술서](#포트폴리오-사이트-프로젝트-기술서)
+  - [포트폴리오 제작 경위](#포트폴리오-제작-경위)
+  - [프로젝트 특징](#프로젝트-특징)
+  - [프로젝트 안내](#프로젝트-안내)
+    - [사용기술](#사용기술)
+    - [디렉터리 구조](#디렉터리-구조)
+    - [모듈별 설명](#모듈별-설명)
+      - [Navigation (src/components/AppNavigation)](#navigation-srccomponentsappnavigation)
+      - [Loader (src/components/Loader)](#loader-srccomponentsloader)
+      - [HOC (src/hoc)](#hoc-srchoc)
+      - [Home 화면 (src/screens/Home.tsx)](#home-화면-srcscreenshometsx)
+      - [About 화면 (src/screens/About.tsx)](#about-화면-srcscreensabouttsx)
+      - [Blog (src/screens/Blog.tsx)](#blog-srcscreensblogtsx)
+- [포트폴리오 사이트 개발일지](#포트폴리오-사이트-개발일지)
+  - [Index](#index)
+  - [1. item 선정 및 대략적인 디자인 구상](#1-item-선정-및-대략적인-디자인-구상)
+    - [item 선정](#item-선정)
+    - [대략적인 디자인 구상](#대략적인-디자인-구상)
+  - [2. 이력서 작성 및 데이터 구조 분석](#2-이력서-작성-및-데이터-구조-분석)
+    - [이력서 작성](#이력서-작성)
+    - [이력서 데이터 구조 분석](#이력서-데이터-구조-분석)
+  - [3. 마크다운 크롤링 작업](#3-마크다운-크롤링-작업)
+    - [데이터 규격](#데이터-규격)
+    - [크롤링 방식](#크롤링-방식)
+      - [1. Section 분리 작업](#1-section-분리-작업)
+      - [2. 현재 Section 의 contents 가공 작업](#2-현재-section-의-contents-가공-작업)
+    - [다음단계 고민](#다음단계-고민)
+  - [4. 데이터 마크업 구현](#4-데이터-마크업-구현)
+    - [컴포넌트 분리](#컴포넌트-분리)
+    - [섹션 마크업 퍼블리싱 작업](#섹션-마크업-퍼블리싱-작업)
+    - [헛수고?](#헛수고)
+  - [5. 메뉴 정립 + React Router 추가](#5-메뉴-정립--react-router-추가)
+    - [메뉴 정립](#메뉴-정립)
+    - [React Router 추가](#react-router-추가)
+  - [6. 폭풍 작업](#6-폭풍-작업)
+  </div>
+  </details>
+
 ## 포트폴리오 제작 경위
 
+제 경력에 관한 모든것을 한 곳에 정리하고 관리가 용이하도록 하기 위함입니다.
 개발자로서 일을 하고 공부를 하다보면, 공부 정리 및 경력관리를 위해 보통은 블로그 및 채용사이트 이력서를 관리하거나, 개인이 파일로 정리합니다. 하지만 채용사이트는 링크드인, 프로그래머스, 로켓펀치 등등 여러가지가 있어 각각의 이력서를 관리하기란 매우 번거로운 일이었고, 이는 곧 시간낭비임과 동시에 제대로 정리되지 않은 정보에 대한 막연한 두려움을 안겨줬습니다.
 
 따라서 제 경력에 관한 모든것을 한 곳에 정리하고 관리가 용이하도록 하는 시스템을 구축하는 것은 제 개발자 인생에서의 숙원사업이었습니다. 이 곳에 개발자로서의 저를 모두 담아내도록 노력하였고, 앞으로도 쭉 이곳에 저를 표현할 예정입니다.
@@ -10,17 +53,127 @@
 
 제 시스템은 크게 [이력서 마크다운 데이터](https://github.com/LimEunSeop/my-resume), [포트폴리오 웹](https://limeunseop.github.io) 두 가지로 이루어져 있으며, 포트폴리오 웹이 이력서 마크다운을 크롤링하여 그 정보를 바탕으로 렌더링이 이루어집니다. [이력서 마크다운 데이터](https://github.com/LimEunSeop/my-resume)가 데이터베이스 역할을 하는 것이지요. 때문에 [이력서 마크다운 데이터](https://github.com/LimEunSeop/my-resume)만 관리하더라도 포트폴리오 페이지가 자동으로 구성됩니다.
 
-그 외에도 블로그 RSS 피드 및 연락처 정보까지 크롤링하기 때문에 제 정보를 알고 싶은 분은 제 [포트폴리오 웹](https://limeunseop.github.io)만 서핑하여도 간편히 모든 정보를 알 수가 있습니다.
-
-## 미비된 부분
-
-단독으로 UI/UX 를 기획하려다 보니 이 부분에 있어서 조금 아쉬운 부분이 있는것은 사실입니다. 하지만, 프론트엔드 개발자로서 구사할 수 있는 테크닉을 나름대로 많이 녹여놓았으므로, 그런것들 위주로 봐주시면 감사하겠습니다(다음 섹션에서 그에관하여 차근차근 안내드리겠습니다).
-
-이외에도 App.tsx 등의 다른 소스 정리, 타입정리, 메타데이터 정의, 일부 접근성 문제 해결이 안되었으나, 프로젝트 기술서가 완성되는 대로 추후 지속적으로 관리해 나가도록 하겠습니다.
+그 외에도 블로그 RSS 피드 및 연락처 정보까지 크롤링하기 때문에 제 정보를 알고 싶은 분은 제 [포트폴리오 웹](https://limeunseop.github.io)만 서핑하셔도 간편히 모든 정보를 알 수가 있습니다.
 
 ## 프로젝트 안내
 
-**현재 작성중에 있습니다. 그동안 아래의 이전에 작성해놓은 개발일지 일부를 보시어 조금이라도 저를 파악하는데 도움이 되셨으면 좋겠습니다.**
+### 사용기술
+
+- **프론트엔드 라이브러리**: `React` + `Typescript` 를 사용하여 React 와 관련된 타입, 크롤링 데이터 타입을 적용한 코딩을 하였습니다.
+- **상태관리**: `Context API`. 상태를 복잡하게 관리하지 않는 애플리케이션이므로 이것을 사용했습니다.
+- **스타일링**: `SASS Module`, `grid`, `flex`, `styled-component` 를 실험적으로 적극 사용하였고, 애니메이션 또한 적극적으로 사용하도록 노력했습니다.
+- **HOC**: Loader 렌더링 하기, 스크롤 위치 감지하여 HTML 요소에 animate 클래스 추가하기 기능은 원래는 없어도 되는 기능이므로 원래 컴포넌트 구조를 유지하면서 해당 기능을 필요시 붙일 수 있도록 HOC 방식을 채택했습니다.
+- **Heading 자동구성**: tenon-ui 라는 라이브러리를 사용하여 헤딩 구조에 변동이 있을 경우, 이전에 작성되었던 헤딩 레벨이 자동으로 유연하게 변경되도록 하였습니다.
+- **canvas API**: 데이터의 length 에 따라 UI가 동적으로 그려지도록 개발해봤습니다.
+- **애니메이션**: 각 메뉴의 Cover와 About 화면에 애니메이션기능을 활용하기 위해 이것저것 실험적으로 넣어봤습니다.
+- **차트 라이브러리**: Chart.js 로 간단한 Bar 타입 차트를 그리고, Cytoscape.js 로 여러 노드를 연결시키는 UI를 표현했습니다.
+- **styled-component 사용시점**: 제 개인적인 소견으론, styled-component 를 너무 남발할 경우 코드 가독성 및 유지보수에 좋지 않은 영향을 끼친것 같았습니다. props 에 따라 style 이 변경돼야 할 경우, inline style 을 통해 충분히 처리 가능했으므로, `StyledContainer 나 StyledLink` 같은 styled-component 로 묶은 애매모호한 컴포넌트를 만들지 않았고, 최대한 inline 스타일 + SCSS Module 만으로 해결하려고 많이 노력했습니다. 그러다 정말로 단독으로 컴포넌트로 모듈화가 필요하고, 이것이 HTML 가독성에 더 좋겠다 판단이 들었을 때 styled-component 를 사용하였습니다. 또한 svg 애니메이션을 사용하기 위해서는 무조건 styled-component 를 사용하여 svg 애니메이션이 용이하도록 하였습니다.
+
+### 디렉터리 구조
+
+```
+├── components
+├── containers
+│   ├── Home
+│   │   ├── Cover.tsx
+│   │   ├── Cover.module.scss
+│   │   └── ...
+│   ├── About
+│   │   ├── Cover.tsx
+│   │   ├── Cover.module.scss
+│   │   └── ...
+│   └── ...
+├── hoc
+├── screens
+│   ├── Home.tsx
+│   ├── About.tsx
+│   └── ...
+├── styles
+└── utils
+```
+
+- **components**: Loader, Navigation, Button 등의 재사용 할 만한 작은 단위의 컴포넌트를 모았습니다.
+- **containers**: screens 디렉터리 내에 존재하는 한 화면 단위에서 분리된 부분화면을 구성하기 위한 디렉터리입니다. 각 모듈별로 SCSS Module 을 적용하여 충돌이 없고 자유로운 스타일링이 가능하도록 했습니다.
+- **hoc**: 앱 구조에 영향을 미치지는 않으면서 필요한 기능을 재사용하기 위하여 hoc 를 만들었습니다.
+- **screens**: 화면단위의 컴포넌트가 들어있는 디렉터리입니다. App.tsx 에서 이쪽으로 라우팅합니다.
+- **styles**: Sass 상수, 함수, 전역 스타일 등을 모으기위한 디렉터리입니다.
+- **utils**: 기타 JS 유틸함수를 넣었습니다.
+
+### 모듈별 설명
+
+프로그램 전체를 아우르는 Navigatin, Loader, HOC 를 설명드린 후, 각 메뉴(Home, About, Portfolio, Blog, Contact)에서 사용된 기술을 설명드리도록 하겠습니다.
+
+#### Navigation (src/components/AppNavigation)
+
+![네비게이션 gif](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Navigation.gif?raw=true)
+Props 로 NavLink 정보들을 배열로 받아 NavItem 으로 보이도록 렌더링 합니다. 그 후 뒷배경으로 현재 메뉴의 색깔을 보이도록 Context API 로 앱 상태를 불러오도록 했는데요, Redux 를 사용했다면 그것을 props 로 불러올 수 있게하여 재사용이 좀더 용이해질 수 있었을텐데 하는 아쉬움이 조금 있습니다.
+
+네비게이션의 등장&퇴장의 원할한 애니메이션 및 hidden 처리를 위해 setTimeout 을 사용하여 네비게이션 active 와 hidden 여부의 시간차를 뒀는데요, 굳이 hidden 처리를 하는 이유는 접근성을 지키기 위함입니다. 스크린리더를 사용하여 서핑시에는, 네비이션이 감춰진 상태인 경우 보이지 않아야겠죠.
+
+그런데 setTimeout 을 사용할 경우, Navigation 버튼을 연속으로 여러번 클릭 시에 이벤트 시간이 꼬여 네비게이션의 애니메이션이 원활하게 동작하지 않을 수 있습니다. 이를 방지하기 위하여 setTimeout 함수 실행 전에 clearTimeout 을 호출하여 이전의 Timeout 이벤트를 확실히 제거하도록 하였습니다.
+
+아직 접근성 문제가 해결된 것이 아닙니다. 일단은 시간관계상 키보드접근성 문제를 해결하지 못했는데요, 네비게이션이 열릴 경우 `Tab`을 누르면 네비게이션 안에서만 포커스가 이동하도록 나중에 Javascript 작업을 진행할 예정입니다.
+
+#### Loader (src/components/Loader)
+
+![로더 gif](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Loader.gif?raw=true)
+제 로더의 컨셉은 '맥세이프' 입니다. 맥세이프 악세서리를 사지 않더라도 그 UI 의 즐거움을 간접적으로나마 체험하고 싶었습니다.
+
+이 Loader 컴포넌트는 nextColor(다음색깔)이라는 Props 를 받아 다음 메뉴로 색깔이 서서히 변하는 애니메이션을 구현하였습니다. 이 컴포넌트 역시 currentThemeColor(현재 색깔), loadingTime(애니메이션 시간)을 App 상태로부터 Context API 를 사용하여 불러오는데요, 이 역시 Redux 로 상태를 구성하여 Props 로 불러들였으면 좋았을 것이라는 아쉬움이 조금 있습니다.
+
+애니메이션은 '다음 색깔 배경' 위에 '현재색깔 배경' 을 겹쳐 놓고, 맥세이프 애니메이션이 실행됨과 동시에 '현재색깔 배경'의 투명도를 서서히 0으로 바뀌어 자연스럽게 '다음 색깔 배경' 으로 바꾸도록 했는데요, 이 과정에서 `styled-component` 가 필요하다는 것을 느끼고 적극 활용했습니다. svg 파일또한 ReactComponent 로 import 시켜서 그 컴포넌트를 styled-component 로 정의하여 애니메이션이 용이하도록 설정했습니다.
+
+위에서 언급드린 loadingTime 변수를 styled-component 에서 Props 로 받아 애니메이션의 속도가 다 같이 일관적으로 조정이 되도록 프로그래밍 하였으니 시간이 나시면 파일을 보시어 참고해주시면 감사드리겠습니다.
+
+#### HOC (src/hoc)
+
+React Component 를 매개변수로 받는 **withContainerAnimate** 라는 HOC 를 만들어, 스크롤이 해당 컴포넌트의 offsetTop 에 접근하면 그 Component 에 animate 라는 클래스가 추가되도록 하는 기능을 구현했습니다. 스크롤 이벤트 핸들러가 불필요하게 많이 호출되는 것을 방지하기 위하여, underscore 라이브러리의 throttle 이라는 함수를 활용하였습니다. 또한 창 크기 변경으로 인해 Component 의 offsetTop 을 재조정하기 위하여 resize 이벤트 핸들러도 코딩하였습니다.
+
+**withCoverAnimate** 라는 HOC 는, withContainerAnimate 의 기능을 확장하여, 스크롤 하여도 얼마간은 화면이동이 이루어지지 않고 animate 클래스만 추가하여 애니메이션이 발생하도록 외부에 뷰포트 높이의 3배가량의 Container 를 더 만들고 그 안에서 화면이 `position: sticky` 로 움직이도록 하였습니다.
+
+**withLoader** 라는 HOC 는, 아까 말씀드린 Loader 컴포넌트를 화면 컴포넌트(src/screen)에 붙이기 위한 HOC로, 네비게이션이 이동하여 화면이 보이기 전에 Loader 가 보이도록 하여 네비게이션의 자연스러움을 불어넣은 HOC 라고 할 수 있겠습니다.
+
+이 3가지의 HOC 모두 레이아웃의 구조에 영향을 미치지 않는 요소이므로, HOC 로 제작하여 기능을 주입해주도록 만든것입니다.
+
+#### Home 화면 (src/screens/Home.tsx)
+
+단순 퍼블리싱으로 이루어진 화면이므로, Cover 애니메이션 이외에, Semantic 하게 짠 HTML 위주로 살펴봐주시면 감사하겠습니다.
+
+#### About 화면 (src/screens/About.tsx)
+
+이 화면에서, [이력서 마크다운 데이터](https://github.com/LimEunSeop/my-resume)를 크롤링하여 json으로 재구성 후 그 데이터를 기반으로 화면을 자동으로 렌더링 하는 로직이 구현되어 있습니다. 이력서 크롤링 하는 로직은 포트폴리오 사이트 개발일지의 [마크다운 크롤링 작업](#3-마크다운-크롤링-작업) 섹션을 참고바라며, 각 부분에서 어떤 테크닉을 사용했는지 차근차근 설명드리도록 하겠습니다.
+
+- **직무경험 (src/containers/About/Experience/JobExperience.tsx)**
+  ![](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Work%20Experience.png?raw=true)
+  앞으로 추가될 여러 직무경험에 유연하게 대응하기 위하여, 남색 모양의 선 부분을 canvas API 를 이용하여 그렸는데요, 직무경험의 Length 에 따라 더 길게 표시되고, 그 그림에 데이터가 알맞게 안착되도록 CSS 코딩을 신중하게 했습니다. 여태 CSS의 `position: relative` 속성은 absolute 의 컨테이너 정도로만 활용했었는데, 이번에 relative 를 제 역할에 맞게 제대로 사용해보게 되어 제 나름대로 가장 뿌듯했던 부분중의 하나였습니다.
+
+canvas API 를 활용한 컴포넌트는 `src/components/HistoryBackground/` 를 살펴봐 주시기 바랍니다.
+
+- **개인프로젝트 (src/containers/About/Experience/PersonalProjects.tsx)**
+  ![](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Personal%20Projects.png?raw=true)
+  단순 크롤링된 데이터를 나타낸 것이므로 특별한 것은 없습니다.
+
+- **Education (src/containers/About/Education.tsx)**
+  ![](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Education.png?raw=true)
+  책효과를 내기위해 border에 색깔주고 radius 처리 했으며, 종이부분은 반복 gradient 이용했습니다.
+
+- **Certificates (src/containers/About/Certificates/Certificates.tsx)**
+  ![](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Certificates.png?raw=true)
+  단순 크롤링 하여 구성한 화면입니다.
+
+- **Open Source Contributions (src/containers/About/OpenSourceContributions.tsx)**
+  ![](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Opensource.png?raw=true)
+  Chart.js 라이브러리를 사용하여 렌더링 하였습니다. 데이터는 오픈소스 기여 항목의 length 를 계산하여 차트에 할당했습니다.
+
+- **Skills (src/containers/About/Skills.tsx)**
+  ![](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Skills.png?raw=true)
+  cytoscape.js 라이브러리를 사용하여 이 곳에 들어갈 Node(동그라미), Edge(실선)데이터를 전부 크롤링한 데이터를 프로그래밍 하여 재구성 후 할당하였고, 각각의 그룹별로 색깔이 구분되도록 스타일링 처리를 하였습니다.
+
+#### Blog (src/screens/Blog.tsx)
+
+[저의 medium 블로그](https://dmstjq92.medium.com)의 포스팅을 API 를 통하여 불러오려 했으나, API 가 존재하지 않는것 같아 rss 피드의 xml 데이터를 json 으로 변환 후 렌더링 하는 방식을 채택했습니다. rss 피드 GET 요청 시 CORS 문제를 해결하기 위해 CORS anywhere 라는 CORS 프록시를 이용하였습니다.
+
+---
 
 # 포트폴리오 사이트 개발일지
 
