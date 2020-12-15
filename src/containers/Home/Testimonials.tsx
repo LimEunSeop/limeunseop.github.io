@@ -5,7 +5,7 @@ const Testimonials = () => {
   return (
     <section className={styles.container}>
       <Heading.H className={styles.heading}>추천인</Heading.H>
-      <p className={styles.description}>한 고마운 분께서 저의 잠재성을 높게 사주셨습니다.</p>
+      <p className={styles.description}>저의 잠재성을 높게 사주신 감사한 분입니다.</p>
       <figure className={styles.mainText}>
         <blockquote cite="https://www.rocketpunch.com/@eunseoplim/resume#references">
           <p>
