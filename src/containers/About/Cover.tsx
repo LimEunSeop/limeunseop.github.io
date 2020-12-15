@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Cover.module.scss'
@@ -42,7 +42,7 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
             </li>
           </ul>
           <a className={styles.cvLink} href="//github.com/limeunseop/my-resume" target="_blank" rel="noreferrer">
-            View Text-Style CV
+            텍스트 버전 이력서 보기
           </a>
         </div>
       </div>
