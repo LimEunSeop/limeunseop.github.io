@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 import { ListItem, Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -73,5 +73,6 @@ const Certificates = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
     </Heading.LevelBoundary>
   )
 })
+Certificates.displayName = 'Certificates'
 
 export default withContainerAnimate<Props>(Certificates, styles.animate)

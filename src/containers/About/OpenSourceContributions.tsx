@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from 'react';
+import { forwardRef, useEffect } from 'react'
 import { ListItem, Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -87,5 +87,7 @@ const OpenSourceContributions = forwardRef<HTMLElement, Props>(({ data }: Props,
     </Heading.LevelBoundary>
   )
 })
+
+OpenSourceContributions.displayName = 'OpenSourceContributions'
 
 export default withContainerAnimate(OpenSourceContributions, styles.animate)

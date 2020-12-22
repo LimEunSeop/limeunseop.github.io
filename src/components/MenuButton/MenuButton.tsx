@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import styles from './MenuButton.module.scss'
 import classNames from 'classnames/bind'
 
@@ -20,5 +20,7 @@ const MenuButton = ({ isClicked, onClick, ...props }: Props) => {
     </div>
   )
 }
+
+MenuButton.displayName = 'MenuButton'
 
 export default MenuButton

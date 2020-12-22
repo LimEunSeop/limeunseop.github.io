@@ -99,5 +99,6 @@ const Loader = ({ nextColor }: { nextColor: string }) => {
     </NextColorBackground>
   )
 }
+Loader.displayName = 'Loader'
 
 export default Loader

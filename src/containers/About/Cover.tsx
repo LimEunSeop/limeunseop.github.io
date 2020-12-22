@@ -50,4 +50,6 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
   )
 })
 
+Cover.displayName = 'AboutCover'
+
 export default withCoverAnimate<Props>(Cover, styles.animate)

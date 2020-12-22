@@ -158,4 +158,6 @@ function App() {
   )
 }
 
+App.displayName = 'App'
+
 export default App

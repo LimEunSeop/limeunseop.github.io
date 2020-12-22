@@ -46,4 +46,6 @@ const Wrapup = () => {
   )
 }
 
+Wrapup.displayName = 'Wrapup'
+
 export default Wrapup

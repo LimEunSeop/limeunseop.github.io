@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import * as React from 'react';
+import { useEffect } from 'react'
+import * as React from 'react'
 
 interface Props extends React.HTMLAttributes<HTMLCanvasElement> {
   count: number
@@ -58,5 +58,7 @@ const HistoryBackground = ({ count, ...props }: Props) => {
 
   return <canvas id="historybackground__canvas__madeby__seop" width="335" height={200 + (count - 1) * 130} {...props}></canvas>
 }
+
+HistoryBackground.displayName = 'HistoryBackground'
 
 export default HistoryBackground

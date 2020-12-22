@@ -61,4 +61,6 @@ const Experience = ({ data }: Props) => {
   )
 }
 
+Experience.displayName = 'Experience'
+
 export default Experience

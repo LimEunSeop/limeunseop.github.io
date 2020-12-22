@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 import { ProjectItem } from './Experience'
 //@ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -44,5 +44,7 @@ const PersonalProjects = forwardRef<HTMLElement, Props>(({ data }: Props, ref) =
     </section>
   )
 })
+
+PersonalProjects.displayName = 'PersonalProjects'
 
 export default withContainerAnimate<Props>(PersonalProjects, styles.animate)

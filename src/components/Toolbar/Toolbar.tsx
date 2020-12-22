@@ -19,4 +19,6 @@ const Toolbar = ({ navItems }: Props) => {
   )
 }
 
+Toolbar.displayName = 'Toolbar'
+
 export default Toolbar

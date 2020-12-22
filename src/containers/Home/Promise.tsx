@@ -70,4 +70,6 @@ const Promise = () => {
   )
 }
 
+Promise.displayName = 'Promise'
+
 export default Promise

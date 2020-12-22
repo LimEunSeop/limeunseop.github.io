@@ -1,5 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
-import * as React from 'react';
+import { useCallback, useRef, useState } from 'react'
+import * as React from 'react'
 import styles from './EmailForm.module.scss'
 
 const EmailForm = (props: React.HTMLAttributes<HTMLDivElement>) => {
@@ -71,5 +71,7 @@ const EmailForm = (props: React.HTMLAttributes<HTMLDivElement>) => {
     </div>
   )
 }
+
+EmailForm.displayName = 'EmailForm'
 
 export default EmailForm

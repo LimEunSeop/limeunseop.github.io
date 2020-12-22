@@ -28,4 +28,6 @@ const Cover = forwardRef<HTMLElement, Props>((props: Props, ref) => {
   )
 })
 
+Cover.displayName = 'HomeCover'
+
 export default withCoverAnimate<Props>(Cover, styles.animate)

@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import { Section } from 'App'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
@@ -212,5 +212,7 @@ const Skills = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
     </Heading.LevelBoundary>
   )
 })
+
+Skills.displayName = 'Skills'
 
 export default withContainerAnimate<Props>(Skills, styles.animate)

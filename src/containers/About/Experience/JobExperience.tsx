@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 //@ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import { JobItem } from './Experience'
@@ -46,5 +46,7 @@ const JobExperience = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
     </section>
   )
 })
+
+JobExperience.displayName = 'JobExperience'
 
 export default withContainerAnimate<Props>(JobExperience, styles.animate)

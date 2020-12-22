@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 // @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Cover.module.scss'
@@ -33,5 +33,7 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
     </div>
   )
 })
+
+Cover.displayName = 'PortfolioCover'
 
 export default withCoverAnimate<Props>(Cover, styles.animate)

@@ -41,4 +41,6 @@ const Testimonials = () => {
   )
 }
 
+Testimonials.displayName = 'Testimonials'
+
 export default Testimonials

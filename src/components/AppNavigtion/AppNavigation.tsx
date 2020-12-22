@@ -1,5 +1,5 @@
 import MenuButton from 'components/MenuButton/MenuButton'
-import { useCallback, useContext, useRef, useState } from 'react';
+import { useCallback, useContext, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './AppNavigation.module.scss'
 import classNames from 'classnames/bind'
@@ -78,5 +78,7 @@ const AppNavigation = ({ navItems }: Props) => {
     </div>
   )
 }
+
+AppNavigation.displayName = 'AppNavigation'
 
 export default AppNavigation
