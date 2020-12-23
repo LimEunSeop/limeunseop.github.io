@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
 import { ComponentType } from 'react'
 import _ from 'underscore'
 
@@ -33,7 +33,7 @@ function withContainerAnimate<T>(WrappedComponent: ComponentType<T>, animateClas
       window.addEventListener('scroll', windowScrollCallback)
       return () => {
         window.removeEventListener('resize', windowResizeCallback)
-        window.removeEventListener('resize', windowScrollCallback)
+        window.removeEventListener('scroll', windowScrollCallback)
       }
     }, [])
 

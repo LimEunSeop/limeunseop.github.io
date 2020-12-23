@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
 import { ComponentType } from 'react'
 import styled from '@emotion/styled'
 import _ from 'underscore'
@@ -60,7 +60,7 @@ function withCoverAnimate<T>(WrappedComponent: ComponentType<T>, animateClass: s
       window.addEventListener('scroll', windowScrollCallback)
       return () => {
         window.removeEventListener('resize', windowResizeCallback)
-        window.removeEventListener('resize', windowScrollCallback)
+        window.removeEventListener('scroll', windowScrollCallback)
       }
     }, [])
 
