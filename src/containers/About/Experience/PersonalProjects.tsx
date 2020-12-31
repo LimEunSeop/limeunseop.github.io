@@ -4,16 +4,14 @@ import { ProjectItem } from './Experience'
 import { Heading } from '@tenon-io/tenon-ui'
 import MarkdownView from 'react-showdown'
 import styles from './PersonalProjects.module.scss'
-import proj_img1 from './images/proj_1.png'
-import proj_img2 from './images/proj_2.png'
 import withContainerAnimate from 'hoc/withContainerAnimate'
 
 interface Props {
   data: Array<ProjectItem>
 }
 
-const images = [proj_img1, proj_img2]
-
+const images = [require('./images/proj_1.png'), require('./images/proj_2.png'), require('./images/proj_3.png')].map((item) => item.default)
+console.log(images)
 const PersonalProjects = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   return (
     <section className={styles.container} ref={ref}>
