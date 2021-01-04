@@ -6,3 +6,5 @@
 declare module '@tenon-io/tenon-ui'
 
 declare module '*.module.scss'
+
+declare module 'cytoscape-cise'

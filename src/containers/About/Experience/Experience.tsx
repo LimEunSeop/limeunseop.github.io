@@ -1,5 +1,4 @@
 import { Section } from 'App'
-// @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import { ListItem } from 'App'
 import styles from './Experience.module.scss'

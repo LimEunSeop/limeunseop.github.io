@@ -1,10 +1,9 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import { Section } from 'App'
-// @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import { ListItem } from 'App'
 import cytoscape from 'cytoscape'
-//@ts-ignore
+
 import cise from 'cytoscape-cise'
 import styles from './Skills.module.scss'
 import styled from '@emotion/styled'
@@ -140,8 +139,8 @@ const Skills = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
     })
     cy.current = cytoscape({
       container: document.getElementById(styles.cy),
-      //@ts-ignore
-      elements: elements,
+
+      elements: elements as cytoscape.ElementDefinition[],
 
       style: [
         // the stylesheet for the graph
@@ -183,7 +182,6 @@ const Skills = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
         },
       ],
       layout: {
-        //@ts-ignore
         name: 'cise',
       },
     })

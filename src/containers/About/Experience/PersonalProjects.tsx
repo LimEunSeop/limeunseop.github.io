@@ -1,6 +1,5 @@
 import { forwardRef } from 'react'
 import { ProjectItem } from './Experience'
-//@ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import MarkdownView from 'react-showdown'
 import styles from './PersonalProjects.module.scss'

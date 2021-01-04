@@ -1,6 +1,5 @@
 import { forwardRef } from 'react'
 import { ListItem, Section } from 'App'
-// @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Certificates.module.scss'
 

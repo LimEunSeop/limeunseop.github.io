@@ -4,7 +4,6 @@ import Education from 'containers/About/Education'
 import Experience from 'containers/About/Experience/Experience'
 import OpenSourceContributions from 'containers/About/OpenSourceContributions'
 import Skills from 'containers/About/Skills'
-// @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import withLoader from 'hoc/WithLoader'
 import Cover from 'containers/About/Cover'

@@ -1,6 +1,5 @@
 import { forwardRef } from 'react'
 import { Section } from 'App'
-// @ts-ignorets
 import { Heading } from '@tenon-io/tenon-ui'
 import { ListItem } from 'App'
 import MarkdownView from 'react-showdown'

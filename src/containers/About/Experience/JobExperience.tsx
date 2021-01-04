@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-//@ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import { JobItem } from './Experience'
 import styles from './JobExperience.module.scss'

@@ -1,6 +1,5 @@
 import { forwardRef, useEffect } from 'react'
 import { ListItem, Section } from 'App'
-// @ts-ignore
 import { Heading } from '@tenon-io/tenon-ui'
 import Chart from 'chart.js'
 import styles from './OpenSourceContributions.module.scss'

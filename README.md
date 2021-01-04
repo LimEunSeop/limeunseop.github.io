@@ -1,4 +1,5 @@
 # 포트폴리오 사이트 프로젝트 기술서
+
 <a href="https://limeunseop.github.io">![link](https://img.shields.io/badge/link-https%3A%2F%2Flimeunseop.github.io-brightgreen)</a>
 
 <details close>
@@ -438,7 +439,7 @@ content 의 추가 가공은 또다시 힘든 작업이 될 것 같습니다. �
 ```javascript
 import React from 'react'
 import { Section } from '../App'
-// @ts-ignorets
+ts
 import { Heading } from '@tenon-io/tenon-ui'
 import { ListItem } from '../App'
 import MarkdownView from 'react-showdown'
