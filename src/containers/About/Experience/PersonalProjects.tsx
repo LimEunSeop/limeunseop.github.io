@@ -11,7 +11,6 @@ interface Props {
 }
 
 const images = [require('./images/proj_1.png'), require('./images/proj_2.png'), require('./images/proj_3.png')].map((item) => item.default)
-console.log(images)
 const PersonalProjects = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
   return (
     <section className={styles.container} ref={ref}>

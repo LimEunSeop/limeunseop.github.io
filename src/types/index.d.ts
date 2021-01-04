@@ -4,3 +4,5 @@
  */
 
 declare module '@tenon-io/tenon-ui'
+
+declare module '*.module.scss'
