@@ -99,7 +99,7 @@ function App() {
       setIsLoading(true)
       if (resume_data === null) {
         let markdown: string = await fetch(resume_url).then((res) => res.text())
-        markdown = markdown.replaceAll(/<!--.*?-->/g, '') // 주석 제거
+        markdown = markdown.replaceAll(/<!--(.|\n)*?-->/g, '') // 주석 제거
         resume_data = makeData(markdown, 1)
         console.log(resume_data)
       }
