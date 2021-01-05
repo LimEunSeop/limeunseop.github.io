@@ -1,9 +1,11 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import styled from '@emotion/styled'
 import { keyframes, css } from '@emotion/react'
-import { AppContext, AppContextType } from 'App'
 import { ReactComponent as MagsafeSvg } from './magsafe.svg'
 import { rem } from 'utils/styledComponentUtils'
+import { RootState } from 'store/rootReducer'
+import { changeThemeColor } from 'store/app/actions'
+import { connect, ConnectedProps } from 'react-redux'
 
 const colorChangeTime = 0.5
 
@@ -42,7 +44,7 @@ const PriorColorBackground = styled.div<{ color: string; delay: number }>`
   background-color: ${({ color }) => (color ? color : '#000')};
   animation: ${fade_out} ${colorChangeTime}s ${({ delay }) => delay}s linear forwards;
 `
-const WhiteBlur = styled.div<{ isFirstLoading: boolean; holdingTime: number }>`
+const WhiteBlur = styled.div<{ holdingTime: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,10 +78,13 @@ const AnimatedMagsafe = styled(MagsafeSvg)<{ barcolor: string; delay: number }>`
   }
 `
 
-const Loader = ({ nextColor }: { nextColor: string }) => {
-  const appContext: AppContextType = useContext(AppContext)
-  const { loadingTime, currentThemeColor, setCurrentThemeColor }: AppContextType = appContext
-  const isFirstLoading: boolean = currentThemeColor === null ? true : false
+interface Props extends PropsFromRedux {
+  nextColor: string
+}
+
+const Loader = (props: Props) => {
+  const { nextColor, currentThemeColor, loadingTime } = props
+  const { setCurrentThemeColor } = props
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -90,8 +95,8 @@ const Loader = ({ nextColor }: { nextColor: string }) => {
 
   return (
     <NextColorBackground color={nextColor}>
-      <PriorColorBackground color={currentThemeColor as string} delay={loadingTime / 3} />
-      <WhiteBlur isFirstLoading={isFirstLoading} holdingTime={(loadingTime * 2) / 3}>
+      <PriorColorBackground color={currentThemeColor} delay={loadingTime / 3} />
+      <WhiteBlur holdingTime={(loadingTime * 2) / 3}>
         <AnimatedMagsafe barcolor={nextColor} delay={loadingTime / 3}>
           {/* <MagsafeSvg /> */}
         </AnimatedMagsafe>
@@ -101,4 +106,17 @@ const Loader = ({ nextColor }: { nextColor: string }) => {
 }
 Loader.displayName = 'Loader'
 
-export default Loader
+const mapStateToProps = ({ app }: RootState) => ({
+  currentThemeColor: app.themeColor,
+  loadingTime: app.loadingTime,
+})
+
+const mapDispatchToProps = {
+  setCurrentThemeColor: changeThemeColor,
+}
+
+const connector = connect(mapStateToProps, mapDispatchToProps)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Loader)

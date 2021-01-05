@@ -1,23 +1,22 @@
 import MenuButton from 'components/MenuButton/MenuButton'
-import { useCallback, useContext, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './AppNavigation.module.scss'
 import classNames from 'classnames/bind'
-import { AppContext } from 'App'
+import { connect, ConnectedProps } from 'react-redux'
+import { RootState } from 'store/rootReducer'
 
-interface Props {
+interface Props extends PropsFromRedux {
   navItems: Array<{ display: string; link: string; color: string }>
   // open: boolean
 }
 
 const cx = classNames.bind(styles)
 
-const AppNavigation = ({ navItems }: Props) => {
+const AppNavigation = ({ navItems, currentThemeColor }: Props) => {
   const [clicked, setClicked] = useState(false)
   const [hidden, setHidden] = useState(true)
   const [active, setActive] = useState(false)
-
-  const { currentThemeColor } = useContext(AppContext)
 
   const timeoutID = useRef<number | null>(null)
 
@@ -42,7 +41,7 @@ const AppNavigation = ({ navItems }: Props) => {
   return (
     <div className={styles.wrapper}>
       <MenuButton className={styles.menuButton} isClicked={clicked} onClick={menuButtonClickHandler} />
-      <div className={cx('navBarBackground', { active })} style={{ backgroundColor: currentThemeColor as string }} hidden={hidden}></div>
+      <div className={cx('navBarBackground', { active })} style={{ backgroundColor: currentThemeColor }} hidden={hidden}></div>
       <nav className={cx('navBar', { active })} hidden={hidden}>
         <ul className={styles.menuList}>
           {navItems.map((item, i) => (
@@ -81,4 +80,12 @@ const AppNavigation = ({ navItems }: Props) => {
 
 AppNavigation.displayName = 'AppNavigation'
 
-export default AppNavigation
+const mapStateToProps = ({ app: { themeColor } }: RootState) => ({
+  currentThemeColor: themeColor,
+})
+
+const connector = connect(mapStateToProps)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(AppNavigation)

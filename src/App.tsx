@@ -1,12 +1,13 @@
-import { useEffect, useState, createContext } from 'react'
+import { useEffect, useState } from 'react'
 import * as React from 'react'
 import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import About from './screens/About'
-import Contact from './screens/Contact'
-import Home from './screens/Home'
-import Portfolio from './screens/Portfolio'
+import About from 'screens/About'
+import Contact from 'screens/Contact'
+import Home from 'screens/Home'
+import Portfolio from 'screens/Portfolio'
 import Toolbar from 'components/Toolbar/Toolbar'
 import Blog from 'screens/Blog'
+import StoreProvider from 'store/store'
 
 export type SectionContents = Array<string | ListItem>
 
@@ -20,14 +21,6 @@ export interface ListItem {
   content: string
   children: Array<string>
 }
-
-export interface AppContextType {
-  currentThemeColor: string | null
-  setCurrentThemeColor: React.Dispatch<React.SetStateAction<string | null>>
-  loadingTime: number
-}
-
-export const AppContext = createContext({} as AppContextType)
 
 const makeData = (markdown: string, startingHeadingLevel: number): Section => {
   // 섹션 분리 작업
@@ -92,7 +85,6 @@ let resume_data: Section | null = null
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
-  const [currentThemeColor, setCurrentThemeColor] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -117,7 +109,7 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{ currentThemeColor, setCurrentThemeColor, loadingTime: 2.5 }}>
+    <StoreProvider>
       <Router>
         <div className="app">
           <header className="header">
@@ -144,7 +136,7 @@ function App() {
           {/* <footer></footer> */}
         </div>
       </Router>
-    </AppContext.Provider>
+    </StoreProvider>
     // <main>
     //   {/* resume_data 에 있는대로 배열 idx 잘 지켜야함 */}
     //   <Cover data={{ title: resume_data.title, contents: resume_data.contents, children: [] }} />

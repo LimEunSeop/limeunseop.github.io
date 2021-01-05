@@ -1,19 +1,20 @@
-import { AppContext, AppContextType } from 'App'
-import { ComponentType, useContext, useEffect, useState } from 'react';
+import { ComponentType, useEffect, useState } from 'react'
 import Loader from 'components/Loader/Loader'
+import { useSelector } from 'react-redux'
+import { RootState } from 'store/rootReducer'
 
 function withLoader<T>(theme_color: string, WrappedComponent: ComponentType<T>) {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
 
   const ComponentWithLoader = (props: T) => {
     const [isLoading, setIsLoading] = useState(true)
-    const appContext: AppContextType = useContext(AppContext) // Context 를 사용하는것이 유지보수에 찜찜한데.. Redux + Toolkit 사용 필히 나중에 시간나면 고려할것..
+    const { loadingTime } = useSelector((state: RootState) => state.app)
 
     useEffect(() => {
       window.setTimeout(() => {
         setIsLoading(false)
-      }, appContext.loadingTime * 1000)
-    }, [appContext.loadingTime])
+      }, loadingTime * 1000)
+    }, [loadingTime])
 
     if (isLoading) {
       return <Loader nextColor={theme_color} />
