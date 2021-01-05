@@ -62,8 +62,8 @@
 ### 사용기술
 
 - **프론트엔드 라이브러리**: `React` + `Typescript` 를 사용하여 React 와 관련된 타입, 크롤링 데이터 타입을 적용한 코딩을 하였습니다.
-- **상태관리**: `Context API`. 상태를 복잡하게 관리하지 않는 애플리케이션이므로 이것을 사용했습니다.
-- **스타일링**: `SASS Module`, `grid`, `flex`, `styled-component` 를 실험적으로 적극 사용하였고, 애니메이션 또한 적극적으로 사용하도록 노력했습니다.
+- **상태관리**: 처음엔 ~~Context API~~를 사용하였으나, 코드가 깔끔하지 못하여 Redux 로 변경하였습니다. 재사용 가능한 컴포넌트들은 props mapping 이 유지보수에 좋을것 같아 `connect` HOC 사용하였으며, Redux 사용이 명백한 것들은 재사용성이 떨어지더라도 간편함을 위해 `useSelect`, `useDispatch` Hooks 를 사용했습니다.
+- **스타일링**: `SASS Module`, `grid`, `flex`, `styled-component`, `rem unit sizing` 를 실험적으로 적극 사용하였고, 애니메이션 또한 적극적으로 사용하도록 노력했습니다.
 - **HOC**: Loader 렌더링 하기, 스크롤 위치 감지하여 HTML 요소에 animate 클래스 추가하기 기능은 원래는 없어도 되는 기능이므로 원래 컴포넌트 구조를 유지하면서 해당 기능을 필요시 붙일 수 있도록 HOC 방식을 채택했습니다.
 - **Heading 자동구성**: tenon-ui 라는 라이브러리를 사용하여 헤딩 구조에 변동이 있을 경우, 이전에 작성되었던 헤딩 레벨이 자동으로 유연하게 변경되도록 하였습니다.
 - **canvas API**: 데이터의 length 에 따라 UI가 동적으로 그려지도록 개발해봤습니다.
@@ -108,7 +108,7 @@
 #### Navigation (src/components/AppNavigation)
 
 ![네비게이션 gif](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Navigation.gif?raw=true)
-Props 로 NavLink 정보들을 배열로 받아 NavItem 으로 보이도록 렌더링 합니다. 그 후 뒷배경으로 현재 메뉴의 색깔을 보이도록 Context API 로 앱 상태를 불러오도록 했는데요, Redux 를 사용했다면 그것을 props 로 불러올 수 있게하여 재사용이 좀더 용이해질 수 있었을텐데 하는 아쉬움이 조금 있습니다.
+Props 로 NavLink 정보들을 배열로 받아 NavItem 으로 보이도록 렌더링 합니다. 그 후 뒷배경으로 현재 메뉴의 색깔을 보이도록 Props 를 전달받습니다.
 
 네비게이션의 등장&퇴장의 원할한 애니메이션 및 hidden 처리를 위해 setTimeout 을 사용하여 네비게이션 active 와 hidden 여부의 시간차를 뒀는데요, 굳이 hidden 처리를 하는 이유는 접근성을 지키기 위함입니다. 스크린리더를 사용하여 서핑시에는, 네비이션이 감춰진 상태인 경우 보이지 않아야겠죠.
 
@@ -121,7 +121,7 @@ Props 로 NavLink 정보들을 배열로 받아 NavItem 으로 보이도록 렌�
 ![로더 gif](https://github.com/LimEunSeop/assets/blob/master/images/portfolio/Loader.gif?raw=true)
 제 로더의 컨셉은 '맥세이프' 입니다. 맥세이프 악세서리를 사지 않더라도 그 UI 의 즐거움을 간접적으로나마 체험하고 싶었습니다.
 
-이 Loader 컴포넌트는 nextColor(다음색깔)이라는 Props 를 받아 다음 메뉴로 색깔이 서서히 변하는 애니메이션을 구현하였습니다. 이 컴포넌트 역시 currentThemeColor(현재 색깔), loadingTime(애니메이션 시간)을 App 상태로부터 Context API 를 사용하여 불러오는데요, 이 역시 Redux 로 상태를 구성하여 Props 로 불러들였으면 좋았을 것이라는 아쉬움이 조금 있습니다.
+이 Loader 컴포넌트는 Props로 currentThemeColor(현재 색깔), loadingTime(애니메이션 시간), nextColor(다음색깔)을 전달받아 **현재 색깔**에서 **애니메이션 시간**동안 **다음색깔**로 변경되는 애니메이션이 구현되어 있습니다.
 
 애니메이션은 '다음 색깔 배경' 위에 '현재색깔 배경' 을 겹쳐 놓고, 맥세이프 애니메이션이 실행됨과 동시에 '현재색깔 배경'의 투명도를 서서히 0으로 바뀌어 자연스럽게 '다음 색깔 배경' 으로 바꾸도록 했는데요, 이 과정에서 `styled-component` 가 필요하다는 것을 느끼고 적극 활용했습니다. svg 파일또한 ReactComponent 로 import 시켜서 그 컴포넌트를 styled-component 로 정의하여 애니메이션이 용이하도록 설정했습니다.
 
