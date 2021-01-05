@@ -59,8 +59,10 @@ const Certificates = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
               <ul className={styles.certList}>
                 {(section[1] as Array<CertItem>).map((item) => (
                   <li key={item.title} className={styles.certItem}>
-                    <div className={styles.certImg} style={{ backgroundImage: `url(${item.img_url})` }}>
-                      <p className={styles.certTitle}>{item.title}</p>
+                    <div className={styles.wrapper}>
+                      <div className={styles.certImg} style={{ backgroundImage: `url(${item.img_url})` }}>
+                        <p className={styles.certTitle}>{item.title}</p>
+                      </div>
                     </div>
                   </li>
                 ))}

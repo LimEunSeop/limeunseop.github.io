@@ -55,7 +55,6 @@
   .certItem {
     position: relative;
     width: 25%;
-    padding: rem(40);
     transition: 0.3s;
     border: 1px solid #ddd;
     margin-bottom: -1px;
@@ -77,35 +76,42 @@
     }
 
     &:hover {
-      padding: rem(10);
+      .wrapper {
+        padding: rem(10);
+
+        .certImg .certTitle {
+          color: white;
+          opacity: 1;
+        }
+      }
       &::after {
         background-color: rgba(20, 28, 58, 0.8);
       }
-
-      .certImg .certTitle {
-        color: white;
-        opacity: 1;
-      }
     }
 
-    .certImg {
-      padding-top: 100%;
-      background-repeat: no-repeat;
-      background-size: 106%;
-      background-position: center;
+    .wrapper {
+      padding: rem(40);
+      transition: 0.3s;
 
-      .certTitle {
-        position: absolute;
-        z-index: 999;
-        top: 50%;
-        left: 0;
-        right: 0;
-        transform: translateY(-50%);
-        opacity: 0;
-        text-align: center;
-        font-size: rem(16);
-        margin: 0;
-        padding: 0 rem(10);
+      .certImg {
+        padding-top: 100%;
+        background-repeat: no-repeat;
+        background-size: 106%;
+        background-position: center;
+
+        .certTitle {
+          position: absolute;
+          z-index: 999;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          opacity: 0;
+          text-align: center;
+          font-size: rem(16);
+          margin: 0;
+          padding: 0 rem(10);
+        }
       }
     }
   }
