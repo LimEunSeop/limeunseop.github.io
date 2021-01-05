@@ -2,7 +2,7 @@
  * 사용자 정의 초기화
  */
 html {
-  // font-size: global-base-font-size from 'styles/configs.scss';
+  // font-size: global-base-font-size from 'styles/configs.scss'; from 문법은 css module 문법이므로 쓰지못함. 게다가 css module의 composes 속성에만 쓸 수 있음.
 }
 body {
   overflow-x: hidden;
