@@ -1,6 +1,5 @@
-import { Section } from 'App'
+import { Section, ListItem } from 'utils/makeResumeData'
 import { Heading } from '@tenon-io/tenon-ui'
-import { ListItem } from 'App'
 import styles from './Experience.module.scss'
 import JobExperience from './JobExperience'
 import PersonalProjects from './PersonalProjects'

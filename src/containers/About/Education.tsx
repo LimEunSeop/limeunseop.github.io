@@ -1,7 +1,6 @@
 import { forwardRef } from 'react'
-import { Section } from 'App'
+import { ListItem, Section } from 'utils/makeResumeData'
 import { Heading } from '@tenon-io/tenon-ui'
-import { ListItem } from 'App'
 import MarkdownView from 'react-showdown'
 import styles from './Education.module.scss'
 import withContainerAnimate from 'hoc/withContainerAnimate'

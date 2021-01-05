@@ -1,5 +1,5 @@
 import { forwardRef, useEffect } from 'react'
-import { ListItem, Section } from 'App'
+import { ListItem, Section } from 'utils/makeResumeData'
 import { Heading } from '@tenon-io/tenon-ui'
 import Chart from 'chart.js'
 import styles from './OpenSourceContributions.module.scss'

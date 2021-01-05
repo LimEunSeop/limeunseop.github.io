@@ -1,4 +1,4 @@
-import { Section } from 'App'
+import { Section } from 'utils/makeResumeData'
 import Certificates from 'containers/About/Certificates/Certificates'
 import Education from 'containers/About/Education'
 import Experience from 'containers/About/Experience/Experience'

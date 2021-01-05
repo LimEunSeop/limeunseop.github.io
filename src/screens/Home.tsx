@@ -1,4 +1,4 @@
-import { Section } from 'App'
+import { Section } from 'utils/makeResumeData'
 import Cover from 'containers/Home/Cover'
 import Promise from 'containers/Home/Promise'
 import withLoader from 'hoc/WithLoader'

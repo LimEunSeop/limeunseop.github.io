@@ -1,7 +1,6 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
-import { Section } from 'App'
+import { Section, ListItem } from 'utils/makeResumeData'
 import { Heading } from '@tenon-io/tenon-ui'
-import { ListItem } from 'App'
 import cytoscape from 'cytoscape'
 
 import cise from 'cytoscape-cise'
