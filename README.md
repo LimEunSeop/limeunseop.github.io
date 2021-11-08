@@ -2,6 +2,13 @@
 
 <a href="https://limeunseop.github.io">![link](https://img.shields.io/badge/link-https%3A%2F%2Flimeunseop.github.io-brightgreen)</a>
 
+여러곳에 분산돼 있는 경험(이력서, 포트폴리오)이 한 곳에 모인 Entry Point Site.
+
+- 수행기간: 2020.11 ~ 2020.12
+- 확장성을 고려하고 유지보수의 이점을 취하기 위해 SPA 형태의 React 로 개발하였습니다. 또한 크롤링 하는 데이터가 정형화된 포맷을 꼭 따라야 하므로 TypeScript 을 사용하였습니다.
+- Github에 있는 마크다운 데이터를 스크래핑하여 데이터의 일관성을 확보하였습니다.
+- 사용기술: React, ES6+, TypeScript, HTML, Sass, Sass_Module
+
 <details close>
 <summary>전체 Table of Contents(목차) 보기</summary>
 <div markdown="1">
