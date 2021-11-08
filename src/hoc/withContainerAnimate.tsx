@@ -6,38 +6,36 @@ function withContainerAnimate<T>(WrappedComponent: ComponentType<T>, animateClas
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
 
   const ComponentWithContainerAnimate = (props: T) => {
-    const animateEl = useRef<HTMLElement>(null)
+    const animateContainer = useRef<HTMLElement>(null)
     const offsetTop = useRef<number>(0)
 
     useEffect(() => {
-      offsetTop.current = animateEl.current!.offsetTop
-      const windowResizeCallback = _.throttle(() => {
-        if (animateEl.current !== null) {
-          offsetTop.current = animateEl.current.offsetTop
-        }
-      }, 300)
-      const windowScrollCallback = _.throttle(() => {
-        const viewportBottomOffset = window.scrollY + window.innerHeight
-        const toAnimateOffset = offsetTop.current + 15
-        if (viewportBottomOffset > toAnimateOffset) {
-          if (animateEl.current !== null) {
-            animateEl.current.classList.add(animateClass)
+      if (animateContainer.current) {
+        const container = animateContainer.current
+        offsetTop.current = container.offsetTop
+        const windowResizeCallback = _.throttle(() => {
+          offsetTop.current = container.offsetTop
+        }, 300)
+        const windowScrollCallback = _.throttle(() => {
+          const viewportBottomOffset = window.scrollY + window.innerHeight
+          const toAnimateOffset = offsetTop.current + 15
+
+          if (viewportBottomOffset > toAnimateOffset) {
+            container.classList.add(animateClass)
+          } else {
+            container.classList.remove(animateClass)
           }
-        } else {
-          if (animateEl.current !== null) {
-            animateEl.current.classList.remove(animateClass)
-          }
+        }, 300)
+        window.addEventListener('resize', windowResizeCallback)
+        window.addEventListener('scroll', windowScrollCallback)
+        return () => {
+          window.removeEventListener('resize', windowResizeCallback)
+          window.removeEventListener('scroll', windowScrollCallback)
         }
-      }, 300)
-      window.addEventListener('resize', windowResizeCallback)
-      window.addEventListener('scroll', windowScrollCallback)
-      return () => {
-        window.removeEventListener('resize', windowResizeCallback)
-        window.removeEventListener('scroll', windowScrollCallback)
       }
     }, [])
 
-    return <WrappedComponent {...props} ref={animateEl} />
+    return <WrappedComponent {...props} ref={animateContainer} />
   }
 
   ComponentWithContainerAnimate.displayName = `withContainerAnimate(${displayName})`
