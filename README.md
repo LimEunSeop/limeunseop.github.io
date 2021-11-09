@@ -7,7 +7,7 @@
 - 수행기간: 2020.11 ~ 2020.12
 - 확장성을 고려하고 유지보수의 이점을 취하기 위해 SPA 형태의 React 로 개발하였습니다. 또한 크롤링 하는 데이터가 정형화된 포맷을 꼭 따라야 하므로 TypeScript 을 사용하였습니다.
 - Github에 있는 마크다운 데이터를 스크래핑하여 데이터의 일관성을 확보하였습니다.
-- 사용기술: React, ES6+, TypeScript, HTML, Sass, Sass_Module
+- 사용기술: React, ES6+, TypeScript, HTML, Sass, Sass_Module, styled-component
 - 디자인이 많이 미숙합니다.ㅠㅠ 조만간 리디자인 할 예정입니다.
 
 <details close>
