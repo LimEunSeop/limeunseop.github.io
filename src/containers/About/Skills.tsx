@@ -111,26 +111,23 @@ const Skills = forwardRef<HTMLElement, Props>(({ data }: Props, ref) => {
         elements.push(secondEdge)
 
         secondItem.children.forEach((third: string) => {
-          const leaf_markdown_arr: RegExpMatchArray | null = third.match!(/!\[(.*?)\]/g)
+          const leaf_markdown_arr: RegExpMatchArray | null = third.split(',').map((item) => item.trim())
           if (leaf_markdown_arr !== null) {
             leaf_markdown_arr.forEach((leaf) => {
-              const leafMatch: RegExpMatchArray | null = leaf.match!(/!\[(.*?)\]/)
-              if (leafMatch !== null) {
-                const thirdNode: Node = {
-                  data: { id: leafMatch[1] },
-                  grabbable: false,
-                  pannable: true,
-                  style: {
-                    'background-color': colors[color_idx],
-                  },
-                }
-
-                elements.push(thirdNode)
-
-                const thirdEdge: Edge = {} as Edge
-                thirdEdge.data = { id: secondNode.data.id + '->' + thirdNode.data.id, source: secondNode.data.id, target: thirdNode.data.id }
-                elements.push(thirdEdge)
+              const thirdNode: Node = {
+                data: { id: leaf },
+                grabbable: false,
+                pannable: true,
+                style: {
+                  'background-color': colors[color_idx],
+                },
               }
+
+              elements.push(thirdNode)
+
+              const thirdEdge: Edge = {} as Edge
+              thirdEdge.data = { id: secondNode.data.id + '->' + thirdNode.data.id, source: secondNode.data.id, target: thirdNode.data.id }
+              elements.push(thirdEdge)
             })
           }
         })
