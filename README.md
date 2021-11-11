@@ -1,3 +1,9 @@
+<a href="https://github.com/LimEunSeop/my-resume">![resume](https://img.shields.io/badge/resume-github.com%2FLimEunSeop%2Fmy--resume-CA0126.svg)</a>
+<a href="https://github.com/limeunseop/my-portfolio">![Portfolio](https://img.shields.io/badge/Portfolio-github.com%2Flimeunseop%2Fmy--portfolio-03B054.svg)</a>
+<a href="mailto:dmstjq92@gmail.com">![Email](https://img.shields.io/badge/email-dmstjq92@gmail.com-ea4335.svg)</a>
+<a href="https://medium.com/@dmstjq92">![Blog](https://img.shields.io/badge/blog-medium.com/@dmstjq92-303030.svg)</a>
+<a href="https://github.com/LimEunSeop">![Github](https://img.shields.io/badge/github-LimEunSeop-white.svg)</a>
+
 # 포트폴리오 사이트 프로젝트 기술서
 
 **디자인이 많이 미숙합니다.ㅠㅠ 사이트를 오픈을 할지 고민을 많이 했는데, 그래도 스크래핑한 데이터를 자동으로 구성할 수 있다는 것을 보여드리기 위해 오픈은 해두었습니다. 조만간 리디자인 할 예정입니다.**
