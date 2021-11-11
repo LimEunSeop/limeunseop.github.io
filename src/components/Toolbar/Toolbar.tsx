@@ -4,7 +4,7 @@ import AppNavigation from 'components/AppNavigtion/AppNavigation'
 import styles from './Toolbar.module.scss'
 
 interface Props {
-  navItems: Array<{ display: string; link: string; color: string }>
+  navItems: Array<{ display: string; link: string }>
 }
 
 const Toolbar = ({ navItems }: Props) => {

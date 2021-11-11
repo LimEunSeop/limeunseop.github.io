@@ -2,16 +2,17 @@ import { forwardRef } from 'react'
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Cover.module.scss'
 import withCoverAnimate from 'hoc/withCoverAnimate'
+import CoverObject from 'components/CoverObject'
 
 interface Props {
-  coverColor: string
+  themeName: string
 }
 
 const Cover = forwardRef<HTMLElement, Props>((props: Props, ref) => {
   return (
     <section className={styles.container} ref={ref}>
       <Heading.H className="a11yHidden">소개</Heading.H>
-      <div className={styles.coverCard} style={{ backgroundColor: props.coverColor }}>
+      <CoverObject className={styles.coverCard} themeName={props.themeName}>
         <p className={styles.greeting} aria-label="안녕하세요">
           <span>안녕</span>
           <span>하세요</span>
@@ -22,7 +23,7 @@ const Cover = forwardRef<HTMLElement, Props>((props: Props, ref) => {
           <br />
           <span className={styles.name}>임은섭</span> 입니다.
         </p>
-      </div>
+      </CoverObject>
     </section>
   )
 })

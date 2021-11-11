@@ -1,17 +1,17 @@
-import { Heading } from '@tenon-io/tenon-ui';
+import { Heading } from '@tenon-io/tenon-ui'
 import withLoader from 'hoc/WithLoader'
 import Cover from 'containers/Contact/Cover'
 
-const theme_color: string = '#DDE04F'
+const themeName: string = 'contact'
 
 const Contact = () => {
   return (
     <Heading.LevelBoundary>
-      <Cover coverColor={theme_color} />
+      <Cover themeName={themeName} />
     </Heading.LevelBoundary>
   )
 }
 
 Contact.displayName = 'Contact'
 
-export default withLoader<any>(theme_color, Contact)
+export default withLoader<any>(themeName, Contact)

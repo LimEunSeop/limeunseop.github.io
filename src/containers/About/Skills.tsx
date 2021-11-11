@@ -5,8 +5,7 @@ import cytoscape from 'cytoscape'
 
 import cise from 'cytoscape-cise'
 import styles from './Skills.module.scss'
-import styled from '@emotion/styled'
-import { keyframes } from '@emotion/react'
+import styled, { keyframes } from 'styled-components'
 import { rem } from 'utils/styledComponentUtils'
 import withContainerAnimate from 'hoc/withContainerAnimate'
 

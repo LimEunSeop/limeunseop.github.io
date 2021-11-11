@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { ComponentType } from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import _ from 'underscore'
 
 const ScrollCoverage = styled.div`

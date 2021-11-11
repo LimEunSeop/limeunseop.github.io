@@ -6,7 +6,6 @@ import Home from 'screens/Home'
 import Portfolio from 'screens/Portfolio'
 import Toolbar from 'components/Toolbar/Toolbar'
 import Blog from 'screens/Blog'
-import StoreProvider from 'store/store'
 import makeResumeData, { Section } from 'utils/makeResumeData'
 
 // resume markdown이 위치한 url
@@ -40,34 +39,32 @@ function App() {
   }
 
   return (
-    <StoreProvider>
-      <Router>
-        <div className="app">
-          <header className="header">
-            <Toolbar
-              navItems={[
-                { display: 'Home', link: 'home', color: '#0EA55D' },
-                { display: 'About', link: 'about', color: '#5353d4' },
-                { display: 'Portfolio', link: 'portfolio', color: '#2572AF' },
-                { display: 'Blog', link: 'blog', color: '#D03682' },
-                { display: 'Contact', link: 'contact', color: '#DDE04F' },
-              ]}
-            />
-          </header>
-          <main>
-            <Switch>
-              <Route path="/about" exact render={(props) => <About data={resume_data} {...props} />} />
-              <Route path="/portfolio" exact component={Portfolio} />
-              <Route path="/blog" exact component={Blog} />
-              <Route path="/contact" exact component={Contact} />
-              <Route path="/home" exact render={(props) => <Home data={resume_data} {...props} />} />
-              <Redirect to="/home" />
-            </Switch>
-          </main>
-          {/* <footer></footer> */}
-        </div>
-      </Router>
-    </StoreProvider>
+    <Router>
+      <div className="app">
+        <header className="header">
+          <Toolbar
+            navItems={[
+              { display: 'Home', link: 'home' },
+              { display: 'About', link: 'about' },
+              { display: 'Portfolio', link: 'portfolio' },
+              { display: 'Blog', link: 'blog' },
+              { display: 'Contact', link: 'contact' },
+            ]}
+          />
+        </header>
+        <main>
+          <Switch>
+            <Route path="/about" exact render={(props) => <About data={resume_data} {...props} />} />
+            <Route path="/portfolio" exact component={Portfolio} />
+            <Route path="/blog" exact component={Blog} />
+            <Route path="/contact" exact component={Contact} />
+            <Route path="/home" exact render={(props) => <Home data={resume_data} {...props} />} />
+            <Redirect to="/home" />
+          </Switch>
+        </main>
+        {/* <footer></footer> */}
+      </div>
+    </Router>
     // <main>
     //   {/* resume_data 에 있는대로 배열 idx 잘 지켜야함 */}
     //   <Cover data={{ title: resume_data.title, contents: resume_data.contents, children: [] }} />

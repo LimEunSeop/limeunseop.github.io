@@ -2,21 +2,22 @@ import { forwardRef } from 'react'
 import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Cover.module.scss'
 import withCoverAnimate from 'hoc/withCoverAnimate'
+import CoverObject from 'components/CoverObject'
 
 interface Props {
-  coverColor: string
+  themeName: string
 }
 
 const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
   return (
     <div className={styles.container} ref={ref}>
       <div className={styles.content}>
-        <div className={styles.cover} style={{ backgroundColor: props.coverColor }}>
+        <CoverObject className={styles.cover} themeName={props.themeName}>
           <div className={styles.coverLetter} aria-hidden="true">
             <span>ABO</span>
             <span>UT</span>
           </div>
-        </div>
+        </CoverObject>
         <Heading.H className={styles.name}>Eunseop Lim</Heading.H>
         <div className={styles.description}>
           <p className={styles.position}>Interactive Front-end Developer</p>

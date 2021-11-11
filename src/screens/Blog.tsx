@@ -1,17 +1,17 @@
-import { Heading } from '@tenon-io/tenon-ui';
+import { Heading } from '@tenon-io/tenon-ui'
 import withLoader from 'hoc/WithLoader'
 import Cover from 'containers/Blog/Cover'
 
-const theme_color: string = '#D03682'
+const themeName = 'blog'
 
 const Blog = () => {
   return (
     <Heading.LevelBoundary>
-      <Cover coverColor={theme_color} />
+      <Cover themeName={themeName} />
     </Heading.LevelBoundary>
   )
 }
 
 Blog.displayName = 'Blog'
 
-export default withLoader<any>(theme_color, Blog)
+export default withLoader<any>(themeName, Blog)

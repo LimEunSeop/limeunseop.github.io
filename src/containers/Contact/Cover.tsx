@@ -3,21 +3,22 @@ import { Heading } from '@tenon-io/tenon-ui'
 import styles from './Cover.module.scss'
 import withCoverAnimate from 'hoc/withCoverAnimate'
 import EmailForm from 'components/EmailForm/EmailForm'
+import CoverObject from 'components/CoverObject'
 
 interface Props {
-  coverColor: string
+  themeName: string
 }
 
 const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
   return (
     <div className={styles.container} ref={ref}>
       <div className={styles.content}>
-        <div className={styles.cover} style={{ backgroundColor: props.coverColor }}>
+        <CoverObject className={styles.cover} themeName={props.themeName}>
           <div className={styles.coverLetter} aria-hidden="true">
             <span>CON</span>
             <span>TACT</span>
           </div>
-        </div>
+        </CoverObject>
         <Heading.H className="a11yHidden">Contact</Heading.H>
         <p className={styles.description}>
           문의하실 사항이 있을 경우

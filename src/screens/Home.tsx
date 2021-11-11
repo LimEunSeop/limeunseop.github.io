@@ -6,7 +6,7 @@ import { Heading } from '@tenon-io/tenon-ui'
 import Wrapup from 'containers/Home/Wrapup'
 import Testimonials from 'containers/Home/Testimonials'
 
-const theme_color: string = '#0EA55D'
+const themeName: string = 'home'
 
 interface Props {
   data: Section | null
@@ -15,7 +15,7 @@ interface Props {
 const Home = () => {
   return (
     <Heading.LevelBoundary>
-      <Cover coverColor={theme_color} />
+      <Cover themeName={themeName} />
       <Promise />
       <Testimonials />
       <Wrapup />
@@ -25,4 +25,4 @@ const Home = () => {
 
 Home.displayName = 'Home'
 
-export default withLoader<Props>(theme_color, Home)
+export default withLoader<Props>(themeName, Home)

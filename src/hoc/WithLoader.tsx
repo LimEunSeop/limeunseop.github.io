@@ -3,7 +3,7 @@ import Loader from 'components/Loader/Loader'
 import { useSelector } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 
-function withLoader<T>(theme_color: string, WrappedComponent: ComponentType<T>) {
+function withLoader<T>(themeName: string, WrappedComponent: ComponentType<T>) {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component'
 
   const ComponentWithLoader = (props: T) => {
@@ -17,7 +17,7 @@ function withLoader<T>(theme_color: string, WrappedComponent: ComponentType<T>) 
     }, [loadingTime])
 
     if (isLoading) {
-      return <Loader nextColor={theme_color} />
+      return <Loader nextTheme={themeName} />
     }
 
     return <WrappedComponent {...props} />

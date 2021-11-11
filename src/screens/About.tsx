@@ -8,17 +8,17 @@ import { Heading } from '@tenon-io/tenon-ui'
 import withLoader from 'hoc/WithLoader'
 import Cover from 'containers/About/Cover'
 
-const theme_color: string = '#5353d4'
-
 interface Props {
   data: Section | null
 }
+
+const themeName = 'about'
 
 const About = ({ data }: Props) => {
   return (
     data && (
       <Heading.LevelBoundary>
-        <Cover coverColor={theme_color} />
+        <Cover themeName={themeName} />
         <Experience data={data.children[1]} />
         <Education data={data.children[2]} />
         <Certificates data={data.children[4]} />
@@ -31,4 +31,4 @@ const About = ({ data }: Props) => {
 
 About.displayName = 'About'
 
-export default withLoader<Props>(theme_color, About)
+export default withLoader<Props>(themeName, About)

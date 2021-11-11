@@ -5,15 +5,24 @@ import styles from './AppNavigation.module.scss'
 import classNames from 'classnames/bind'
 import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
+import styled from 'styled-components'
 
 interface Props extends PropsFromRedux {
-  navItems: Array<{ display: string; link: string; color: string }>
+  navItems: Array<{ display: string; link: string }>
   // open: boolean
 }
 
+const LinkDecorator = styled.div<{ themeName: string }>`
+  background: ${({ theme, themeName }) => theme[themeName].mainColor}90;
+`
+
+const NavBarBackground = styled.div<{ themeName: string | null }>`
+  background-color: ${({ theme, themeName }) => (themeName ? theme[themeName].mainColor : null)};
+`
+
 const cx = classNames.bind(styles)
 
-const AppNavigation = ({ navItems, currentThemeColor }: Props) => {
+const AppNavigation = ({ navItems, currentTheme }: Props) => {
   const [clicked, setClicked] = useState(false)
   const [hidden, setHidden] = useState(true)
   const [active, setActive] = useState(false)
@@ -41,17 +50,20 @@ const AppNavigation = ({ navItems, currentThemeColor }: Props) => {
   return (
     <div className={styles.wrapper}>
       <MenuButton className={styles.menuButton} isClicked={clicked} onClick={menuButtonClickHandler} />
-      <div className={cx('navBarBackground', { active })} style={{ backgroundColor: currentThemeColor }} hidden={hidden}></div>
+      <NavBarBackground className={cx('navBarBackground', { active })} themeName={currentTheme} hidden={hidden}></NavBarBackground>
       <nav className={cx('navBar', { active })} hidden={hidden}>
         <ul className={styles.menuList}>
-          {navItems.map((item, i) => (
-            <li key={i}>
-              <NavLink to={item.link} className={styles.navLink} activeClassName={styles.active} onClick={menuButtonClickHandler}>
-                {item.display}
-                <div className={styles.decorator} aria-hidden="true" style={{ background: item.color + '90' }}></div>
-              </NavLink>
-            </li>
-          ))}
+          {navItems.map((item, i) => {
+            const themeName = item.link
+            return (
+              <li key={i}>
+                <NavLink to={item.link} className={styles.navLink} activeClassName={styles.active} onClick={menuButtonClickHandler}>
+                  {item.display}
+                  <LinkDecorator className={styles.decorator} aria-hidden="true" themeName={themeName}></LinkDecorator>
+                </NavLink>
+              </li>
+            )
+          })}
         </ul>
         <ul className={styles.contacts}>
           <li>
@@ -80,8 +92,8 @@ const AppNavigation = ({ navItems, currentThemeColor }: Props) => {
 
 AppNavigation.displayName = 'AppNavigation'
 
-const mapStateToProps = ({ app: { themeColor } }: RootState) => ({
-  currentThemeColor: themeColor,
+const mapStateToProps = ({ app: { theme } }: RootState) => ({
+  currentTheme: theme,
 })
 
 const connector = connect(mapStateToProps)

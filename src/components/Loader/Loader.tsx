@@ -1,10 +1,9 @@
 import { useEffect } from 'react'
-import styled from '@emotion/styled'
-import { keyframes, css } from '@emotion/react'
+import styled, { keyframes, css } from 'styled-components'
 import { ReactComponent as MagsafeSvg } from './magsafe.svg'
 import { rem } from 'utils/styledComponentUtils'
 import { RootState } from 'store/rootReducer'
-import { changeThemeColor } from 'store/app/actions'
+import { changeTheme } from 'store/app/actions'
 import { connect, ConnectedProps } from 'react-redux'
 
 const colorChangeTime = 0.5
@@ -24,24 +23,24 @@ const fade_out = keyframes`
   }
 `
 
-const NextColorBackground = styled.div`
+const NextColorBackground = styled.div<{ themeName: string }>`
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: ${({ color }) => (color ? color : '#000')};
+  background-color: ${({ theme, themeName }) => theme[themeName].mainColor};
   overflow: hidden;
   animation: ${fade_in} 1s cubic-bezier(0.16, 1, 0.3, 1); /* 로더 뜰때 서서히 뜨도록. 얘가 Wrapper 니까 여기다가 해주는거임 */
 `
 
-const PriorColorBackground = styled.div<{ color: string; delay: number }>`
+const PriorColorBackground = styled.div<{ themeName: string | null; delay: number }>`
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: ${({ color }) => (color ? color : '#000')};
+  background-color: ${({ theme, themeName }) => (themeName ? theme[themeName].mainColor : '#000')};
   animation: ${fade_out} ${colorChangeTime}s ${({ delay }) => delay}s linear forwards;
 `
 const WhiteBlur = styled.div<{ holdingTime: number }>`
@@ -66,38 +65,38 @@ const donut1 = keyframes`
     }
 `
 
-const AnimatedMagsafe = styled(MagsafeSvg)<{ barcolor: string; delay: number }>`
+const AnimatedMagsafe = styled(MagsafeSvg)<{ themeName: string; delay: number }>`
   height: ${rem(350)};
   max-height: ${css`calc(100vh - ${rem(70)} - ${rem(10)})`}; // 뷰포트 - WhiteBlur 높이 - 여유분
   .donut-ring {
     opacity: 0.3;
   }
   .donut-segment-2 {
-    stroke: ${({ barcolor }) => barcolor};
+    stroke: ${({ theme, themeName }) => theme[themeName].mainColor};
     animation: ${donut1} ${colorChangeTime}s ${({ delay }) => delay}s linear forwards;
   }
 `
 
 interface Props extends PropsFromRedux {
-  nextColor: string
+  nextTheme: string
 }
 
 const Loader = (props: Props) => {
-  const { nextColor, currentThemeColor, loadingTime } = props
-  const { setCurrentThemeColor } = props
+  const { nextTheme, currentTheme, loadingTime } = props
+  const { setCurrentTheme } = props
 
   useEffect(() => {
     window.scrollTo(0, 0)
     window.setTimeout(() => {
-      setCurrentThemeColor(nextColor)
+      setCurrentTheme(nextTheme)
     }, loadingTime * 1000)
-  }, [loadingTime, nextColor, setCurrentThemeColor])
+  }, [loadingTime, nextTheme, setCurrentTheme])
 
   return (
-    <NextColorBackground color={nextColor}>
-      <PriorColorBackground color={currentThemeColor} delay={loadingTime / 3} />
+    <NextColorBackground themeName={nextTheme}>
+      <PriorColorBackground themeName={currentTheme} delay={loadingTime / 3} />
       <WhiteBlur holdingTime={(loadingTime * 2) / 3}>
-        <AnimatedMagsafe barcolor={nextColor} delay={loadingTime / 3}>
+        <AnimatedMagsafe themeName={nextTheme} delay={loadingTime / 3}>
           {/* <MagsafeSvg /> */}
         </AnimatedMagsafe>
       </WhiteBlur>
@@ -107,12 +106,12 @@ const Loader = (props: Props) => {
 Loader.displayName = 'Loader'
 
 const mapStateToProps = ({ app }: RootState) => ({
-  currentThemeColor: app.themeColor,
+  currentTheme: app.theme,
   loadingTime: app.loadingTime,
 })
 
 const mapDispatchToProps = {
-  setCurrentThemeColor: changeThemeColor,
+  setCurrentTheme: changeTheme,
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps)

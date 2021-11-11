@@ -4,12 +4,12 @@ import styles from './Cover.module.scss'
 import withCoverAnimate from 'hoc/withCoverAnimate'
 import { parseString } from 'xml2js'
 import BlogPost, { BlogPostType } from 'components/BlogPost/BlogPost'
-import styled from '@emotion/styled'
-import { keyframes } from '@emotion/react'
+import styled, { keyframes } from 'styled-components'
 import { rem } from 'utils/styledComponentUtils'
+import CoverObject from 'components/CoverObject'
 
 interface Props {
-  coverColor: string
+  themeName: string
 }
 
 const spin = keyframes`
@@ -68,12 +68,12 @@ const Cover = forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
   return (
     <div className={styles.container} ref={ref}>
       <div className={styles.content}>
-        <div className={styles.cover} style={{ backgroundColor: props.coverColor }}>
+        <CoverObject className={styles.cover} themeName={props.themeName}>
           <div className={styles.coverLetter} aria-hidden="true">
             <span>BL</span>
             <span>OG</span>
           </div>
-        </div>
+        </CoverObject>
         <Heading.H className="a11yHidden">블로그</Heading.H>
         {blogPosts ? (
           <ul className={`resetList ${styles.blogPosts}`}>

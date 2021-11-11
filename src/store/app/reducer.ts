@@ -1,16 +1,16 @@
-import { CHANGE_THEME_COLOR, Action } from './actions'
+import { CHANGE_THEME, Action } from './actions'
 
-const initState = {
+const initState: { loadingTime: number; theme: string | null } = {
   loadingTime: 2.5, // 초단위
-  themeColor: '#000',
+  theme: null,
 }
 
 export const appReducer = (state: typeof initState = initState, { type, payload }: Action): typeof initState => {
   switch (type) {
-    case CHANGE_THEME_COLOR:
+    case CHANGE_THEME:
       return {
         ...state,
-        themeColor: payload,
+        theme: payload,
       }
     default:
       console.error('invalid Action Type')
