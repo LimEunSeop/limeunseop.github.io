@@ -1,10 +1,4 @@
-<a href="https://github.com/LimEunSeop/my-resume">![resume](https://img.shields.io/badge/resume-github.com%2FLimEunSeop%2Fmy--resume-CA0126.svg)</a>
-<a href="https://github.com/limeunseop/my-portfolio">![Portfolio](https://img.shields.io/badge/Portfolio-github.com%2Flimeunseop%2Fmy--portfolio-03B054.svg)</a>
-<a href="mailto:dmstjq92@gmail.com">![Email](https://img.shields.io/badge/email-dmstjq92@gmail.com-ea4335.svg)</a>
-<a href="https://medium.com/@dmstjq92">![Blog](https://img.shields.io/badge/blog-medium.com/@dmstjq92-303030.svg)</a>
-<a href="https://github.com/LimEunSeop">![Github](https://img.shields.io/badge/github-LimEunSeop-white.svg)</a>
-
-# 이거 만들고 이불킥 하고 있습니다.. 하지만 컨셉 자체는 아주 좋은 자료이므로 향후 포트폴리오에 대한 구체적인 아이디어가 다시 생각나면 이것을 다시 사용할 예정입니다.
+# Legacy: 새로운 포트폴리오 사이트 작성시 참고 예정
 
 # 포트폴리오 사이트 프로젝트 기술서
 
